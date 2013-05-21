@@ -1,16 +1,19 @@
 \documentclass[11pt]{scrartcl}
-\usepackage[parfill]{parskip}
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}\usepackage[parfill]{parskip}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabulary}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage[nottoc, notlot, notlof, notindex]{tocbibind} %% Opciones de índice
+\usepackage{latexsym}  %% Logo LaTeX
+
 
 \graphicspath{{img/}}
 
+\renewcommand{\baselinestretch}{1.5}  %% Interlineado\underline{}
 
 \title{\textbf{SidelabCode Stack ALM Tools}}
-\subtitle{Proyecto Fin de M\'aster}
 \author{Autor: Ricardo Garc\'ia Fern\'andez
 \\Tutor: }
 
@@ -20,6 +23,8 @@
 
 \maketitle
 
+\vspace{2cm}
+
 \begin{figure}[h]
     \begin{center}
         \includegraphics{urjc}
@@ -27,11 +32,10 @@
     \end{center}
 \end{figure}
 
-\vspace{4cm}
-
 \begin{center}
 \large
 M\'aster Universitario en Software Libre
+\\ Proyecto Fin de M\'aster
 \\Curso Acad\'emico 2012/2013
 \end{center}
 
@@ -55,7 +59,108 @@ M\'aster Universitario en Software Libre
 
 \newpage
 
-\section{Questions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\tableofcontents  %% Creando índice
+
+\newpage
+
+\listoffigures  %% índice de figuras
+
+\newpage
+
+\listoftables %% índide de tablas
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introducci\'on}
+\label{sec:introduccion}
+
+\par Uso de Frameworks y forjas de desarrollo, ALM Tools.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Motivaci\'on}
+\label{sec:motivacion}
+
+\par Donde se ubica el FLOSS en el campo de las forjas y su importancia con el desarrollo de software de calidad.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Objetivos}
+\label{sec:objetivos}
+
+\par Constancia, metodolog\'ia, facilidad de uso, herramientas al alcance de cualquier desarrollador dentro de un proceso de desarrollo para crear software de calidad.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Proceso de desarrollo}
+\label{sec:procesodesarrollo}
+
+\par Descripci\'on del proceso de desarrollo de software para crear el diseño de implementaci\'on de la forja SdelabCode Stack.
+
+\subsection{Dise\~no e Implementaci\'on}
+\label{sub:diseno}
+
+\par Herramientas que se han utilizado y porqu\'e.
+
+% subsection diseno (end)
+
+\subsection{Interoperabilidad}
+\label{sub:interoperabilidad}
+
+\par Interoperabilidad entre las herramientas que componen la forja. API Rest.
+
+% subsection interoperabilidad (end)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Comunidades FLOSS}
+\label{sec:comunidades}
+
+\par El punto diferenciador en el proyecto haciendo hincapi\'e en la interacci\'on con las comunidades de software de cada una de las herramientas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Pruebas y Validaci\'on}
+\label{sec:pruebas}
+
+\par Pruebas a través de virtualizaci\'on de sistemas operativos mediante herramientas libres; Vagrant, kvm, puppet.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Caso Real}
+\label{sec:casoreal}
+
+\par La herramienta SidelabCode Stack se encuentra en uso para los estudiante de la UPV y dentro de la empresa TSCompany SL.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusiones}
+\label{sec:conclusiones}
+
+\par El uso de estas herramientas y su incremento de la calidad en el desarrollo, por encima de todo siendo FLOSS debido a eso la versatilidad que otorga en el momento de unificarlas en una herramienta nueva; SidelabCode Stack.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Lecciones aprendidas}
+\label{sec:lecciones}
+
+\par Colaboraci\'on entre distintos proyectos y comunidades, interoperabilidad entre herramientas, Forjas de desarrollo y los elementos m\'as comunes de las mismas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Trabajo Futuro}
+\label{sec:trabajofuturo}
+
+\par Impulso de la comunidad a través de los canales habituales.
+
+\par Integraci\'on y gesti\'on de nuevas herramientas comunes para los desarrolladores.
+
+\par Centralizaci\'on de la instalaci\'on.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
