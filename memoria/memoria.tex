@@ -1,0 +1,177 @@
+%% LaTeX template for the final master thesis
+%%
+%% Creating PDF: make pdf
+%%
+
+
+\documentclass[a4paper, 12pt]{book}
+%\usepackage[T1]{fontenc}
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
+\usepackage{times}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{url}
+\usepackage[dvipdfm]{graphicx}
+\usepackage{float}  %% H para posicionar figuras
+\usepackage[nottoc, notlot, notlof, notindex]{tocbibind} %% Opciones de índice
+\usepackage{latexsym}  %% Logo LaTeX
+
+\title{Title of the Thesis}
+\author{Name of the author}
+
+\renewcommand{\baselinestretch}{1.5}  %% Interlineado
+
+
+
+\begin{document}
+
+
+\renewcommand{\refname}{Bibliografía}  %% Renombrando
+\renewcommand{\appendixname}{Apéndice}
+
+
+%%%%%%%%%%%%% PORTADA %%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+\begin{tabular}[c]{c c}
+%\includegraphics[bb=0 0 194 352, scale=0.25]{logo} &
+\includegraphics[scale=0.25]{img/logo_vect.eps} &
+\begin{tabular}[b]{l}
+\Huge
+\textsf{UNIVERSIDAD} \\
+\Huge
+\textsf{REY JUAN CARLOS} \\
+\end{tabular}
+\\
+\end{tabular}
+
+\vspace{3cm}
+
+\Large
+Máster Universitario en Software Libre
+
+\vspace{0.4cm}
+
+\large
+Curso Académico 2011/2012
+
+\vspace{0.8cm}
+
+Proyecto Fin de Máster
+
+\vspace{2.5cm}
+
+\LARGE
+Título del Proyecto Fin de Máster
+
+\vspace{4cm}
+
+\large
+Autor: Nombre del autor \\
+Tutor: Dr. Nombre del tutor
+\end{center}
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents  %% Creando índice
+
+\listoffigures  %% índice de figuras
+
+\listoftables %% índide de tablas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Resumen}
+\label{chap:resumen}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introducci\'on}
+\label{chap:intro}
+
+Como decimos en el capítulo~\ref{chap:intro}...
+
+Véase la Fig.~\ref{fig:logo}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=2cm, keepaspectratio]{img/logo_vect.eps}
+  \label{fig:logo}
+\end{figure}
+
+Así se cita un libro de la bibliografía~\cite{BuddOO}.
+
+
+\section{Secci\'on}
+\label{sec:seccion}
+
+\subsection{Subsecci\'on}
+\label{subsec:subseccion}
+
+\section{Estructura del documento}
+\label{sec:estructura}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Objetivos}
+\label{chap:objetivos}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Dise\~no e implementaci\'on}
+\label{chap:diseno}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Pruebas y validaci\'on}
+\label{chap:pruebas}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Conclusiones}
+\label{chap:conclusiones}
+
+
+\section{Lecciones aprendidas}
+\label{sec:lecciones}
+
+
+\section{Trabajos futuros}
+\label{sec:futuro}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\chapter{Apéndice 1}
+\label{app:primer}
+
+
+%%%%%%%%%%%%%%%%
+% BIBLIOGRAFIA %
+%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{25}
+\bibliographystyle{alpha}
+
+\bibitem{BuddOO} Timothy Budd. \textit{Introducci\'on a la programaci\'on orientada a objetos}. Addison-Wesley Iberoamericana, 1994.
+
+\bibitem{LutzPPy} Mark Lutz. \textit{Programming Python}. O'Reilly, 2001.
+
+\bibitem{LundhPSL} Fredrik Lundh. \textit{Python standard library}. O'Reilly,
+2001.
+
+\bibitem{ReeseSQL} George Reese. \textit{Managing and using MySQL}. O'Reilly,
+2002.
+
+\end{thebibliography}
+
+
+\end{document}

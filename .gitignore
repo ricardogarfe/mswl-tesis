@@ -1,0 +1,32 @@
+# LaTeX ignore files
+*.log
+*.aux
+
+# Gummi LaTeX editor
+*.bak
+*.swp
+
+# Output LaTeX presentation files
+*.nav
+*.out
+*.snm
+*.toc
+
+# LibreOffice files
+.~*
+
+# Filesystem
+*~
+
+# Database
+*.mysql
+*.sql
+
+# Zipped files
+*.7z
+*.gz
+
+# Texlipse
+.project
+.texlipse
+
