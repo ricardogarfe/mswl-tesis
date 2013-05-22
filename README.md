@@ -1,4 +1,4 @@
-### Tesis sobre ALM Tools
+## Tesis sobre ALM Tools
 
 [![Build Status](https://travis-ci.org/ricardogarfe/mswl-tesis.png?branch=master)](https://travis-ci.org/ricardogarfe/mswl-tesis)
 
