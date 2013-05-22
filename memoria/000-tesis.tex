@@ -28,7 +28,7 @@
 \begin{figure}[h]
     \begin{center}
         \includegraphics{urjc}
-        \label{fig:by}
+        \label{fig:urjc}
     \end{center}
 \end{figure}
 
@@ -75,86 +75,44 @@ M\'aster Universitario en Software Libre
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introducción}
-\label{sec:introducción}
+\include{./001-introduccion}
 
-\par \textbf{SidelabCode Stack} es una forja de desarrollo de Software para su uso como herramienta \textbf{ALM}. Es una herramienta FLOSS (Free Libre Open Source Software) con Licencia \textbf{TBC}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\par El desarrollo de este proyecto se basa en el diseño e implementación de la forja SidelabCode Stack ahondando en la definición de un proceso de desarrollo de Software para el diseño de la forja, unificando herramientas a través de la interoperabilidad y facilitando la instalación, la replicación y la recuperación de los datos mediante el uso de Software Libre para construir Software de calidad.
+\include{./002-alm-tools}
 
-\subsection{Etimología}
-\label{sub:etimologia}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\par Sidelab es, un laboratorio de software. Partiendo de esta base, encontramos una definición exacta para SidelabCode \footnote{\url{http://code.sidelab.es/projects/sidelab/wiki/Sidelab}}:
-
-\begin{quotation}
-        \emph{Sidelab es el "laboratorio de software y entornos de desarrollo integrados" (Software and Integrated Development Environments Laboratory). Es un grupo de entusiastas de la programación con interés en prácticamente todos los aspectos del desarollo, desde los lenguajes de programación y los algoritmos avanzados, hasta la ingeniería del software y la seguridad informática. Nuestros principales intereses se centran en el desarrollo software y la mejora y personalización de los entornos de desarrollo integrados (IDEs) y herramientas relacionadas.}
-\end{quotation}
-
-\par SidelabCode Stack en este caso Code se refiere al código en sí hacia donde se orienta esta herramienta y Stack, es una pila de servicios para la gestión y el desarrollo de proyectos software.
-
-% subsection etimologia (end)
-
-\section{ALM Tools}
-\label{sec:almtools}
-
-\par ALM Tools significa: \emph{Application Lifecycle Management Tools}. La gesti\'on del ciclo de vida de una aplicaci\'on, el conjunto de herramientas encargadas de gu\'iar al desarrollador a trav\'es de un camino basado en metodolog\'ias para la creaci\'on de un Software hacia su estado del arte.
-
-\par Integrar el proceso de desarrollo de Software a trav\'es de las ALM Tools como veh\'iculo, es decir no existe en si mismo una herramienta ALM, sino que la herramienta ALM gobierna a las herramientas incluidas en el proceso de desarrollo.
-
-\par Este conjunto de herramientas se puede dividir en varios grupos:
-
-\begin{itemize}
-	\item Gesti\'on de Requisitos.
-	\item Arquitectura.
-	\item Desarrollo.
-	\item Test.
-	\item Issue tracking system.
-	\item Continuous Integration.
-	\item Release Management.
-\end{itemize}
-
-\par Hoy en d\'ia las forjas ALM abundan, adem\'as de gozar de una gran popularidad entre los proyectos de Software, como podemos ver en los casos de SourceForge, Googlecode y Github (más adelante discutiremos cada proyecto). En este caso ALM Tools as a Service, debido al servicio que ofrecen, pero sólo las que son FLOSS permiten replicar ese mismo entorno en tu propia máquina, un dato muy importante a tener en cuenta, porque siempre se ha de mirar hacia adelante.
-
-\section{Historia}
-\label{sec:historia}
-
-\par En todas las empresas o comunidades que desarrollan Software siempre se aplica un proceso de desarrollo a la creación del producto. Cada una utiliza distintas herramientas para la gesti\'on de los proyectos de Software, gestor de correo, gestor de incidencias, repositorio de c\'odigo, integraci\'on continua. Pero en la mayor\'ia de los casos de una forma dispar y sin seguir ninguna convención.
-
-\par A veces el no conocimiento de otras herramientas o la no inclusión de nuevas puede hacer que el desarrollo del proyecto no mejore, partiendo de la base de que el desarrollo puede ser óptimo para las herramientas utilizadas, carece de perspectivas de mejora a corto plazo.
-
-\par Si se opta por la integración de una nueva herramienta en el proceso de desarrollo el coste de integración se habría de evaluar ya que se debería dedicar un esfuerzo a la integración ad-hoc de la nueva herramienta para el uso en este mismo entorno con el coste que conlleva, evaluación, test, integración, interoperabilidad, es decir un nuevo proyecto dentro del mismo proyecto.
-
-\par Después de esta integración en el proceso de desarrollo en la empresa habría que hacer un esfuerzo para salvaguardar la información a través de las distintas herramientas por separado.
-
-\par El proceso de unificación y reutilización de herramientas a los desarrolladores nos puede parecer familiar si lo comparamos con el uso de los Frameworks a principios de los años 2000. Muchas empresas o comunidades empezaron a adecuar e implementar sus desarrollos en base a un Framework creado por ellos mismos. Estos Frameworks se adecuan a sus requerimientos pero su uso era interno en la empresa y por lo tanto lejano a los estándares. Uno de los más famosos es sin duda el caso de Spring, proyecto de más de 10 años de edad que goza de buena salud y aceptación, incluso equivoca a algunos entre Java y Spring. En este pequeño paralelismo podemos encontrar el estado de las forjas de desarrollo ALM Tools, cuando el proyecto requiere de herramientas para facilitar su ciclo de vida y se van ensamblando una tras otra, que perfectamente las podemos llamar librerías, en una integración \textbf{ad-hoc} y siguiendo unos pasos repetitivos en cada nuevo proyecto, en los que humanamente todos nos podemos equivocar debido a que depende de cada uno seguir cada uno de los pasos. Estas herramientas tienden a convertirse en pequeños estándares dentro de cada grupo de desarrolladores y a repetirse en futuros proyectos, pero debido a los desarrollos \textbf{ad-hoc} carecen de escalabilidad e integración con nuevas soluciones de una forma ágil, es un escollo actualizar y por otro lado replicar un estándar para la implantación de la forja, no se tiende a dejar puertas abiertas para que más adelante el herramienta mejore. Se podría definir como uno de los casos de inanición en el desarrollo de Software o muerte por éxito.
-
-\par En este punto es donde entra la famosa interoperabilidad entre las herramientas, la necesidad de interoperabilidad entre la herramientas a través de una comunicación estándar. Aquí encontramos el punto clave de las ALM Tools, la \textbf{integración de herramientas} dentro de un proceso de desarrollo.
-
-\par En post de evitar la falta de replicación, además de la importancia de la interoperabilidad se ha de tener en cuenta la replicación del contenido o la gestión de la instalación de un ALM. Siempre se ha de pensar mirando hacia adelante, no es necesario implementar las mejoras pero sí, dejar un hueco para que casen bien. Un ejemplo que puede ilustrar esta frase es la programación basada en Interfaces mediante Java, ya que las Intefaces ofrecen soluciones para implementar a medida y si se actualiza la Interfaz (en este caso es el esqueleto de la clase) para añadir una nueva funcionalidad con un método, los métodos anteriores mantienen su comportamiento dentro de cada clase que la implementa y adquieren la posibilidad de aumentar la funcionalidad implementando la nueva solución, adecuada a su entorno pero nueva, de esta forma la interoperabilidad entre las clases que utilicen esta Interfaz también se mantiene.
+\include{./003-historia}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Motivaci\'on}
 \label{sec:motivacion}
 
-\par Donde se ubica el FLOSS en el campo de las forjas y su importancia con el desarrollo de software de calidad.
-
 \par En el mismo punto, damos la bienvenida a SidelabCode Stack, la herramienta ALM para el proceso de desarrollo. 
 
-\par Ejemplos.
+\par Empezaremos con la ubicación de la forja de desarrollo SidelabCode Stack. ¿ Cual es la motivación que nos lleva a implementar un nuevo ALM ? después de haber pasado por las distintas fases como en el caso de los Frameworks.
 
-Clinker
-Cloudbees, con DEV@Cloud
-CollabNet con CloudForge
-ShiningPanda
-Plan.io
-Assembla
-Akiri con DevBox
+\par Debido a la necesidad de tener un esqueleto para el desarrollo de un proyecto partiendo de herramientas de Software Libre actuales generando una nueva herramienta de Software Libre.
 
-\par Empezaremos con la ubicación de la forja de desarrollo SidelabCode Stack. Cual es la motivación que nos lleva a implementar un nuevo ALM después de haber pasado por las distintas fases como en el caso de los Frameworks por debido a la necesidad de tener un esqueleto para el desarrollo de un proyecto. 
+\par Partiendo del principio DRY (\emph{Don't Repeat Yourself} y de la mano de \emph{No reinventar la rueda} el proyecto surgió con la necesidad de crear una forja de desarrollo Libre y usable en distintos entornos.
 
-\par SidelabCode Stack es una Forja de Desarrollo basada en Software Libre y Software Libre en si mismo. Que significa esto ? 
+\par Después de analizar Las posibles soluciones existentes, se optó por la unificación de las herramientas evaluadas para la generación de una nueva forja. 
+
+\begin{itemize}
+	\item ClinkerHQ \url{http://clinkerhq.com/} - Privado.
+	\item Github - \url{http://github.com/} - Privado.
+	\item SourceForge con Allura - \url{http://sourceforge.net/projects/allura/} - Software Libre pero incompleta (integrated Wiki, Tracker, SCM (svn, git and hg), Discussion, and Blog tools).
+	\item Cloudbees DEV@Cloud \url{http://www.cloudbees.com/dev.cb} - Privado.
+	\item CollabNet con CloudForge \url{http://www.cloudforge.com/} - Privado.
+	\item Plan.io - \url{http://plan.io/en/} - Privado.
+	\item Bitnami - \url{http://bitnami.com/} - Privado
+\end{itemize}
+
+\par Después de analizar estas soluciones ALM existentes se optó por crear una nueva Forja a partir de las herramientas necesarias para el proceso de desarrollo de Software de Calidad, siguiendo las metodologías ágiles existentes.
+
+\par La integración del proceso de desarrollo en la implementación de una Forja ALM es el punto clave de SidelabCode Stack.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -163,6 +121,10 @@ Akiri con DevBox
 
 \par Constancia, metodolog\'ia, facilidad de uso, herramientas al alcance de cualquier desarrollador dentro de un proceso de desarrollo para crear software de calidad.
 
+\par Generar datos aunque no se utilicen, es decir, grano gordo/grano fino.
+
+\par 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Proceso de desarrollo}
@@ -170,12 +132,15 @@ Akiri con DevBox
 
 \par Descripci\'on del proceso de desarrollo de software para crear el diseño de implementaci\'on de la forja SdelabCode Stack.
 
-\subsection{Dise\~no e Implementaci\'on}
-\label{sub:diseno}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Dise\~no e Implementaci\'on}
+\label{sec:diseno}
 
 \par Herramientas que se han utilizado y porqu\'e.
 
-% subsection diseno (end)
+% section diseno (end)
 
 \subsection{Interoperabilidad}
 \label{sub:interoperabilidad}
@@ -183,7 +148,6 @@ Akiri con DevBox
 \par Interoperabilidad entre las herramientas que componen la forja. API Rest.
 
 % subsection interoperabilidad (end)
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Comunidades FLOSS}
