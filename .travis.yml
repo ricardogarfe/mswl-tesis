@@ -1,6 +1,7 @@
 # LaTeX compiler.
 before_install:
   # Install LaTeX Tools
+  - sudo apt-get update
   - sudo apt-get install texlive
 
 before_script:
