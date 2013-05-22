@@ -2,7 +2,7 @@
 before_install:
   # Install LaTeX Tools
   - sudo apt-get update
-  - sudo apt-get install texlive
+  - sudo apt-get install texlive-full
 
 before_script:
   - cd /home/travis/build/ricardogarfe/mswl-tesis/memoria
