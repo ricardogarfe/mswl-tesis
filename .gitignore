@@ -11,6 +11,8 @@
 *.out
 *.snm
 *.toc
+*.lof
+*.lot
 
 # LibreOffice files
 .~*
