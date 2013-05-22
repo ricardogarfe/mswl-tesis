@@ -1,0 +1,10 @@
+# LaTeX compiler.
+before_install:
+  # Install base Android SDK
+  - sudo apt-get update -qq
+  - sudo apt-get install texlive-full
+
+before_script:
+  - cd /home/travis/build/ricardogarfe/mswl-tesis/memoria
+
+script: pdflatex 000-tesis.tex
