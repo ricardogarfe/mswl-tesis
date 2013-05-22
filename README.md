@@ -1,24 +1,33 @@
-### MSWL TFM
+### Tesis sobre ALM Tools
 
-## Introduction
+[![Build Status](https://travis-ci.org/ricardogarfe/mswl-tesis.png?branch=master)](https://travis-ci.org/ricardogarfe/mswl-tesis)
 
-Trabajo Final de Master **TFM** for [Master on Libre Software (Master Universitario en Software libre)](http://master.libresoft.es/) at [Universidad Rey juan Carlos](http://www.urjc.es/).
+## Introducción
+
+Tesis Trabajo Final de Master **TFM** for [Master on Libre Software (Master Universitario en Software libre)](http://master.libresoft.es/) at [Universidad Rey juan Carlos](http://www.urjc.es/).
+
+ALM Tools y el proceso de desarrollo de Software de Calidad.
 
 ## Requirements
 
-* LaTeX: to compile source code documentation files.
+* LaTeX: para compilar los ficheros fuente `*.tex`:
+
 
 ```shell
-$ pdflatex [document-name.tex]
+$ sudo apt-get update
+$ sudo apt-get isntall texlive-full 
+$ pdflatex 000-tesis.tex
 ```
 
 ## Blog
 
 **TBC**
 
-### TFM Report
+### Informe de la Tesis
 
-**TBC**
+El informe se encuentra en el directorio `memoria`:
+
+* 000-tesis.pdf
 
 ## License
 
