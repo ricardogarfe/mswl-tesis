@@ -5,6 +5,27 @@
 
 \par Integrar el proceso de desarrollo de Software a trav\'es de las ALM Tools como veh\'iculo, es decir no existe en si mismo una herramienta ALM, sino que la herramienta ALM gobierna a las herramientas incluidas en el proceso de desarrollo.
 
+\subsection{Historia}
+\label{sub:historia}
+
+\par En todas las empresas o comunidades que desarrollan Software siempre se aplica un proceso de desarrollo a la creación del producto. Cada una utiliza distintas herramientas para la gesti\'on de los proyectos de Software, gestor de correo, gestor de incidencias, repositorio de c\'odigo, integraci\'on continua. Pero en la mayor\'ia de los casos de una forma dispar y sin seguir ninguna convención.
+
+\par A veces el no conocimiento de otras herramientas o la no inclusión de nuevas puede hacer que el desarrollo del proyecto no mejore, partiendo de la base de que el desarrollo puede ser óptimo para las herramientas utilizadas, carece de perspectivas de mejora a corto plazo.
+
+\par Si se opta por la integración de una nueva herramienta en el proceso de desarrollo el coste de integración se habría de evaluar ya que se debería dedicar un esfuerzo a la integración ad-hoc de la nueva herramienta para el uso en este mismo entorno con el coste que conlleva, evaluación, test, integración, interoperabilidad, es decir un nuevo proyecto dentro del mismo proyecto.
+
+\par Después de esta integración en el proceso de desarrollo en la empresa habría que hacer un esfuerzo para salvaguardar la información a través de las distintas herramientas por separado.
+
+\par El proceso de unificación y reutilización de herramientas a los desarrolladores nos puede parecer familiar si lo comparamos con el uso de los Frameworks a principios de los años 2000. Muchas empresas o comunidades empezaron a adecuar e implementar sus desarrollos en base a un Framework creado por ellos mismos. Estos Frameworks se adecuan a sus requerimientos pero su uso era interno en la empresa y por lo tanto lejano a los estándares. Uno de los más famosos es sin duda el caso de Spring, proyecto de más de 10 años de edad que goza de buena salud y aceptación, incluso equivoca a algunos entre Java y Spring. En este pequeño paralelismo podemos encontrar el estado de las forjas de desarrollo ALM Tools, cuando el proyecto requiere de herramientas para facilitar su ciclo de vida y se van ensamblando una tras otra, que perfectamente las podemos llamar librerías, en una integración \textbf{ad-hoc} y siguiendo unos pasos repetitivos en cada nuevo proyecto, en los que humanamente todos nos podemos equivocar debido a que depende de cada uno seguir cada uno de los pasos. Estas herramientas tienden a convertirse en pequeños estándares dentro de cada grupo de desarrolladores y a repetirse en futuros proyectos, pero debido a los desarrollos \textbf{ad-hoc} carecen de escalabilidad e integración con nuevas soluciones de una forma ágil, es un escollo actualizar y por otro lado replicar un estándar para la implantación de la forja, no se tiende a dejar puertas abiertas para que más adelante el herramienta mejore. Se podría definir como uno de los casos de inanición en el desarrollo de Software o muerte por éxito.
+
+\par En este punto es donde entra la famosa interoperabilidad entre las herramientas, la necesidad de interoperabilidad entre la herramientas a través de una comunicación estándar. Aquí encontramos el punto clave de las ALM Tools, la \textbf{integración de herramientas} dentro de un proceso de desarrollo.
+
+\par En post de evitar la falta de replicación, además de la importancia de la interoperabilidad se ha de tener en cuenta la replicación del contenido o la gestión de la instalación de un ALM. Siempre se ha de pensar mirando hacia adelante, no es necesario implementar las mejoras pero sí, dejar un hueco para que casen bien. Un ejemplo que puede ilustrar esta frase es la programación basada en Interfaces mediante Java, ya que las Intefaces ofrecen soluciones para implementar a medida y si se actualiza la Interfaz (en este caso es el esqueleto de la clase) para añadir una nueva funcionalidad con un método, los métodos anteriores mantienen su comportamiento dentro de cada clase que la implementa y adquieren la posibilidad de aumentar la funcionalidad implementando la nueva solución, adecuada a su entorno pero nueva, de esta forma la interoperabilidad entre las clases que utilicen esta Interfaz también se mantiene.
+
+% subsection historia (end)
+\subsection{Componentes}
+\label{sub:componentes}
+
 \par Este conjunto de herramientas se puede dividir en varios grupos:
 
 \begin{itemize}
@@ -18,3 +39,39 @@
 \end{itemize}
 
 \par Hoy en d\'ia las forjas ALM abundan, adem\'as de gozar de una gran popularidad entre los proyectos de Software, como podemos ver en los casos de SourceForge, Googlecode y Github (más adelante discutiremos cada proyecto). En este caso ALM Tools as a Service, debido al servicio que ofrecen, pero sólo las que son FLOSS permiten replicar ese mismo entorno en tu propia máquina, un dato muy importante a tener en cuenta, porque siempre se ha de mirar hacia adelante.
+
+% subsection componentes (end)
+
+\subsection{Estudio del arte de forjas}
+\label{sub:estado-del-arte}
+
+\begin{itemize}
+	\item ClinkerHQ \url{http://clinkerhq.com/} - Privado.
+	\item Github - \url{http://github.com/} - Privado.
+	\item SourceForge con Allura - \url{http://sourceforge.net/projects/allura/} - Software Libre pero incompleta (integrated Wiki, Tracker, SCM (svn, git and hg), Discussion, and Blog tools).
+	\item Cloudbees DEV@Cloud \url{http://www.cloudbees.com/dev.cb} - Privado.
+	\item CollabNet con CloudForge \url{http://www.cloudforge.com/} - Privado.
+	\item Plan.io - \url{http://plan.io/en/} - Privado.
+	\item Bitnami - \url{http://bitnami.com/} - Privado
+	\item GForge
+	\item Collab.net
+	\item Google Code
+	\item Bitbucket - https://bitbucket.org/mswlmanage2013/mswl-bitbucket-alm-tools/wiki/Home
+\end{itemize}
+
+% subsection estado-del-arte (end)
+
+\subsection{Problemas en algunas forjas}
+\label{sub:problemas}
+
+% subsection problemas (end)
+
+\subsection{Tablas comparativas}
+\label{sub:comparativa}
+
+% subsection comparativa (end)
+
+\subsection{Conclusiones del estudio de forjas}
+\label{sub:conclusiones}
+
+% subsection conclusiones (end)

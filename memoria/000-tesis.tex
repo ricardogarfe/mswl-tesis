@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabulary}
+\usepackage{verbatim}
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage[nottoc, notlot, notlof, notindex]{tocbibind} %% Opciones de índice
@@ -65,13 +66,13 @@ M\'aster Universitario en Software Libre
 
 \newpage
 
-\listoffigures  %% índice de figuras
+% \listoffigures  %% índice de figuras
 
-\newpage
+% \newpage
 
-\listoftables %% índide de tablas
+% \listoftables %% índide de tablas
 
-\newpage
+% \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -80,10 +81,6 @@ M\'aster Universitario en Software Libre
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \include{./002-alm-tools}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\include{./003-historia}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -100,19 +97,27 @@ M\'aster Universitario en Software Libre
 
 \par Después de analizar Las posibles soluciones existentes, se optó por la unificación de las herramientas evaluadas para la generación de una nueva forja. 
 
-\begin{itemize}
-	\item ClinkerHQ \url{http://clinkerhq.com/} - Privado.
-	\item Github - \url{http://github.com/} - Privado.
-	\item SourceForge con Allura - \url{http://sourceforge.net/projects/allura/} - Software Libre pero incompleta (integrated Wiki, Tracker, SCM (svn, git and hg), Discussion, and Blog tools).
-	\item Cloudbees DEV@Cloud \url{http://www.cloudbees.com/dev.cb} - Privado.
-	\item CollabNet con CloudForge \url{http://www.cloudforge.com/} - Privado.
-	\item Plan.io - \url{http://plan.io/en/} - Privado.
-	\item Bitnami - \url{http://bitnami.com/} - Privado
-\end{itemize}
-
 \par Después de analizar estas soluciones ALM existentes se optó por crear una nueva Forja a partir de las herramientas necesarias para el proceso de desarrollo de Software de Calidad, siguiendo las metodologías ágiles existentes.
 
 \par La integración del proceso de desarrollo en la implementación de una Forja ALM es el punto clave de SidelabCode Stack.
+
+En primer lugar se ha elaborado un esquema conceptual de la arquitectura técnica que
+permita la integración de los servicios, teniendo en consideración que la arquitectura de la
+aplicación debe lograr los siguientes objetivos:
+
+Proveer un nivel de rendimiento suficiente para cada uno de los requerimientos de
+   negocio o subsistemas que lo componen.
+
+Ser escalable para cumplir las demandas de los usuarios durante el ciclo de vida de la
+   aplicación, pudiendo absorber el impacto en el rendimiento fruto de la popularidad de la
+   misma en el medio-largo plazo.
+
+Ser efectiva: la modificación de una capacidad específica no requerirá el cambio de la
+      plataforma completa, ni un cambio en el despliegue de la solución.
+
+Ser mantenible y que sus funcionalidades sean fácilmente extensibles y reutilizables.
+
+Permitir la fácil portabilidad de los datos de los proyectos entre forjas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -138,9 +143,49 @@ M\'aster Universitario en Software Libre
 	\item Integración Continua.
 \end{itemize}
 
-\par Generar datos aunque no se utilicen, es decir, grano gordo/grano fino.
+\begin{comment}
 
-\par Com
+Obtener una descripción detallada de los servicios a ofrecer por la forja.
+Basándose en los requerimientos funcionales definidos en el anterior proyecto se debe
+realizar una abstracción de los servicios que debe ofrecer la Forja de Nueva
+Generación conformándose así el catálogo de servicios. Para cada uno de estos
+   servicios se definirá su misión y se describirán sus principales funcionalidades y
+     características.
+
+Definir la arquitectura software que permita la cohesión de los diferentes
+    servicios. Una vez definidos los servicios a ofrecer por la forja, se debe dar cohesión a
+    los mismos diseñando un núcleo de servicios internos que permita la integración
+      funcional y técnica de los diferentes servicios y que provea de servicios comunes de
+      base a toda la plataforma, definiendo así servicios de almacenamiento de datos,
+      interoperatividad, así como elementos que si bien no son imprescindibles para el
+      funcionamiento de la forja, si que van a aportar valor a la misma añadiendo
+      posibilidades como la computación en la nube, el almacenamiento extendido y la
+      provisión de servicios de infraestructura de proyectos.
+
+Evaluar las tecnologías de referencia que puedan dar cobertura total o parcial a
+    los requisitos definidos. Una vez definido el catálogo de servicios a ofrecer por la
+    forja, así como la arquitectura de soporte a los mismos, se hace necesaria la
+    evaluación de las tecnologías existentes que puedan dar cobertura parcial o total a los
+     requerimientos definidos. Esta evaluación debe dar respuesta tanto a la viabilidad
+     técnica de los mismos como su viabilidad económica.
+
+Obtener una Estimación del alcance económico del proyecto. Uno de los
+     principales objetivos de este documento consiste en la construcción de una matriz con
+     los diferentes elementos de coste que marcarán el desarrollo y mantenimiento de la
+     futura Forja de Nueva Generación, desglosándose ésta en tres apartados:
+
+    Desarrollos necesarios, tanto adaptaciones de herramientas como nuevos desarrollos.
+    
+    Hardware mínimo necesario para el despliegue de la solución F:NG.
+    
+    Administración y soporte tras implantación de la F:NG.
+
+Definir los esquemas de despliegue en los diferentes escenarios. Una vez definida
+la arquitectura de referencia se deberán diseñar los posibles escenarios de despliegue
+de las diferentes forjas y subforjas
+\end{comment}
+
+\par Generar datos aunque no se utilicen, es decir, grano gordo/grano fino.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -149,13 +194,17 @@ M\'aster Universitario en Software Libre
 
 \par Descripci\'on del proceso de desarrollo de software para crear el diseño de implementaci\'on de la forja SdelabCode Stack.
 
+\section{Herramientas}
+\label{sec:herramientas}
+
+% section herramientas (end)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Dise\~no e Implementaci\'on}
 \label{sec:diseno}
 
-\par Herramientas que se han utilizado y porqu\'e.
+\par Análisis técnico de las Herramientas utilizadas.
 
 % section diseno (end)
 
@@ -165,12 +214,6 @@ M\'aster Universitario en Software Libre
 \par Interoperabilidad entre las herramientas que componen la forja. API Rest.
 
 % subsection interoperabilidad (end)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Comunidades FLOSS}
-\label{sec:comunidades}
-
-\par El punto diferenciador en el proyecto haciendo hincapi\'e en la interacci\'on con las comunidades de software de cada una de las herramientas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -181,6 +224,13 @@ M\'aster Universitario en Software Libre
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Comunidades FLOSS}
+\label{sec:comunidades}
+
+\par El punto diferenciador en el proyecto haciendo hincapi\'e en la interacci\'on con las comunidades de software de cada una de las herramientas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Caso Real}
 \label{sec:casoreal}
 
@@ -188,22 +238,22 @@ M\'aster Universitario en Software Libre
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Conclusiones}
-\label{sec:conclusiones}
+\section{Epílogo}
+\label{sec:epílogo}
+
+\subsection{Conclusiones}
+\label{sub:conclusiones}
 
 \par El uso de estas herramientas y su incremento de la calidad en el desarrollo, por encima de todo siendo FLOSS debido a eso la versatilidad que otorga en el momento de unificarlas en una herramienta nueva; SidelabCode Stack.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Lecciones aprendidas}
-\label{sec:lecciones}
+\subsection{Lecciones aprendidas}
+\label{sub:lecciones}
 
 \par Colaboraci\'on entre distintos proyectos y comunidades, interoperabilidad entre herramientas, Forjas de desarrollo y los elementos m\'as comunes de las mismas.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Trabajo Futuro}
-\label{sec:trabajofuturo}
+\subsection{Trabajo Futuro}
+\label{sub:trabajofuturo}
 
 \par Impulso de la comunidad a través de los canales habituales.
 
@@ -211,6 +261,7 @@ M\'aster Universitario en Software Libre
 
 \par Centralizaci\'on de la instalaci\'on.
 
+% section epílogo (end)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
