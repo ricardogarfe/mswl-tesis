@@ -6,6 +6,9 @@
 *.bak
 *.swp
 
+# Documents folder with pdf
+documentos/
+
 # Output LaTeX presentation files
 *.nav
 *.out
