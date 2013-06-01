@@ -1,0 +1,102 @@
+\chapter{Motivaci\'on}
+\label{chap:motivacion}
+
+\par En el mismo punto, damos la bienvenida a \emph{SidelabCode Stack}, la herramienta ALM para el proceso de desarrollo.
+
+\par Empezaremos ubicando la forja de desarrollo SidelabCode Stack. ¿ Cual es la motivaci\'on que nos lleva a implementar un nuevo ALM ?
+
+\par Debido a la necesidad de tener un esqueleto para el desarrollo de un proyecto a trav\'es del uso de herramientas de Software Libre actuales generando una nueva herramienta de Software Libre.
+
+\par Partiendo del principio DRY (\emph{Don't Repeat Yourself}) y de la mano de \emph{No reinventar la rueda} el proyecto surgi\'o con la necesidad de crear una forja de desarrollo Libre y usable en distintos entornos.
+
+\par Despu\'es de analizar Las posibles soluciones existentes, se opt\'o por la unificaci\'on de las herramientas evaluadas para la generaci\'on de una nueva forja. 
+
+\par Despu\'es de analizar estas soluciones ALM existentes se opt\'o por crear una nueva Forja a partir de las herramientas necesarias para el proceso de desarrollo de Software de Calidad, siguiendo las metodolog\'ias \'agiles existentes.
+
+\par La integraci\'on del proceso de desarrollo en la implementaci\'on de una Forja ALM es el punto clave de SidelabCode Stack.
+
+En primer lugar se ha elaborado un esquema conceptual de la arquitectura t\'ecnica que
+permita la integraci\'on de los servicios, teniendo en consideraci\'on que la arquitectura de la
+aplicaci\'on debe lograr los siguientes objetivos:
+
+Proveer un nivel de rendimiento suficiente para cada uno de los requerimientos de
+   negocio o subsistemas que lo componen.
+
+Ser escalable para cumplir las demandas de los usuarios durante el ciclo de vida de la
+   aplicaci\'on, pudiendo absorber el impacto en el rendimiento fruto de la popularidad de la
+   misma en el medio-largo plazo.
+
+Ser efectiva: la modificaci\'on de una capacidad espec\'ifica no requerir\'a el cambio de la
+      plataforma completa, ni un cambio en el despliegue de la soluci\'on.
+
+Ser mantenible y que sus funcionalidades sean f\'acilmente extensibles y reutilizables.
+
+Permitir la f\'acil portabilidad de los datos de los proyectos entre forjas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Objetivos}
+\label{chap:objetivos}
+
+\par Constancia, metodolog\'ia, facilidad de uso, herramientas al alcance de cualquier desarrollador dentro de un proceso de desarrollo para crear software de calidad.
+
+\par Integrar el desarrollo completo de un proyecto:
+
+\begin{itemize}
+	\item Creaci\'on del proyecto, usuarios, permisos y roles.
+	\item Carpetas p\'ublicas/privadas
+	\item An\'alisis de Requerimientos.
+	\item ITS Issue Tracking System.
+	\item Repositorio de c\'odigo.
+	\item Gesti\'on de librer\'ias.
+	\item TDD Test Driven Development.
+	\item Gesti\'on del repositorio, parches, actualizaciones, ramas.
+	\item Desarrollo e implementaci\'on.
+	\item An\'alisis de C\'odigo.
+	\item Despliegues en diferentes entornos.
+	\item Integraci\'on Continua.
+\end{itemize}
+
+\begin{comment}
+
+Obtener una descripci\'on detallada de los servicios a ofrecer por la forja.
+Bas\'andose en los requerimientos funcionales definidos en el anterior proyecto se debe
+realizar una abstracci\'on de los servicios que debe ofrecer la Forja de Nueva
+Generaci\'on conform\'andose as\'i el cat\'alogo de servicios. Para cada uno de estos
+   servicios se definir\'a su misi\'on y se describir\'an sus principales funcionalidades y
+     caracter\'isticas.
+
+Definir la arquitectura software que permita la cohesi\'on de los diferentes
+    servicios. Una vez definidos los servicios a ofrecer por la forja, se debe dar cohesi\'on a
+    los mismos dise\~nando un n\'ucleo de servicios internos que permita la integraci\'on
+      funcional y t\'ecnica de los diferentes servicios y que provea de servicios comunes de
+      base a toda la plataforma, definiendo as\'i servicios de almacenamiento de datos,
+      interoperatividad, as\'i como elementos que si bien no son imprescindibles para el
+      funcionamiento de la forja, si que van a aportar valor a la misma a\~nadiendo
+      posibilidades como la computaci\'on en la nube, el almacenamiento extendido y la
+      provisi\'on de servicios de infraestructura de proyectos.
+
+Evaluar las tecnolog\'ias de referencia que puedan dar cobertura total o parcial a
+    los requisitos definidos. Una vez definido el cat\'alogo de servicios a ofrecer por la
+    forja, as\'i como la arquitectura de soporte a los mismos, se hace necesaria la
+    evaluaci\'on de las tecnolog\'ias existentes que puedan dar cobertura parcial o total a los
+     requerimientos definidos. Esta evaluaci\'on debe dar respuesta tanto a la viabilidad
+     t\'ecnica de los mismos como su viabilidad econ\'omica.
+
+Obtener una Estimaci\'on del alcance econ\'omico del proyecto. Uno de los
+     principales objetivos de este documento consiste en la construcci\'on de una matriz con
+     los diferentes elementos de coste que marcar\'an el desarrollo y mantenimiento de la
+     futura Forja de Nueva Generaci\'on, desglos\'andose \'esta en tres apartados:
+
+    Desarrollos necesarios, tanto adaptaciones de herramientas como nuevos desarrollos.
+    
+    Hardware m\'inimo necesario para el despliegue de la soluci\'on F:NG.
+    
+    Administraci\'on y soporte tras implantaci\'on de la F:NG.
+
+Definir los esquemas de despliegue en los diferentes escenarios. Una vez definida
+la arquitectura de referencia se deber\'an dise\~nar los posibles escenarios de despliegue
+de las diferentes forjas y subforjas
+\end{comment}
+
+\par Generar datos aunque no se utilicen, es decir, grano gordo/grano fino.
