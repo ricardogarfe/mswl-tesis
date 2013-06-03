@@ -13,90 +13,87 @@
 
 \par Despu\'es de analizar estas soluciones ALM existentes se opt\'o por crear una nueva Forja a partir de las herramientas necesarias para el proceso de desarrollo de Software de Calidad, siguiendo las metodolog\'ias \'agiles existentes.
 
-\par La integraci\'on del proceso de desarrollo en la implementaci\'on de una Forja ALM es el punto clave de SidelabCode Stack.
+\par La necesidad de crear una herramienta que aglutinase la gestión de las tareas, el código fuente y la orientación del desarrollo a los Tests. Todo el proceso de desarrollo unificado para facilitar el trabajo.
 
-En primer lugar se ha elaborado un esquema conceptual de la arquitectura t\'ecnica que
-permita la integraci\'on de los servicios, teniendo en consideraci\'on que la arquitectura de la
-aplicaci\'on debe lograr los siguientes objetivos:
+\par La integraci\'on del proceso de desarrollo en la implementaci\'on de una Forja ALM es el punto clave de SidelabCode Stack. Para crear un entorno adecuado se tuvieron en cuenta distintas características en el proceso de creación:
 
-Proveer un nivel de rendimiento suficiente para cada uno de los requerimientos de
-   negocio o subsistemas que lo componen.
-
-Ser escalable para cumplir las demandas de los usuarios durante el ciclo de vida de la
-   aplicaci\'on, pudiendo absorber el impacto en el rendimiento fruto de la popularidad de la
-   misma en el medio-largo plazo.
-
-Ser efectiva: la modificaci\'on de una capacidad espec\'ifica no requerir\'a el cambio de la
-      plataforma completa, ni un cambio en el despliegue de la soluci\'on.
-
-Ser mantenible y que sus funcionalidades sean f\'acilmente extensibles y reutilizables.
-
-Permitir la f\'acil portabilidad de los datos de los proyectos entre forjas.
+\begin{itemize}
+	\item Ser efectiva: la modificaci\'on de una capacidad espec\'ifica no requerir\'a el cambio de la plataforma completa, ni un cambio en el despliegue de la soluci\'on.
+	\item Ser mantenible y que sus funcionalidades sean f\'acilmente extensibles y reutilizables.
+	\item Permitir la f\'acil portabilidad de los datos de los proyectos entre distintas forjas para la migración.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Objetivos}
 \label{chap:objetivos}
 
-\par Constancia, metodolog\'ia, facilidad de uso, herramientas al alcance de cualquier desarrollador dentro de un proceso de desarrollo para crear software de calidad.
+\par Constancia, metodolog\'ia, facilidad de uso basado en herramientas al alcance de cualquier desarrollador dentro de un proceso de desarrollo para crear software de calidad. Estos son los principios en los que se basa la implementación de SidelabCode Stack como forja de desarrollo teniendo como objetivos tangibles la unificación del uso de las herramientas necesarias para cumplir con éstos como objetivo.
 
-\par Integrar el desarrollo completo de un proyecto:
+\par Integrar el desarrollo completo de un proyecto a partir de estos objetivos convertidos en los siguientes requerimientos.
 
-\begin{itemize}
-	\item Creaci\'on del proyecto, usuarios, permisos y roles.
-	\item Carpetas p\'ublicas/privadas
-	\item An\'alisis de Requerimientos.
-	\item ITS Issue Tracking System.
-	\item Repositorio de c\'odigo.
-	\item Gesti\'on de librer\'ias.
-	\item TDD Test Driven Development.
-	\item Gesti\'on del repositorio, parches, actualizaciones, ramas.
-	\item Desarrollo e implementaci\'on.
-	\item An\'alisis de C\'odigo.
-	\item Despliegues en diferentes entornos.
-	\item Integraci\'on Continua.
-\end{itemize}
+\section{Proyecto, usuarios, permisos y roles }
+\label{sec:proyecto-usuarios}
 
-\begin{comment}
+\par La gestión del proyecto a partir de la definición de los usuarios, permisos y roles definidos para el mismo. Centralizar esta gestión para así obtener un control fluido y centralizado de los \emph{"poderes"} otorgados según el rango del usuario a través de una herramienta.
 
-Obtener una descripci\'on detallada de los servicios a ofrecer por la forja.
-Bas\'andose en los requerimientos funcionales definidos en el anterior proyecto se debe
-realizar una abstracci\'on de los servicios que debe ofrecer la Forja de Nueva
-Generaci\'on conform\'andose as\'i el cat\'alogo de servicios. Para cada uno de estos
-   servicios se definir\'a su misi\'on y se describir\'an sus principales funcionalidades y
-     caracter\'isticas.
+% section proyecto-usuarios (end)
 
-Definir la arquitectura software que permita la cohesi\'on de los diferentes
-    servicios. Una vez definidos los servicios a ofrecer por la forja, se debe dar cohesi\'on a
-    los mismos dise\~nando un n\'ucleo de servicios internos que permita la integraci\'on
-      funcional y t\'ecnica de los diferentes servicios y que provea de servicios comunes de
-      base a toda la plataforma, definiendo as\'i servicios de almacenamiento de datos,
-      interoperatividad, as\'i como elementos que si bien no son imprescindibles para el
-      funcionamiento de la forja, si que van a aportar valor a la misma a\~nadiendo
-      posibilidades como la computaci\'on en la nube, el almacenamiento extendido y la
-      provisi\'on de servicios de infraestructura de proyectos.
+\section{Carpetas compartidas}
+\label{sec:carpetas-compartidas}
 
-Evaluar las tecnolog\'ias de referencia que puedan dar cobertura total o parcial a
-    los requisitos definidos. Una vez definido el cat\'alogo de servicios a ofrecer por la
-    forja, as\'i como la arquitectura de soporte a los mismos, se hace necesaria la
-    evaluaci\'on de las tecnolog\'ias existentes que puedan dar cobertura parcial o total a los
-     requerimientos definidos. Esta evaluaci\'on debe dar respuesta tanto a la viabilidad
-     t\'ecnica de los mismos como su viabilidad econ\'omica.
+\par Generar un espacio de carpetas p\'ublicas/privadas para cada uno de los proyectos a partir de los permisos de cada usuario. Asegurando el acceso público/privado a los recursos que se publiquen.
 
-Obtener una Estimaci\'on del alcance econ\'omico del proyecto. Uno de los
-     principales objetivos de este documento consiste en la construcci\'on de una matriz con
-     los diferentes elementos de coste que marcar\'an el desarrollo y mantenimiento de la
-     futura Forja de Nueva Generaci\'on, desglos\'andose \'esta en tres apartados:
+% section carpetas-compartidas (end)
 
-    Desarrollos necesarios, tanto adaptaciones de herramientas como nuevos desarrollos.
-    
-    Hardware m\'inimo necesario para el despliegue de la soluci\'on F:NG.
-    
-    Administraci\'on y soporte tras implantaci\'on de la F:NG.
+\section{ITS}
+\label{sec:its}
 
-Definir los esquemas de despliegue en los diferentes escenarios. Una vez definida
-la arquitectura de referencia se deber\'an dise\~nar los posibles escenarios de despliegue
-de las diferentes forjas y subforjas
-\end{comment}
+\par Empezando por el An\'alisis de Requerimientos en un proyecto es necesaria una herramienta que ayude en el proceso de desarrollo, en esta caso un \emph{ITS Issue Tracking System} para la gestión y el mantenimiento de las tareas de cada proyecto. La piedra angular de todo proyecto de software. El ITS otorga un control total del flujo de trabajo y responsabilidades a los usuarios del proyecto, una base de documentación y gestión del tiempo prioritaria en todo proyecto de software.
 
-\par Generar datos aunque no se utilicen, es decir, grano gordo/grano fino.
+\par Utilizar el ITS para gestionar las tareas y los posibles errores dentro de cada proyecto para planificar la corrección o la implementación de éstas, dividiendo las entregas del proyecto en versiones durante el proceso continuo de desarrollo.
+
+% section its (end)
+
+\section{Repositorio de código}
+\label{sec:repositorio-codigo}
+
+\par El Repositorio de c\'odigo asociado a cada proyecto. Sin repositorio de código no hay proyecto. De esta forma la cooperación entre usuarios de un proyecto se agiliza bajo el manto de un sistema de control de versiones de código fuente. Esta herramienta produce la información necesaria para generar un histórico de cambios y poder evaluar la evolución del proyecto.
+
+\par Además se ha de dotar de una herramienta para la Gesti\'on del repositorio. Es decir, la gestión de parches, actualizaciones y desarrollo por ramas dentro de un entorno controlado.
+
+% section repositorio-codigo (end)
+
+\section{Gestión de librerías}
+\label{sec:gestion-librerias}
+
+\par La gesti\'on de librer\'ias centralizada para los proyectos dentro de la forja, ofrece la posibilidad de interconectar distintas librerías dentro de todo el entorno. Publicando las librerías clasificadas a través de las distintas versiones en un repositorio de librerías común. La reutilización del código y la posibilidad de mejora entre distintos proyectos que compartan librerías mejora la calidad del mismo.
+
+% section gestion-librerias (end)
+
+\section{TDD Test Driven Development}
+\label{sec:tdd}
+
+\par El desarrollo dirigido por Tests \emph{TDD} ayuda a la generación de código de calidad, legible y reutilizable. Siguiendo este proceso, el tiempo dedicado a la replicación de errores disminuye por lo que se puede dedicar más tiempo a la corrección del error en si.
+
+\par Otorga datos válidos para el análisis del código y controlar la evolución de la cobertura de Tests para poder evaluar la deuda técnica. Genera los datos suficientes para facilitar la corrección del a misma.
+
+% section tdd (end)
+
+\section{CI - Integración Continua}
+\label{sec:integracion-continua}
+
+\par El TDD, el desarrollo por ramas y los despliegues en diferentes entornos completan un proceso de desarrollo que culmina en la integración continua del proyecto. Este es el control al más alto nivel dentro de la parte técnica en donde el control de la calidad del código se toma como estandarte. Prevé los errores previos entre distintas versiones del código al unificar las ramas, fallos en los tests y validación de la calidad del código.
+
+\par Crear despliegues en distintos entornos o replicar entornos similares al entorno final desde esta herramienta para minimizar los errores o poder replicar fácilmente los mismos cuando surjan.
+
+% section integracion-continua (end)
+
+\section{Interoperabilidad}
+\label{sec:interoperabilidad}
+
+\par La interoperabilidad entre todas las herramientas para gestionar la configuración a través de una herramientas centralizada. Este apartado es donde se muestra el potencial de la forja de desarrollo ya que la configuración se expande o replica a las demás herramientas dando vida a la comunicación entre ellas para crear la forja.
+
+\par Se transforma la configuración inicial y se establecen los protocolos de comunicación entre cada una de las herramientas dentro del proceso de desarrollo habiendo definido los pasos a seguir a partir de las \emph{API}s existentes.
+
+% section interoperabilidad (end)
