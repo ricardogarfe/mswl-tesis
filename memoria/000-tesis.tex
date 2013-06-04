@@ -1,6 +1,8 @@
 \documentclass[a4paper, 12pt]{book}
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
-\usepackage{times}
+\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage[parfill]{parskip}
@@ -30,13 +32,13 @@
 
 %%%%%%%%%%%%% PORTADA %%%%%%%%%%%%%%%%
 
-\include{./portada}
+% \include{./portada}
 
 %%%%%%%%%%%%% indices %%%%%%%%%%%%%%%%
 
-\tableofcontents  %% Creando \'indice
+% \tableofcontents  %% Creando \'indice
 
-\newpage
+% \newpage
 
 % \listoffigures  %% \'indice de figuras
 
@@ -48,11 +50,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\include{./introduccion}
+% \include{./introduccion}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\include{./motivacion-objetivos}
+% \include{./motivacion-objetivos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
