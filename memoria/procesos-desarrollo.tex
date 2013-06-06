@@ -44,7 +44,16 @@
     \emph{La primera versión debe contener todos los requerimientos del usuario y lo que se va a hacer en las siguientes versiones es ir mejorando aspectos como la funcionalidad o el tiempo de respuesta.}\footnote{Procesos Iterativos e Incrementales - \url{http://esalas334.blogspot.es/1193761920/}}
 \end{quote}
 
-\par Se centra más en la inmediatez de la primera versión y en las mejoras posteriores que se van creando enfocadas a la solución final. En el proceso también juega una parte fundamental la comunicación con el cliente a través de la visualización de los resultados por iteraciones. De esta forma se consigue una buena coordinación entre el cliente y el equipo de desarrollo para la consecución de los objetivos. Teniendo en cuenta posibles cambios entre iteraciones pero nunca del resultado completo, así controlando a tiempo la \emph{desviación} que pueda existir en el proceso de la creación de producto.
+\par Se centra más en la inmediatez de la primera versión y en las mejoras posteriores que se van creando enfocadas a la solución final. En el proceso también juega una parte fundamental la comunicación con el cliente a través de la visualización de los resultados por iteraciones. De esta forma se consigue una buena coordinación entre el cliente y el equipo de desarrollo para la consecución de los objetivos.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{DevelopmentIterative}
+    \caption{Desarrollo Iterativo}
+    \label{fig:desarrollo-iterativo}
+\end{figure}
+
+\par Se han de tener en cuenta posibles cambios entre iteraciones pero nunca del resultado completo, para que de esta forma se pueda controlar a tiempo la \emph{desviación} que pueda existir en el proceso de la creación de producto.
 
 \begin{quote}
     \emph{Como la idea que representa la palabra iterativo, un proceso de desarrollo de software iterativo es aquel al que se lo piensa, como una serie de tareas agrupadas en pequeñas etapas repetitivas. Estas "pequeñas etapas repetitivas" son las iteraciones.}\footnote{Proceso de Desarrollo Iterativo - Fernando Soriano - \url{http://fernandosoriano.com.ar/?p=13}}
@@ -87,14 +96,105 @@
     \label{fig:modelo-incremental}
 \end{figure}
 
-\par Al iniciar el desarrollo, los clientes o los usuarios, identifican a grandes rasgos las funcionalidades que proporcionará el sistema. Se define un bosquejo de requisitos funcionales y será el cliente quien se encarga de priorizar que funcionalidades son más importantes. Con las prioridades definidas, se puede confeccionar el plan de incrementos, en donde cada incremento se compone de un subconjunto de funcionalidades que el sistema desarrollará.
+\par Al iniciar el desarrollo, los clientes o los usuarios, identifican a grandes rasgos las funcionalidades que proporcionará el sistema. Se define un bosquejo de requisitos funcionales y será el cliente quien se encarga de priorizar que funcionalidades son más importantes. Con las prioridades definidas, se puede confeccionar el plan de incrementos, en donde cada incremento se compone de un subconjunto de funcionalidades a desarrollar.
 
 % section proc-incremental (end)
 
 \section{Iterativo e Incremental}
 \label{sec:iterativo-incremental}
 
-Desarrollo iterativo e incremental
+\par Desarrollo iterativo e incremental. La conjunción de estos dos tipos de desarrollo aúnan las mejores cualidades de ambos para gestión de un equipo de trabajo en la construcción de una solución.
+
+\par El proceso iterativo e incremental se basa en incrementos por cada una de las iteraciones en el proceso de desarrollo. La idea básica de este proceso es desarrollar una solución a través de las iteraciones de ciclos a partir de los incrementos en la funcionalidad para que los desarrolladores mejoren su productividad en torno al proyecto a partir de pequeños hitos que completan versiones usables de la solución desde la primera.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{iterativo-incremental-larman}
+    \caption{Proceso iterativo e Incremental por Larman}
+    \label{fig:iterativo-incremental-larman}
+\end{figure}
+
+\par La evolución de la solución se basa en las iteraciones pasadas añadiendo los nuevos requisitos/objetivos (pueden ser mejoras o nuevas funcionalidades). Se basa en incrementar el valor del trabajo hecho para tener un control del proceso más exhaustivo priorizando los objetivos. Por cada iteración existen modificaciones en el diseño y en las funcionalidades.
+
+\par La comunicación y la implicación en el desarrollo del proyecto con el usuario/cliente desde el inicio del proyecto es crucial ya que el proceso parte desde una solución inicial para incluir versiones usables con el usuario/cliente. De esta forma todas las partes aportan sus distintos puntos de vista de una manera continua implicándose en el proceso y midiendo el crecimiento de la solución paso a paso, incremento a incremento.
+
+\par Este proceso de desarrollo cercano a las \emph{Metodologías Ágiles}, como ellas tiene el mismo fin, la implicación, desarrollo, fiabilidad, confianza, aprendizaje, versatilidad, responsabilidad, comunicación con la solución desarrollada y el usuario/cliente durante el proceso.
+
+\par Las Iteraciones han de ser de una duración corta de \emph{2 a 6 semanas} para que la comunicación a todos los niveles del proyecto siga siendo fluida y para que si en algún caso se haya de desechar una Iteración no se pierda mucho trabajo desarrollado en ella. Esto no ocurre muy a menudo pero se contempla por diferentes causas:
+
+\begin{itemize}
+	\item Abandono del proyecto.
+	\item Cambio de Cliente/Usuario.
+	\item Falta de recursos.
+\end{itemize}
+
+\par Las Iteraciones \emph{"cortas"} otorgan al modelo un alto nivel de versatilidad a la hora de evolucionar y evaluar el recorrido del trabajo hecho en el proyecto, para así poder predecir la organización de las futuras iteraciones.
+
+\subsection{Fases del proceso}
+\label{sub:fases-proceso}
+
+\par El proceso de desarrollo Iterativo e Incremental está basado en tres fases:
+
+\begin{itemize}
+	\item Iniciación.
+	\item Iteración.
+	\item Lista del Control del Proyecto.
+\end{itemize}
+
+\par El objetivo de la \emph{Iniciación} es la implementación inicial para crear un producto con el cual el usuario/cliente pueda interactuar y tener las primeras impresiones. El equipo de desarrollo y el usuario/cliente toman como punto base esta fase de \emph{Iniciación}.
+
+\par Esta primera implementación ha de servir de guía para la evolución del desarrollo en cada una de las iteraciones, la base.
+
+\par La \emph{Lista de Control del Proyecto} es el lugar donde se definen las tareas que han de cumplimentarse durante el proceso de desarrollo. Todos los aspectos relacionados con la implementación de la solución se encuentran definidos en la lista, funcionalidades, diseño, errores, mejoras. La Lista de Control está en constante evolución, no es un muro estático, ya que se van adjuntando las funcionalidades y/o mejoras y posibles nuevas funcionalidades. De esta forma se evalúan las prioridades en la fase de análisis por cada iteración y se decide que tareas han de implementarse y cuales son desechadas para la siguiente iteración.
+
+\par La \emph{Iteración} es un conjunto modular de acciones a llevar a cabo para cumplir con las tareas que se definen para evolucionar la solución por incrementos. Debe estar sujeta a cambios en el diseño, nuevas tareas añadidas a la lista de control y sobretodo, ser simple.
+s
+% subsection fases-proceso (end)
+
+\subsection{Desarrollo}
+\label{sub:desarrollo}
+
+\par El desarrollo del proyecto viene medido por las Iteraciones que se conectan una a otra secuencialmente.
+
+The level of design detail is not dictated by the iterative approach. In a light-weight iterative project the code may represent the major source of documentation of the system; however, in a critical iterative project a formal Software Design Document may be used.
+
+The analysis of an iteration is based upon user feedback, and the program analysis facilities available. It involves analysis of the structure, modularity, usability, reliability, efficiency, and achievement of goals. The project control list is modified in light of the analysis results.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{valor-negocio-iterativo-incremental}
+    \caption{Valor de negocio Iterativo e Incremental}
+    \label{fig:valor-negocio-iterativo-incremental}
+\end{figure}
+
+Determinación del ámbito del proyecto.
+Eliminación de riesgos críticos.
+Creación de la línea base de arquitectura.
+Se deben dominar los requisitos, el problema y los riesgos que pueden surgir.
+
+En las iteraciones posteriores
+
+Se reducen los riesgos menos graves
+Se implementan componentes
+Se añaden incrementos hasta llegar a la versión extrema (para el cliente).
+
+El ciclo de vida de un proyecto se divide en miniproyectos = iteraciones, cada una compuesta por sus respectivos flujos de trabajo (requisito, análisis, diseño, implementación, prueba).
+
+Se les llama miniproyectos porque no es algo que el usuario haya pedido.
+
+Implementation guidelines[edit]
+Guidelines that drive the implementation and analysis include:
+Any difficulty in design, coding and testing a modification should signal the need for redesign or re-coding.
+Modifications should fit easily into isolated and easy-to-find modules. If they do not, some redesign is possibly needed.
+Modifications to tables should be especially easy to make. If any table modification is not quickly and easily done, redesign is indicated.
+Modifications should become easier to make as the iterations progress. If they are not, there is a basic problem such as a design flaw or a proliferation of patches.
+Patches should normally be allowed to exist for only one or two iterations. Patches may be necessary to avoid redesigning during an implementation phase.
+The existing implementation should be analyzed frequently to determine how well it measures up to project goals.
+Program analysis facilities should be used whenever available to aid in the analysis of partial implementations.
+User reaction should be solicited and analyzed for indications of deficiencies in the current implementation.
+
+% subsection desarrollo (end)
+
 
 % section iterativo-incremental (end)
 \section{Gestión de tareas}
