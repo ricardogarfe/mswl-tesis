@@ -256,14 +256,42 @@
 \section{Código versionado}
 \label{sec:codigo-versionado}
 
-\par Código versionado -> repositorios de código
+\par El código fuente de la solución es la clave de la misma por lo tanto ha de existir un mecanismo que permita el control y salvaguarde la información a través de los cambios durante el tiempo. Estamos hablando de un \textbf{VCS} (En Inglés \emph{Version Control System}) - \emph{Sistema de Control de Versiones}.
+
+\par \textbf{VCS}: Version Control System. Un sistema de control de versiones es una herramienta para la gestión de archivos y su ciclo de vida dentro de un proyecto. Gestiona todas las acciones realizadas en los archivos, crear, guardar, copiar, eliminar, mover. La información se refleja en una base de datos y proporciona un histórico dotando una gestión dinámica de los recursos a los usuarios.
+
+\par Mediante el uso de una herramienta para versionar el código se hace un seguimiento de la evolución del desarrollo de la solución. En este caso pasaremos a utilizar las siglas \textbf{SCM} (Source Code Management) - \emph{Gestión del Código Fuente}.
+
+\par Las herramientas de versionado de código nos permiten asociar las tareas específicas para cada iteración a los cambios efectuados en el código. Agrupar los cambios por usuario, proyecto, fecha, iteración o tarea asociada. Estas dos herramientas multiplican la productividad del grupo de trabajo si se hace un buen uso de ellas, aplicando como es el caso, el uso de la metodología Iterativa e Incremental.
+
+\par Existen dos tipos de repositorios:
+
+\begin{itemize}
+	\item \emph{Centralizados}: Los usuarios dependen de una estructura centralizada que salvaguarda toda la información. No puede trabajar sin conexión al repositorio.
+	\item \emph{Distribuidos}: Cada usuario gestiona una copia completa del repositorio y unifica los cambios con otros desarrolladores estableciendo un repositorio centralizado. Puede trabajar ya que tiene una copia del repositorio en su poder.
+\end{itemize}
+
+\par En este caso, se han integrado ambos tipos de repositorio en la forja de desarrollo, como hemos dicho antes, no es excluyente a otros procesos de desarrollo. En el caso que nos ocupa, se utilizará el repositorio de tipo \emph{Distribuido} ya que otorga mayor libertad al grupo de trabajo.
+
+\par El desarrollo de la solución se adapta al uso del Repositorio distribuido, ya que éste aporta una flexibilidad para la gestión de bifurcaciones del código que en un repositorio centralizado no tenemos fácilmente. 
+
+\par El \emph{Desarrollo por Ramas} (Feature branch\footnote{Martin Fowler - Feature branch - \url{http://martinfowler.com/bliki/FeatureBranch.html}}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{feature_branch_simple}
+    \caption{Desarrollo por Ramas}
+    \label{fig:feature_branch_simple}
+\end{figure}
+
+\par El Desarrollo por Ramas definido dentro del proceso de desarrollo Iterativo e Incremental ayuda a la integración del código en la rama de desarrollo. Como se ha definido en el punto al respecto del desarrollo, cada iteración consta de un incremento en el que se han definido las tareas (de la Lista de Control) a implementar. Por lo tanto cada tarea se corresponde al desarrollo de una funcionalidad o cobertura de un error, es decir, desarrollos pequeños y que fácilmente se integran en la rama principal del proyecto. \emph{Divide y Vencerás} como nos han enseñado durante los estudios de Informática, pequeños cambios organizados para así poder controlar las posibles \emph{excepciones} o \emph{errores} que se produzcan minimizando el daño y el alcance.
 
 % section codigo-versionado (end)
 
 \section{TDD y CI}
 \label{sec:tdd-ci}
 
-\par TDD -> sistemas de CI para asegurar que los tests se pasan regularmente
+\par TDD -> sistemas de CI para asegurar que los tests se pasan regularmente, seguimiento de la integración del código.
 
 % section tdd-ci (end)
 
