@@ -275,7 +275,12 @@
 
 \par El desarrollo de la solución se adapta al uso del Repositorio distribuido, ya que éste aporta una flexibilidad para la gestión de bifurcaciones del código que en un repositorio centralizado no tenemos fácilmente. 
 
-\par El \emph{Desarrollo por Ramas} (Feature branch\footnote{Martin Fowler - Feature branch - \url{http://martinfowler.com/bliki/FeatureBranch.html}}).
+\subsection{Desarrollo por Ramas}
+\label{sub:desarrollo-ramas}
+
+\par Los repositorios de código son una herramientas más en el proceso de desarrollo de software por lo tanto hemos de utilizar aquel que se adapte a las necesidades del proceso. En este caso un repositorio distribuido y a su vez, aplicar una metodología de desarrollo a la herramienta.
+
+\par El \emph{Desarrollo por Ramas} (Feature branch\footnote{Martin Fowler - Feature branch - \url{http://martinfowler.com/bliki/FeatureBranch.html}}) o \emph{Desarrollo por Canales}.
 
 \begin{figure}[H]
     \centering
@@ -284,23 +289,116 @@
     \label{fig:feature_branch_simple}
 \end{figure}
 
-\par El Desarrollo por Ramas definido dentro del proceso de desarrollo Iterativo e Incremental ayuda a la integración del código en la rama de desarrollo. Como se ha definido en el punto al respecto del desarrollo, cada iteración consta de un incremento en el que se han definido las tareas (de la Lista de Control) a implementar. Por lo tanto cada tarea se corresponde al desarrollo de una funcionalidad o cobertura de un error, es decir, desarrollos pequeños y que fácilmente se integran en la rama principal del proyecto. \emph{Divide y Vencerás} como nos han enseñado durante los estudios de Informática, pequeños cambios organizados para así poder controlar las posibles \emph{excepciones} o \emph{errores} que se produzcan minimizando el daño y el alcance.
+\par El Desarrollo por ramas ayuda a la creación de código de una forma ordenada y coordinada dentro de un grupo de trabajo. Se basa en la creación y la integración continua de nuevas funcionalidades o solventar problemas derivados de otras implementaciones de una manera eficiente, ágil y distribuida por canales.
+
+\par El desarrollo basado en canales o ramas se ha definido dentro del proceso de desarrollo Iterativo e Incremental en donde ayuda a la integración del código en la rama principal de desarrollo. Como se ha definido en el punto referente al proceso de desarrollo, cada iteración consta de un incremento en el que se han agrupado las tareas (de la Lista de Control) a implementar. Por lo tanto cada tarea se corresponde al desarrollo de una funcionalidad o cobertura de un error. Estamos hablando de desarrollos pequeños y que fácilmente se integran en la rama principal del proyecto.
+
+\begin{quote}
+    \emph{Divide y Vencerás}: resolver un problema difícil, dividiéndolo en partes más simples tantas veces como sea necesario, hasta que la resolución de las partes se torna obvia.
+\end{quote}
+
+\par Fragmentar la solución en pequeños módulos organizados facilitando el desarrollo y aislando el ruido y además poder controlar las posibles \emph{excepciones} o \emph{errores} que se produzcan minimizando el daño y el alcance. Pero para ser eficientes ha de existir una herramienta que ayude a coordinar los cambios y el esfuerzo invertido para no desvirtuar el proceso de desarrollo.
+
+% subsection desarrollo-ramas (end)
 
 % section codigo-versionado (end)
 
 \section{TDD y CI}
 \label{sec:tdd-ci}
 
-\par TDD -> sistemas de CI para asegurar que los tests se pasan regularmente, seguimiento de la integración del código.
+\par En este punto se introduce un nuevo apéndice del proceso junto a la herramienta que ayuda a que el desarrollo del código no se desvirtúe mediante el desarrollo por ramas. La \emph{Integración Continua} (CI) y el \emph{Desarrollo Dirigido por Tests} (TDD).
+
+\subsection{TDD}
+\label{sub:tdd}
+
+\par El TDD se basa en la repetición de un ciclo de desarrollo corto en el que el desarrollador escribe un caso de prueba (test). Este ha de definir el comportamiento que se busca en la nueva funcionalidad y ha de fallar. A partir de este instante ya están definidos los requerimientos de la funcionalidad en caso de prueba y se ha escribir el código necesario para que a través del test se obtenga el resultado esperado. Acto seguido se ha de refactorizar el código y se da por terminada la tarea.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{TDD-Diagram}
+    \caption{Diagrama de los estados del proceso TDD}
+    \label{fig:TDD-Diagram}
+\end{figure}
+
+\par Este pequeño ciclo de vida se repite constantemente para orientar el desarrollo basado en las necesidades y de esta forma controlar el resultado de los requerimientos y generar una trazabilidad alrededor del código. La solución desarrollada queda integrada en la solución global en donde se incluye, por lo tanto se aumenta la seguridad a través del aislamiento de cada una de las funcionalidades o pasos para que no interfieran entre ellos.
+
+\par Este proceso de desarrollo proporciona una estructura adecuada para la evolución del código desarrollado ya que facilita el proceso de 'refactoring', control de la deuda técnica en un proyecto y la cobertura de tests.
+
+\par TDD significa un desarrollo responsable de la solución fraccionando cada implementación dentro de las iteraciones correspondientes. El TDD es \emph{el día a día} de un desarrollador.
+
+\par Es necesario saber cuando se han de implementar los test ya que hay niveles en los que no existe funcionalidad ni complejidad alguna y \emph{no merece la pena} dedicar esfuerzo a ello. Como puede ser el caso de los test en métodos \emph{getter y setter} en un objeto Java.
+
+\par Las buenas prácticas para el TDD:
+\begin{itemize}
+	\item Tener el código separado de los tests, en carpetas diferentes.
+	\item Los test forman parte de cada iteración.
+	\item Los desarrolladores son responsables de testar el código que escriben.
+	\item Las herramientas y los procesos están altamente automatizados.
+	\item El equipo de QA se encarga de mejorar las herramientas.
+	\item Los tests deben fallar la primera vez que son escritos.
+	\item Los nombre de los tests deben ir acorde con la intención, deben ser nombres expresivos.
+	\item Refactorizar para eliminar código duplicado después de pasar los tests.
+	\item Repetir las pruebas después de cada refactorización.
+	\item Solo se debe escribir nuevo código, cuando algún test falla. Cada test debe comprobar un nuevo comportamiento o diferente.
+	\item Escribe primero el \emph{assert}.
+	\item Minimiza los \emph{asserts} en cada test.
+	\item Todos los tests deben ser pasados antes de escribir otro test.
+	\item Solo se refactoriza cuando todos los tests pasan.
+	\item Escribe el mínimo y simple código para pasar las pruebas.
+	\item No usar las dependencias entre tests. Los tests deben pasar en cualquier orden.
+	\item Los tests deben ser rápidos.
+	\item Usa Mock objects para testear código cuando haya alguna limitación, y así ejecutar los tests más rápido.
+\end{itemize}
+
+% subsection tdd (end)
+
+\subsection{Integración Continua}
+\label{sub:integracion-continua}
+
+\par La \emph{Integración Continua} (CI - Continuous Integration) es un \emph{modelo informático} propuesto inicialmente por \emph{Martin Fowler} que consiste en hacer integraciones automáticas de un proyecto lo más a menudo posible para así poder detectar fallos cuanto antes.
+
+\par La CI está basada en dos principios básicos dentro del proceso de desarrollo de software, la \emph{integración de la compilación} y la \emph{ejecución de tests de todo un proyecto}. De esta manera la fiabilidad de la solución desarrollada aumenta y se obtiene una visión a grandes rasgos del código fuente. Permite la localización temprana de bugs (errores), gestionando de una forma eficiente la evolución de la solución desarrollada.
+
+\par El resultado del proceso se proporciona a los desarrolladores para continuar con el trabajo en la tarea correspondiente:
+
+\begin{itemize}
+	\item Si el resultado es \textbf{positivo}: el siguiente paso es cerrar la tarea y empezar con la siguiente.
+	\item Por otra parte, un resultado \textbf{negativo}: la herramienta de CI alerta al desarrollador para que evalúe de nuevo la solución desarrollada. A partir de los informes generados el desarrollador tiene más información para subsanar el error. Al volver a completar el ciclo se envía de nuevo el código a la herramienta CI para comprobar el correcto funcionamiento.
+\end{itemize}
+
+\par Este proceso de automatiza para evitar la repetición de tareas repetitivas (DRY) y agilizar el desarrollo de la solución. Se ha de invertir tiempo para la gestión de esta herramienta ya que si la herramienta no se utiliza correctamente va a traer más dolores de cabeza que alegrías.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{continuous-integration-graphic}
+    \caption{Ciclo de la Integración Continua}
+    \label{fig:continuous-integration-graphic}
+\end{figure}
+
+\par Este apartado culmina el proceso de desarrollo Iterativo e Incremental ya que en el confluyen todas las herramientas utilizadas unificando los resultados, haciendo un seguimiento de la evolución y generando la solución final por cada iteración.
+
+\par En el proceso de desarrollo por ramas, cada desarrollador se encarga de su desarrollo asociado a una tarea dentro de la iteración, generación de test e integración en el sistema de CI. A partir de este instante el sistema de CI es el encargado de evaluar el código proporcionado por el desarrollador, evaluando de forma automática cada uno de los pasos descritos:
+
+\begin{itemize}
+	\item Compilación.
+	\item Tests.
+	\item Integración del código fuente en la rama de desarrollo de la iteración.
+	\item Despliegue de la solución.
+	\item Tests de integración.
+	\item Generación de una solución funcional (Continuous Delivery).
+\end{itemize}
+
+\par Esta nueva iteración dentro del proceso de desarrollo mantiene la viabilidad del proyecto activa a través de una rama de desarrollo preparada para cada iteración. En esta rama se unifican los desarrollos que han pasado las pruebas anteriores desde la compilación a la generación de una solución funcional. \emph{El resultado está listo para entregar al cliente}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dev_graphs_agilemethodologies}
+    \caption{Proceso desarrollo con Integración Continua}
+    \label{fig:dev_graphs_agilemethodologies}
+\end{figure}
+
+\par Se cierra el circulo de una iteración a través de la herramienta de CI automatizando los pasos repetitivos del ciclo particular hasta completar una solución que aúne los requerimientos establecidos en la iteración.
+
+% subsection integracion-continua (end)
 
 % section tdd-ci (end)
-
-\section{Desarrollo por canales}
-\label{sec:desarrollo-canales}
-
-% section desarrollo-canales (end)
-
-\section{Herramientas}
-\label{sec:herramientas}
-
-% section herramientas (end)
