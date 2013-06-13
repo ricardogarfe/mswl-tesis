@@ -1,5 +1,6 @@
 Te contesto debajo a las dudas que planteabas:
 
+==================
 
 * Procesos de desarrollo (y herramientas relacionadas)
 ** Introducción -> hablar de proceso iterativo e incremental
@@ -11,7 +12,8 @@ En este apartado ¿ se debería explicar con distintos ejemplos las opciones dis
 
 Yo creo que aquí basta con una somera descripción comentando que son las herramientas más ampliamente utilizadas para la gestión del software desde el código hasta las metodologías.
 
- 
+==================
+
 * Forjas de desarrollo
 ** Qué es una forja
 ** Objetivos
@@ -25,6 +27,8 @@ En este apartado tengo información a partir de un trabajo que hicimos en el má
 Perfecto, si tienes ya cosas inclúyelas.
  
 ** Forjas online/offline -> ventajas y desventajas, o este apartado en problemática de costes ?
+
+==================
  
 * SCStack
 ** Arquitectura
@@ -41,6 +45,7 @@ Componentes, ¿ aquí se definirían las herramientas a instalar ?
 
 Efectivamente, qué herramientas instala la forja (Se supone que las has descrito en la parte de procesos de desarrollo de forma genérica, aquí se dan nombres concretos). 
  
+==================
 
 * Cómo llevar a cabo el desarrollo de un proyecto con SCStack (aquí sería interesante compararlo por ejemplo con github+travis con el que tienes experiencia). Creo que de esta parte estuviste escribiendo en el wiki la presentación que teníamos del proceso de desarrollo
 

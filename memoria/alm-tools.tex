@@ -1,7 +1,8 @@
-\chapter{ALM Tools}
+\chapter{ALM Tools - Forjas de desarrollo}
 \label{chap:almtools}
 
-* ALM Tools - Forjas de desarrollo
+\begin{comment}
+* ALM Tools
     * Qué es una forja
     * Objetivos
     * Componentes
@@ -10,10 +11,11 @@
         * Tablas comparativas
     * Algunos ejemplos y sus limitaciones
     * Conclusiones del estudio de forjas
+\end{comment}
 
-\par ALM Tools significa: \emph{Application Lifecycle Management Tools}. La gesti\'on del ciclo de vida de una aplicaci\'on, el conjunto de herramientas encargadas de gu\'iar al desarrollador a trav\'es de un camino basado en metodolog\'ias para la creaci\'on de un Software hacia su estado del arte.
+\par ALM Tools: \emph{Application Lifecycle Management Tools}. \emph{La gesti\'on del ciclo de vida de una aplicaci\'on}, es decir el conjunto de herramientas encargadas de guiar al desarrollador a trav\'es de un camino basado en metodolog\'ias, que establecen el ciclo de vida, para la desarrollo de un Software hacia su estado del arte.
 
-\par Integrar el proceso de desarrollo de Software a trav\'es de las ALM Tools como veh\'iculo, es decir no existe en si mismo una herramienta ALM, sino que la herramienta ALM gobierna a las herramientas incluidas en el proceso de desarrollo.
+\par En el desarrollo de SidelabCode Stack se ha buscado la integración del proceso de desarrollo Iterativo e Incremental a trav\'es de las ALM Tools como veh\'iculo. No existe en si mismo una herramienta ALM, sino que la herramienta ALM gobierna a las herramientas que participan en el proceso de desarrollo desarrollando una guía de buenas prácticas.
 
 \section{Historia}
 \label{sec:historia}
@@ -28,60 +30,182 @@
 
 \par El proceso de unificación y reutilización de herramientas a los desarrolladores nos puede parecer familiar si lo comparamos con el uso de los Frameworks a principios de los años 2000. Muchas empresas o comunidades empezaron a adecuar e implementar sus desarrollos en base a un Framework creado por ellos mismos. Estos Frameworks se adecuan a sus requerimientos pero su uso era interno en la empresa y por lo tanto lejano a los estándares. Uno de los más famosos es sin duda el caso de Spring, proyecto de más de 10 años de edad que goza de buena salud y aceptación, incluso equivoca a algunos entre Java y Spring. En este pequeño paralelismo podemos encontrar el estado de las forjas de desarrollo ALM Tools, cuando el proyecto requiere de herramientas para facilitar su ciclo de vida y se van ensamblando una tras otra, que perfectamente las podemos llamar librerías, en una integración \textbf{ad-hoc} y siguiendo unos pasos repetitivos en cada nuevo proyecto, en los que humanamente todos nos podemos equivocar debido a que depende de cada uno seguir cada uno de los pasos. Estas herramientas tienden a convertirse en pequeños estándares dentro de cada grupo de desarrolladores y a repetirse en futuros proyectos, pero debido a los desarrollos \textbf{ad-hoc} carecen de escalabilidad e integración con nuevas soluciones de una forma ágil, es un escollo actualizar y por otro lado replicar un estándar para la implantación de la forja, no se tiende a dejar puertas abiertas para que más adelante el herramienta mejore. Se podría definir como uno de los casos de inanición en el desarrollo de Software o muerte por éxito.
 
-\par En este punto es donde entra la famosa interoperabilidad entre las herramientas, la necesidad de interoperabilidad entre la herramientas a través de una comunicación estándar. Aquí encontramos el punto clave de las ALM Tools, la \textbf{integración de herramientas} dentro de un proceso de desarrollo.
+\par En este punto es donde entra la famosa interoperabilidad entre las herramientas que define una comunicación estándar. El punto clave de las ALM Tools, la \textbf{integración e interacción de las herramientas} dentro de un proceso de desarrollo.
 
-\par En post de evitar la falta de replicación, además de la importancia de la interoperabilidad se ha de tener en cuenta la replicación del contenido o la gestión de la instalación de un ALM. Siempre se ha de pensar mirando hacia adelante, no es necesario implementar las mejoras pero sí, dejar un hueco para que casen bien. Un ejemplo que puede ilustrar esta frase es la programación basada en Interfaces mediante Java, ya que las Intefaces ofrecen soluciones para implementar a medida y si se actualiza la Interfaz (en este caso es el esqueleto de la clase) para añadir una nueva funcionalidad con un método, los métodos anteriores mantienen su comportamiento dentro de cada clase que la implementa y adquieren la posibilidad de aumentar la funcionalidad implementando la nueva solución, adecuada a su entorno pero nueva, de esta forma la interoperabilidad entre las clases que utilicen esta Interfaz también se mantiene.
+\par En post de evitar la falta de replicación, además de la importancia de la interoperabilidad, se ha de tener en cuenta la replicación del contenido o la gestión de la instalación de un ALM. Siempre se ha de pensar mirando un paso por delante. No es necesario implementar las mejoras pero sí, dejar un espacio o conector para que casen bien. Un ejemplo que puede ilustrar esta frase es la programación basada en Interfaces en Java, ya que las Intefaces ofrecen soluciones para implementar a medida a partir de un \emph{esqueleto}, si se actualiza la Interfaz (en este caso es el esqueleto de la clase) para añadir una nueva funcionalidad con un método, los métodos anteriores mantienen su comportamiento dentro de cada clase que la implementa y adquieren la posibilidad de aumentar la funcionalidad implementando la nueva solución, adecuada a su entorno, de esta forma la interoperabilidad entre las clases que utilicen esta Interfaz también se mantiene ya que todas implementan las funcionalidades de la Interfaz como clase en la que pivotan.
 
 % subsection historia (end)
 
-
 \section{Qué es una forja}
 \label{sec:que-es}
+
+\par Partimos de la definición que ofrece \emph{Cenatic} en el título de su estudio sobre forjas:
+
+\begin{quote}
+    \emph{Entorno de desarrollo colaborativo de Software}
+\end{quote}
+
+\par Una forja de desarrollo es una herramienta que actúa como elemento catalizador de este proceso abierto de desarrollo. Las forjas juegan un papel clave para aprovechar las ventajas de las metodologías, en este caso a través del proceso de desarrollo Iterativo e Incremental, aportando múltiples ventajas:
+
+\begin{itemize}
+	\item Mayor eficiencia.
+	\item Mejor calidad en el producto final.
+	\item Reutilización de esfuerzos.
+	\item Modularidad.
+	\item Adaptación a estándares.
+	\item Mayor agilidad en el proceso de desarrollo.
+\end{itemize}
+
+\par Esta herramienta permite centrar toda la atención y potencial del desarrollador en el mismo desarrollo. Facilita la evolución del código desarrollado y el seguimiento del proyecto a todos los niveles.
+
+\par Además las forjas de desarrollo aportan la sencillez para instaurar este entorno de desarrollo en el grupo de trabajo. Facilita la instalación, la replicación de contenido, la comunicación y la publicación de resultados del desarrollo de cada proyecto al alance de los usuarios de la forja.
+
+\par Una forja es una comunidad en donde convergen proyectos de software (en el caso que nos atañe) a través de las interacciones de los usuarios con el código. Toda la información gira en torno al repositorio de código. El valor aportado por una forja en pos del repositorio por si sólo es la interoperabilidad con otras herramientas para la mejora de la gestión del desarrollo del proyecto; manuales, tickets, diagramas, planificaciones, wiki, revisiones, roles.
+
+\par Tener las herramientas necesarias no es suficiente para obtener un desarrollo fluido, fiable y deseable. Se han de conocer las herramientas que componen la forja, no las herramientas en si, sino su funcionalidad, para que de esta forma se pueda definir un proceso de desarrollo basado en las herramientas existentes o añadiendo nuevas herramientas para que se adapten al proceso de desarrollo elegido. 
+
+\par \emph{La forja ha de trabajar para los usuarios, pero los usuarios han de saber como hacer que la forja trabaje para ellos.}
 
 % section que-es (end)
 
 \section{Objetivos}
 \label{sec:objetivos}
 
-% section objetivos (end)
+\par El objetivo principal de una forja de desarrollo es poder sacar el máximo partido al desarrollo del proyecto ayudando a establecer el proceso de desarrollo elegido para cada proyecto dentro de un entorno integrado de trabajo.
 
-\section{Componentes}
-\label{sec:componentes}
-
-\par Este conjunto de herramientas se puede dividir en varios grupos:
+\par Disponer de un entorno integrado de trabajo en el que concentrar los esfuerzos de usuarios permite también obtener una serie de ventajas desde el punto de vista de la potenciación del propio proceso de desarrollo, desde varios puntos de vista:
 
 \begin{itemize}
-	\item Gesti\'on de Requisitos.
-	\item Arquitectura.
-	\item Desarrollo.
-	\item Test.
-	\item Issue tracking system.
-	\item Continuous Integration.
-	\item Release Management.
+	\item \emph{Mejor control de esfuerzos}: Ya que todos los usuarios están en contacto a través del entorno de la forja, los responsables de asignación de tareas encuentran más facilidades para identificar los miembros más adecuados para resolver determinadas necesidades, así como detectar de forma temprana cualquier problema importante que pueda comenzar a surgir dentro del proyecto, desde el punto de vista de recursos necesarios para sus mantenibilidad.
+    \item \emph{Aspectos legales y de licencias}: Dentro de la forja, hay cabida para poder indicar de forma clara y explícita toda la información necesaria sobre licencias bajo las que se distribuye los productos del proyecto. Este es un aspecto muy importante para poder garantizar la compatibilidad de los productos del proyecto con otras soluciones desarrolladas en otras iniciativas, evitando la posterior aparición de problemas legales o incompatibilidades en fases de integración más avanzadas.
+    \item \emph{Homogeneizar las prácticas y estilo desarrollo}: En proyectos de desarrollo la documentación de la forja y el establecimiento por parte de los usuarios de una serie de directrices que marquen el proceso de desarrollo, las herramientas que se debe utilizar, así como la política que debe seguirse en diferentes estratos de los flujos de trabajo es crucial para mantener un entorno de trabajo efectivo y homogéneo que asegure la cohesión de los diferentes elementos generados para dar como resultado productos mucho más estables, integrados y de mayor calidad.
+    \item \emph{Establecimiento de guías de evolución}: La forja es el entorno ideal para poder anunciar y consensuar entre todos los usuarios una guía de evolución clara del proyecto, no solo desde el punto de vista del desarrollo formal de código, sino también de los objetivos generales y de utilidad que se persiguen dentro de la iniciativa para así poder mejorar el mismo proceso de desarrollo.
 \end{itemize}
 
-\par Hoy en d\'ia las forjas ALM abundan, adem\'as de gozar de una gran popularidad entre los proyectos de Software, como podemos ver en los casos de SourceForge, Googlecode y Github (más adelante discutiremos cada proyecto). En este caso ALM Tools as a Service, debido al servicio que ofrecen, pero sólo las que son FLOSS permiten replicar ese mismo entorno en tu propia máquina, un dato muy importante a tener en cuenta, porque siempre se ha de mirar hacia adelante.
+\par El proceso Iterativo e Incremental requiere un seguimiento constante de cada una de las iteraciones a partir de los objetivos establecidos en la Lista de Control. 
 
-% subsection componentes (end)
+\begin{itemize}
+	\item En cada iteración se ha de desarrollar la solución asociada a cada requerimiento basando el desarrollo en la orientación a test (TDD) partiendo de una nueva rama de desarrollo.
+	\item Acto seguido el resultado se ha de implantar en la rama de desarrollo de la iteración, por lo que se maneja a través del servidor de integración continua para poder adjuntar el desarrollo a la iteración dependiendo si el resultado ha sido positivo o no.
+	\item De esta manera se completan los pequeños ciclos de vida que ha de manejar la forja.
+\end{itemize}
+
+\par La gestión del ciclo de vida del proceso de desarrollo se divide en el uso de las siguientes herramientas que componen la forja ALM \emph{SidelabCode Stack}:
+
+\begin{itemize}
+    \item \emph{Usuarios y Roles} - Gestión de los usuarios, permisos y roles para cada proyecto a través de un directorio de identificación.
+	\item \emph{Gesti\'on de Requisitos} - A través de un \emph{Issue tracking system}. Herramienta para gestionar los requisitos y estado actual de cada uno de ellos accesible a los desarrolladores del proyecto.
+	\item \emph{Gestión de Repositorios} - Herramienta para la gestión de repositorios; centralizados o distribuidos.
+	\item \emph{Ciclo de vida} - Desarrollo y seguimiento de las soluciones mediante el ciclo de vida establecido; requisitos, test, desarrollo, integración continua.
+	\item \emph{Gestión de Despliegues} - después de cada Iteración finalizada y publicación del resultado.
+\end{itemize}
+
+\par La inclusión de estas herramientas para facilitar el proceso de desarrollo Iterativo e Incremental a través del uso de la forja SidelabCode Stack es lo que permite definir cada comportamiento dentro del proceso mediante la comunicación entre cada una de ellas.
+
+\par Esta definición del proceso de desarrollo se plasma en la guía que proporciona SidelabCode Stack para el desarrollo Iterativo e Incremental.
+
+% section objetivos (end)
 
 \section{Estado del arte de forjas}
 \label{sec:estado-del-arte}
 
+\par Hoy en d\'ia las forjas ALM abundan, adem\'as de gozar de una gran popularidad entre los proyectos de Software Libre, como podemos ver en los casos de SourceForge, Googlecode, Bitbucket y Github (más adelante discutiremos cada proyecto). En este caso como \emph{SaaS} (Software as a Service) debido al servicio que ofrecen. El punto diferenciador se encuentra en las forjas ALM las que son \emph{FLOSS}, ya que permiten replicar ese mismo entorno en tu propia máquina o poder trasladar el proyecto de una herramienta a otra. Un dato muy importante a tener en cuenta, porque siempre se ha de mirar hacia adelante. Sobretodo destacan porque si se crea una necesidad con respecto a la gestión, al ser FLOSS siempre se puede implementar con el propio conocimiento del desarrollador a diferencia de las que no son FLOSS. En este caso el usuario \emph{depende de la propia compañía}, un tercero que es el único que puede implementar la solución convirtiendo el servicio en \emph{Vendor-Locking}.
+
+\par En esta lista se muestran las forjas de desarrollo ALM más populares:
+
 \begin{itemize}
-	\item ClinkerHQ \url{http://clinkerhq.com/} - Privado.
-	\item Github - \url{http://github.com/} - Privado.
-	\item SourceForge con Allura - \url{http://sourceforge.net/projects/allura/} - Software Libre pero incompleta (integrated Wiki, Tracker, SCM (svn, git and hg), Discussion, and Blog tools).
-	\item Cloudbees DEV@Cloud \url{http://www.cloudbees.com/dev.cb} - Privado.
-	\item CollabNet con CloudForge \url{http://www.cloudforge.com/} - Privado.
-	\item Plan.io - \url{http://plan.io/en/} - Privado.
-	\item Bitnami - \url{http://bitnami.com/} - Privado
-	\item GForge
-	\item Collab.net
-	\item Google Code
-	\item Bitbucket - https://bitbucket.org/mswlmanage2013/mswl-bitbucket-alm-tools/wiki/Home
+	\item SourceForge con Allura - \url{http://sourceforge.net/projects/allura/} - \textbf{FLOSS}.
+	\item Cloudbees DEV@Cloud \url{http://www.cloudbees.com/dev.cb} - \textbf{SaaS privado}.
+	\item CollabNet con CloudForge \url{http://www.cloudforge.com/} - \textbf{SaaS privado}.
+	\item Plan.io - \url{http://plan.io/en/} - \textbf{SaaS privado}.
+	\item ClinkerHQ \url{http://clinkerhq.com/} - \textbf{SaaS privado}.
+	\item Github - \url{http://github.com/} - \textbf{SaaS privado}.
+    \item GitlabHQ - \url{http://gitlab.org/} - \textbf{FLOSS}.
+	\item Bitnami - \url{http://bitnami.com/} - \textbf{FLOSS}.
+	\item GForge - \url{http://gforge.org/gf/} - \textbf{FLOSS}.
+	\item Collab.net - url{http://www.collab.net/} - \textbf{SaaS privado}.
+	\item Google Code - \url{http://code.google.com/intl/en/}.
+	\item Bitbucket - \url{https://bitbucket.org/} - \textbf{SaaS privado}.
 \end{itemize}
 
 % subsection estado-del-arte (end)
+
+\subsection{Casos de Uso}
+\label{sub:casos-de-uso}
+
+\par Nos vamos a servir de la investigación hecha por \emph{Cenatic}~\cite{cenatic-forjas} sobre el uso de las forjas y el estudio sobre el incremento de la productividad por \emph{Dirk Riehle}~\cite{open-collaboration-forges} en la implantación de una forja de desarrollo.
+
+\par A partir de estos estudios el caso se muestran los casos de SAP basado en GForge y GoogleCode. Dos formas diferentes del uso de las forjas de desarrollo, internamente y como servicio para proyectos FLOSS.
+
+\subsubsection{SAP}
+\label{subsub:sap}
+
+\par Como ya hemos indicado anteriormente, ~\cite{open-collaboration-forges} nos presenta un estudio detallado del caso de utilización de una forja para el lanzamiento y desarrollo de proyectos software dentro de la intranet empresarial. En este caso, se eligió GForge como paquete para proporcionar las funcionalidades básicas de una forja, sobre el que se elaboró un entorno ligeramente más personalizado. De este modo, se presenta la forja de SAP como un entorno de desarrollo colaborativo, centralizado, y fácilmente accesible por cualquier miembro de la empresa que desee participar, gracias a su acceso a través de una URL interna y de fácil memorización. Es importante remarcar que cualquier trabajador dentro de los limites de la red interna puede acceder a la forja.
+
+\par Tras su primer año de andadura, según ~\cite{open-collaboration-forges} SAP Forge había atraído más de 100 proyectos y unos 500 usuarios registrados, lo que aproximadamente representa el 5\% de la población total de desarrolladores \emph{SAP}. La inclusión de un proyecto dentro de la forja no era obligatorio, sino potestad del líder del proyecto.
+
+\par En este análisis, se mencionan tres características importantes del desarrollo de software de fuentes abiertas que se ponen en práctica en \emph{SAP Forge}:
+
+\begin{itemize}
+	\item Búsqueda de proyectos: Los usuarios pueden realizar búsquedas de proyectos por nombre, por descripción, etc. para encontrar aquellos que más se ajusten a sus propias afinidades. A menos que se solicite expresamente, todos los proyectos son abiertos y completamente accesibles para cualquier miembro de la empresa que se preocupe por consultar los listados.
+
+	\item Información de los desarrolladores: Los usuarios pueden consultar el perfil de los desarrolladores que participan en proyectos de la forja, así como su conjunto de habilidades. Esto potencia la generación de una red de desarrolladores que favorece, por ejemplo, conocer los contactos más adecuados a los que podemos dirigir determinadas consultas o pedir consejo.
+
+	\item Publicidad del proyecto: Las listas con datos estadísticos de cada proyecto (incluyendo la actividad, popularidad, etc.) no solo tienen un carácter meramente informativo. Muy al contrario, son un verdadero aliciente para que los voluntarios sigan contribuyendo al proyecto, puesto que implícitamente sugieren datos objetivos sobre reconocimiento del proyecto en sí, y por extensión de los desarrolladores que participan en el mismo. Como consecuencia directa, esto motiva el alcance de cotas de calidad superiores en el producto final.
+\end{itemize}
+
+\par Finalmente, se expone el caso paradigmático de un proyecto (\emph{Mobile Retail Demo}) que se introdujo en la SAP Forge, gracias a lo cual, su nivel de éxito y calidad del producto final mejoraron sustancialmente. Especialmente interesantes resultan los resultados de una encuesta interna, entre los desarrolladores que participaron en proyectos de la forja, que se recogen en [1]. En ella, se cuantifican los beneficios que reportó para el proyecto la utilización de SAP Forge. De un total de 83 participantes en la encuesta, un 66\% indicó que habían utilizado las herramientas de búsqueda de proyectos de la SAP Forge, para localizar otros proyectos que fuesen de su interés. Un 24\% indicaron que su proyecto había recibido ayuda del exterior (dentro del ámbito interno de SAP), principalmente en forma de reportes de error y sugerencias de mejora. Finalmente, un 12\% de los encuestados comentaron que finalmente colaboraron con otros proyectos diferentes basándose en sus preferencias personales para realizar la selección.
+
+\subsubsection{GoogleCode}
+\label{subsub:googlecode}
+
+GoogleCode es el proyecto insignia de Google en el ámbito de las forjas de desarrollo de
+código. Se trata de un proyecto para proporcionar espacio web y herramientas de soporte
+al desarrollo colaborativo de software, abierto a cualquier grupo o desarrollador individual
+interesado en publicitar su proyecto.
+Desde su apertura en julio de 2006, la plataforma ha recibido un asombroso número de
+peticiones de alojamiento, y en la actualidad podemos encontrar más de 170.000
+proyectos diferentes hospedados en GoogleCode. Además, una proporción significativa
+de estos proyectos (unos 40.000, lo que supone el 23.5% del total) ha registrado algún
+tipo de actividad durante los últimos 90 días.
+La tarea de clasificar cuáles de estos proyectos han sido originados por empresas, o bien
+están directamente ligados a su aplicación en entornos corporativos es un tanto
+complicada. Sin embargo, podemos encontrar algunos proyectos muy conocidos entre el
+listado disponible en GoogleCode:
+
+Digg1: El conocido portal de indexación, agregación de contenidos y comentarios
+ ha liberado cierto número de herramientas que utiliza dentro de su código. Entre
+  ellas, destacan librerías que proporcionan funcionalidades adicionales con
+  JavaScript o automatización de actualizaciones de grandes cantidades de
+  información en bases de datos.
+JQuery2: Una conocida librería que permite aumentar las funcionalidades de
+    JavaScript para crear sitios web basados en tecnologías Ajax.
+Firebug3: Herramienta que se integra en Firefox para permitir el acceso dinámico a
+    utilidades de desarrollo para editar y depurar código HTML, estilos CSS o código
+     JavaScript en una página web.
+SWFObject4: Se trata de un potente reproductor de Flash integrado, mucho más
+    versátil que las opciones tradicionales y con una API que permite integración más
+      completa con código JavaScript.
+FriendFeed5: Librería que proporciona una API para interactuar con el sito web
+    FriendFeed.
+
+Cabe destacar que GoogleCode solamente acepta hospedaje de proyectos que sean
+liberados bajo algún tipo de licencia libre, concretamente soporta siete tipos de licencias
+diferentes: Apache License 2.0, Artistic License/GPLv2, GNU General Public License 2.0, GNU Lesser Public License, MIT License, Mozilla Public License 1.1, New BSD License.
+Además, se puede licenciar el contenido de la documentación que acompaña a los
+proyectos bajo licencia Creative Commons.
+
+Desde el punto de vista de interfaz gráfica, Google sigue fielmente su política de entornos
+minimalistas que no distraigan al usuario con funcionalidades innecesarias, y ofrece un
+esquema muy sencillo y directo. Prueba de la gran acogida de esta iniciativa es el
+elevadísimo número de proyectos que han decidido liberar su código en esta plataforma, y
+que además ofrece las clásicas funcionalidades adicionales soportadas por otras
+plataformas de la compañía, como el sistema de búsquedas avanzadas. Simplemente por
+el hecho de la gran cantidad de código que alberga, GoogleCode es en la actualidad uno
+de los repositorios más consultados a la hora de localizar librerías y aplicaciones ya
+existentes.
+
+% subsection casos-de-uso (end)
 
 \subsection{Problemas en algunas forjas}
 \label{sub:problemas}
