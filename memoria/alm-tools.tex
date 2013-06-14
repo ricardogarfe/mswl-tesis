@@ -140,7 +140,7 @@
 \subsubsection{SAP}
 \label{subsub:sap}
 
-\par Como ya hemos indicado anteriormente, ~\cite{open-collaboration-forges} nos presenta un estudio detallado del caso de utilización de una forja para el lanzamiento y desarrollo de proyectos software dentro de la intranet empresarial. En este caso, se eligió GForge como paquete para proporcionar las funcionalidades básicas de una forja, sobre el que se elaboró un entorno ligeramente más personalizado. De este modo, se presenta la forja de SAP como un entorno de desarrollo colaborativo, centralizado, y fácilmente accesible por cualquier miembro de la empresa que desee participar, gracias a su acceso a través de una URL interna y de fácil memorización. Es importante remarcar que cualquier trabajador dentro de los limites de la red interna puede acceder a la forja.
+\par En el estudio sobre el aumento de la productividad ~\cite{open-collaboration-forges} nos presenta un detalladamente el caso de utilización de una forja para el lanzamiento y desarrollo de proyectos software dentro de la intranet empresarial. En este caso, se eligió GForge como paquete para proporcionar las funcionalidades básicas de una forja, sobre el que se elaboró un entorno ligeramente más personalizado. De este modo, se presenta la forja de SAP como un entorno de desarrollo colaborativo, centralizado, y fácilmente accesible por cualquier miembro de la empresa que desee participar, gracias a su acceso a través de una URL interna y de fácil memorización. Es importante remarcar que cualquier trabajador dentro de los limites de la red interna puede acceder a la forja.
 
 \par Tras su primer año de andadura, según ~\cite{open-collaboration-forges} SAP Forge había atraído más de 100 proyectos y unos 500 usuarios registrados, lo que aproximadamente representa el 5\% de la población total de desarrolladores \emph{SAP}. La inclusión de un proyecto dentro de la forja no era obligatorio, sino potestad del líder del proyecto.
 
@@ -166,63 +166,48 @@
 \subsubsection{GoogleCode}
 \label{subsub:googlecode}
 
-GoogleCode es el proyecto insignia de Google en el ámbito de las forjas de desarrollo de
-código. Se trata de un proyecto para proporcionar espacio web y herramientas de soporte
-al desarrollo colaborativo de software, abierto a cualquier grupo o desarrollador individual
-interesado en publicitar su proyecto.
-Desde su apertura en julio de 2006, la plataforma ha recibido un asombroso número de
-peticiones de alojamiento, y en la actualidad podemos encontrar más de 170.000
-proyectos diferentes hospedados en GoogleCode. Además, una proporción significativa
-de estos proyectos (unos 40.000, lo que supone el 23.5% del total) ha registrado algún
-tipo de actividad durante los últimos 90 días.
-La tarea de clasificar cuáles de estos proyectos han sido originados por empresas, o bien
-están directamente ligados a su aplicación en entornos corporativos es un tanto
-complicada. Sin embargo, podemos encontrar algunos proyectos muy conocidos entre el
-listado disponible en GoogleCode:
+\par Este es un ejemplo del uso de una forja como servicio externo a la compañía. Google proporciona su propia forja de desarrollo para que los usuarios la utilicen bajo la condición de que los proyectos sean FLOSS asociando un tipo \emph{específico} de Licencia: Apache License 2.0, Artistic License/GPLv2, GNU General Public License 2.0, GNU Lesser Public License, MIT License, Mozilla Public License 1.1, New BSD License.
 
-Digg1: El conocido portal de indexación, agregación de contenidos y comentarios
- ha liberado cierto número de herramientas que utiliza dentro de su código. Entre
-  ellas, destacan librerías que proporcionan funcionalidades adicionales con
-  JavaScript o automatización de actualizaciones de grandes cantidades de
-  información en bases de datos.
-JQuery2: Una conocida librería que permite aumentar las funcionalidades de
-    JavaScript para crear sitios web basados en tecnologías Ajax.
-Firebug3: Herramienta que se integra en Firefox para permitir el acceso dinámico a
-    utilidades de desarrollo para editar y depurar código HTML, estilos CSS o código
-     JavaScript en una página web.
-SWFObject4: Se trata de un potente reproductor de Flash integrado, mucho más
-    versátil que las opciones tradicionales y con una API que permite integración más
-      completa con código JavaScript.
-FriendFeed5: Librería que proporciona una API para interactuar con el sito web
-    FriendFeed.
+\par A diferencia de una forja de uso interno, la colaboración entre proyectos se multiplica debido a que el número de usuarios "se dispara" para dar paso a una gran cantidad de distintas situaciones e intercambio de información mediante la colaboración.
 
-Cabe destacar que GoogleCode solamente acepta hospedaje de proyectos que sean
-liberados bajo algún tipo de licencia libre, concretamente soporta siete tipos de licencias
-diferentes: Apache License 2.0, Artistic License/GPLv2, GNU General Public License 2.0, GNU Lesser Public License, MIT License, Mozilla Public License 1.1, New BSD License.
-Además, se puede licenciar el contenido de la documentación que acompaña a los
-proyectos bajo licencia Creative Commons.
+\par \emph{GoogleCode} es el proyecto insignia de Google en el ámbito de las forjas de desarrollo de código. Se trata de un proyecto para proporcionar espacio web y herramientas de soporte al desarrollo colaborativo de software, abierto a cualquier grupo o desarrollador individual interesado en publicitar su proyecto.
 
-Desde el punto de vista de interfaz gráfica, Google sigue fielmente su política de entornos
-minimalistas que no distraigan al usuario con funcionalidades innecesarias, y ofrece un
-esquema muy sencillo y directo. Prueba de la gran acogida de esta iniciativa es el
-elevadísimo número de proyectos que han decidido liberar su código en esta plataforma, y
-que además ofrece las clásicas funcionalidades adicionales soportadas por otras
-plataformas de la compañía, como el sistema de búsquedas avanzadas. Simplemente por
-el hecho de la gran cantidad de código que alberga, GoogleCode es en la actualidad uno
-de los repositorios más consultados a la hora de localizar librerías y aplicaciones ya
-existentes.
+\par El proyecto se publicó en \emph{Julio de 2006} como plataforma y ha recibido un asombroso número de peticiones de alojamiento. Según los datos publicados por Google en 2009~\cite{google-code-open} se pueden encontrar más de 250.000 proyectos alojados en la forja de \emph{GoogleCode}.
+
+\par Esta forja aloja una serie de proyectos conocidos disponibles: 
+
+\begin{itemize}
+	\item Digg1: El conocido portal de indexación, agregación de contenidos y comentarios ha liberado cierto número de herramientas que utiliza dentro de su código. Entre ellas, destacan librerías que proporcionan funcionalidades adicionales con JavaScript o automatización de actualizaciones de grandes cantidades de información en bases de datos.
+	\item JQuery2: Una conocida librería que permite aumentar las funcionalidades de JavaScript para crear sitios web basados en tecnologías Ajax.
+	\item Firebug3: Herramienta que se integra en Firefox para permitir el acceso dinámico a utilidades de desarrollo para editar y depurar código HTML, estilos CSS o código JavaScript en una página web.
+	\item SWFObject4: Se trata de un potente reproductor de Flash integrado, mucho más versátil que las opciones tradicionales y con una API que permite integración más completa con código JavaScript.
+	\item FriendFeed5: Librería que proporciona una API para interactuar con el sito web FriendFeed.
+\end{itemize}
+
+\par \emph{GoogleCode} ofrece distintas herramientas para el desarrollo del ciclo del proyecto:
+
+\begin{itemize}
+	\item Gestión de tareas mediante un ITS (Issue Tracking System).
+	\item Documentación a través de una Wiki.
+	\item Repositorio: Centralizados y Distribuidos - Subversion or Mercurial or Git.
+	\item Descarga de binarios.
+\end{itemize}
+
+\begin{quote}
+    \emph{GoogleCode es en la actualidad uno de los repositorios más consultados a la hora de localizar librerías y aplicaciones ya existentes.}
+\end{quote}
 
 % subsection casos-de-uso (end)
-
-\subsection{Problemas en algunas forjas}
-\label{sub:problemas}
-
-% subsection problemas (end)
 
 \subsection{Tablas comparativas}
 \label{sub:comparativa}
 
 % subsection comparativa (end)
+
+\subsection{Problemas en algunas forjas}
+\label{sub:problemas}
+
+% subsection problemas (end)
 
 \section{Conclusiones del estudio de forjas}
 \label{sec:conclusiones}
