@@ -202,48 +202,48 @@
 \subsection{Tablas comparativas}
 \label{sub:comparativa}
 
+\par A partir de los datos obtenidos de la tabla comparativa sobre forjas de desarrollo en wikipedia~ \cite{comparativa-forjas-wiki} se obtiene una visión más amplia de los componentes comunes en las forjas de desarrollo más conocidas:
+
 \begin{landscape}
+    \begin{table}[H]
+    \centering
+    \resizebox{1.5\textwidth}{!} {
+        \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+            \hline {\bf Name} & {\bf Code review} & {\bf Bug tracking} & {\bf Web hosting} & {\bf Wiki} & {\bf Translation system} & {\bf Shell server} & {\bf Mailing List} & {\bf Forum} & {\bf Personal branch} & {\bf Private branch} & {\bf Announce} & {\bf Build system} & {\bf Team}\\
 
-\begin{table}[H]
-\centering
-\resizebox{1.5\textwidth}{!} {
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-    \hline {\bf Name} & {\bf Code review} & {\bf Bug tracking} & {\bf Web hosting} & {\bf Wiki} & {\bf Translation system} & {\bf Shell server} & {\bf Mailing List} & {\bf Forum} & {\bf Personal branch} & {\bf Private branch} & {\bf Announce} & {\bf Build system} & {\bf Team}\\
+            \hline Alioth (Debian) & no \cellcolor{red} & yes \cellcolor{green} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} \\
 
-    \hline Alioth (Debian) & no & yes & yes & no & no & yes & yes & yes & yes & yes & yes & no & no \\
+            \hline Assembla & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green}\\
 
-    \hline Assembla & yes & yes & yes & yes & yes & no & no & no & yes & yes & yes & yes & yes\\
+            \hline BerliOS & ? & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & ? & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & ? & ? & yes \cellcolor{green} & ? & ?\\
 
-    \hline BerliOS & ? & yes & yes & yes & ? & yes & yes & yes & ? & ? & yes & ? & ?\\
+            \hline Bitbucket & yes \cellcolor{green} & yes & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & partial|Yes \cellcolor{yellow} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green}\\
 
-    \hline Bitbucket & yes & yes & no & yes & no & no & no & no & yes & partial|Yes & no & no & yes\\
+            \hline CloudForge & ? & yes \cellcolor{green} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & ?    & ? & ? & ? & ?\\
 
-    \hline CloudForge & ? & yes & no & yes & no & no & no & no & ?    & ? & ? & ? & ?\\
+            \hline CodeHaus & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & ?\\
 
-    \hline CodeHaus & no & yes & no & yes & no & no & yes & no & no & no & no & yes & ?\\
+            \hline CodePlex & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red}\\
 
-    \hline CodePlex & no & yes & no & yes & no & no & yes & yes & no & no & no & no & no\\
+            \hline Fedora Hosted & yes \cellcolor{green} & yes \cellcolor{green} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red}\\
 
-    \hline Fedora Hosted & yes & yes & no & yes & no & no & no & no & no & no & no & no & no\\
+            \hline GitHub & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & partial|Yes \cellcolor{yellow} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green}\\
 
-    \hline GitHub & yes & yes & yes & yes & no & no & no & no & yes & partial|Yes & no & no & yes\\
+            \hline Gitorious & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green}\\
 
-    \hline Gitorious & yes & no & no & yes & no & no & no & no & yes & no & no & no & yes\\
+            \hline Gna! & ?& yes \cellcolor{green}& yes \cellcolor{green} & no \cellcolor{red} & yes \cellcolor{green}& ?& yes \cellcolor{green}& no \cellcolor{red}& ?& no \cellcolor{red}& ?& No& ?\\ 
 
-    \hline Gna! & ?& yes& yes& no& yes& ?& yes& no& ?& no& ?& No& ?\\ 
+            \hline GNU Savannah & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & yes \cellcolor{green}\\
 
-    \hline GNU Savannah & yes & yes & yes & no & no & yes & yes & no & no & no & yes & no & yes\\
+            \hline Google Code & yes \cellcolor{green} & yes \cellcolor{green} & partial|Yes \cellcolor{yellow} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & partial|Yes \cellcolor{yellow} & no \cellcolor{red} & partial|Yes \cellcolor{yellow} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red}\\
 
-    \hline Google Code & yes & yes & partial|Yes & yes & no & no & partial|Yes & no & partial|Yes & no & no & no & no\\
+            \hline
+        \end{tabular}
+    }
+    \caption{Comparación de forjas de desarrollo.}
+    \label{tabla_compartiva}
 
-    \hline
-\end{tabular}
-}
-\caption{Comparación de forjas de desarrollo.}
-\label{tabla_compartiva}
-
-\end{table}
-
+    \end{table}
 \end{landscape}
 
 % subsection comparativa (end)
