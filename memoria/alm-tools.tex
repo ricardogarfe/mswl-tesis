@@ -121,7 +121,6 @@
 	\item ClinkerHQ \url{http://clinkerhq.com/} - \textbf{SaaS privado}.
 	\item Github - \url{http://github.com/} - \textbf{SaaS privado}.
     \item GitlabHQ - \url{http://gitlab.org/} - \textbf{FLOSS}.
-	\item Bitnami - \url{http://bitnami.com/} - \textbf{FLOSS}.
 	\item GForge - \url{http://gforge.org/gf/} - \textbf{FLOSS}.
 	\item Collab.net - url{http://www.collab.net/} - \textbf{SaaS privado}.
 	\item Google Code - \url{http://code.google.com/intl/en/}.
@@ -174,16 +173,6 @@
 
 \par El proyecto se publicó en \emph{Julio de 2006} como plataforma y ha recibido un asombroso número de peticiones de alojamiento. Según los datos publicados por Google en 2009~\cite{google-code-open} se pueden encontrar más de 250.000 proyectos alojados en la forja de \emph{GoogleCode}.
 
-\par Esta forja aloja una serie de proyectos conocidos disponibles: 
-
-\begin{itemize}
-	\item Digg1: El conocido portal de indexación, agregación de contenidos y comentarios ha liberado cierto número de herramientas que utiliza dentro de su código. Entre ellas, destacan librerías que proporcionan funcionalidades adicionales con JavaScript o automatización de actualizaciones de grandes cantidades de información en bases de datos.
-	\item JQuery2: Una conocida librería que permite aumentar las funcionalidades de JavaScript para crear sitios web basados en tecnologías Ajax.
-	\item Firebug3: Herramienta que se integra en Firefox para permitir el acceso dinámico a utilidades de desarrollo para editar y depurar código HTML, estilos CSS o código JavaScript en una página web.
-	\item SWFObject4: Se trata de un potente reproductor de Flash integrado, mucho más versátil que las opciones tradicionales y con una API que permite integración más completa con código JavaScript.
-	\item FriendFeed5: Librería que proporciona una API para interactuar con el sito web FriendFeed.
-\end{itemize}
-
 \par \emph{GoogleCode} ofrece distintas herramientas para el desarrollo del ciclo del proyecto:
 
 \begin{itemize}
@@ -200,9 +189,13 @@
 % subsection casos-de-uso (end)
 
 \subsection{Tablas comparativas}
-\label{sub:comparativa}
+\label{sub:comparativa-forjas}
 
 \par A partir de los datos obtenidos de la tabla comparativa sobre forjas de desarrollo en wikipedia~ \cite{comparativa-forjas-wiki} se obtiene una visión más amplia de los componentes comunes en las forjas de desarrollo más conocidas:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Forge Comparison table %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{landscape}
     \begin{table}[H]
@@ -217,7 +210,7 @@
 
             \hline BerliOS & ? & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & ? & yes \cellcolor{green} & yes \cellcolor{green} & yes \cellcolor{green} & ? & ? & yes \cellcolor{green} & ? & ?\\
 
-            \hline Bitbucket & yes \cellcolor{green} & yes & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & partial|Yes \cellcolor{yellow} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green}\\
+            \hline Bitbucket & yes \cellcolor{green} & yes \cellcolor{green} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green} & partial|Yes \cellcolor{yellow} & no \cellcolor{red} & no \cellcolor{red} & yes \cellcolor{green}\\
 
             \hline CloudForge & ? & yes \cellcolor{green} & no \cellcolor{red} & yes \cellcolor{green} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & no \cellcolor{red} & ?    & ? & ? & ? & ?\\
 
@@ -246,14 +239,51 @@
     \end{table}
 \end{landscape}
 
+\newpage
+
+\par Una lista extra sobre forjas actuales (en las que no se basó el análisis):
+
+\begin{itemize}
+	\item Cloudbees DEV@Cloud \url{http://www.cloudbees.com/dev.cb} - \textbf{SaaS privado}.
+	\item CollabNet con CloudForge \url{http://www.cloudforge.com/} - \textbf{SaaS privado}.
+	\item Plan.io - \url{http://plan.io/en/} - \textbf{SaaS privado}.
+	\item ClinkerHQ \url{http://clinkerhq.com/} - \textbf{SaaS privado}.
+    \item GitlabHQ - \url{http://gitlab.org/} - \textbf{FLOSS}.
+	\item GForge - \url{http://gforge.org/gf/} - \textbf{FLOSS}.
+	\item Collab.net - url{http://www.collab.net/} - \textbf{SaaS privado}.
+\end{itemize}
+
+\par En la tabla se aprecia que las herramientas que más se utilizan en las forjas de desarrollo son el ITS y la wiki. Mientras que los sistemas de traducción y de construcción pasan al último escalafón. La construcción de la solución está presente en todas las fases del proceso Iterativo e Incremental ya que el desarrollo se basa en las construcciones previas, por lo tanto es más que necesaria una herramienta de construcción integrada en la forja.
+
 % subsection comparativa (end)
 
 \subsection{Problemas en algunas forjas}
 \label{sub:problemas}
 
+\par Los requisitos más importante a la hora de desarrollar la Forja SidelabCode Stack para adaptar el proceso de desarrollo Iterativo e Incremental fueron:
+
+\begin{itemize}
+	\item La gestión de la información a través del ITS.
+    \item Gratuidad en la gestión de los repositorios privados y públicos.
+    \item La capacidad de tener un entorno instalado en un servidor propio.
+    \item Desarrollar nuevas funcionalidades.
+    \item Modularizar componentes.
+    \item Interconectar nuevos módulos.
+\end{itemize}
+
+\par Partiendo de estos primeros requisitos las Forjas existentes Github, Bitbucket, Collab.net, Cloudbees, Plan.io, ClinkerHQ, Google Code, Fedora Hosted, BerliOS, Gitorius, GNU Savannah, Gna!, CodePlex, CodeHaus, CloudForge, caen eliminadas para una posible solución.
+
+\par En la siguiente iteración de los requisitos se busca la gestión de la documentación, wiki, carpetas públicas y revisión del código, por lo que: Alioth y GitlabHQ se descartan.
+
+\par En el último escalafón tenemos a \emph{GForge}. GForge es un modelo orientado a la gestión del proyecto basando en la forja Savannah. Se ha convertido en una compañía dedicada a la gestión de forjas de desarrollo a través en un modelo SaaS. El proyecto se discontinuó creando un nuevo fork llamado FusionForge en 2009~\cite{bitergia-fusionforge-analysis} . Por lo que en ese año no parecía una apuesta segura para crear una forja de desarrollo. En cuanto a cuestiones técnicas, FusionForge no soportaba repositorios distribuidos como es el caso de Git en sus primeras versiones.
+
+\par Como hemos analizado en la comparativa de la sección~\nameref{sub:comparativa-forjas}, el punto correspondiente al sistema de construcción integrado, no se haya muy extendido en las forjas analizadas. Por lo que es necesario que nos permita adjuntar esta herramienta a la forja de desarrollo para completar el proceso.
+
 % subsection problemas (end)
 
 \section{Conclusiones del estudio de forjas}
 \label{sec:conclusiones}
+
+\par Después de haber analizado por encima las soluciones existentes, habiendo encontrado soluciones privadas o con pocos recursos, se reafirma la opción construir una forja de desarrollo que integre el proceso Iterativo e Incremental, desde la recogida de los requerimientos (ITS) hasta la construcción de la solución (sistema de construcción integrado). Crear un sistema modular que permita integrar estas herramientas del ciclo de vida de un proyecto como vehículo en la forja de desarrollo.
 
 % subsection conclusiones (end)
