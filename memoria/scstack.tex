@@ -1,16 +1,34 @@
 \chapter{SCStack}
 \label{chap:scstack}
 
-* SCStack
+\par SCStack es el conjunto de herramientas que componen la Forja de desarrollo. La palabra \emph{stack} en Inglés significa \emph{pila}, con respecto a la forja se trata del conjunto de herramientas apiladas y conectadas que dan forma a la Forja.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{stackstorage}
+\caption{Ejemplo de pila a partir de cajones}
+\label{fig:stackstorage}
+\end{figure}
 
 \section{Arquitectura}
 \label{sec:arquitectura}
 
-\begin{comment}
-Este punto sobre la arquitectura de la forja no me queda demasiado claro, es decir, no se definirla.
+\par La arquitectura del Sistema de Gestión de la Forja se ve reflejada en el siguiente esquema:
 
-La arquitectura está definida en el documento de proyecto fin de carrera que te pasé. Básicamente la arquitectura está basada en un LDAP contra el que todas las demás herramientas de la forja se autentican. En tu caso, a esa arquitectura tienes que añadirle un Gerrit que gestiona repositorios git.
-\end{comment}
+% TODO Imagen UI -> REST Server -> API
+
+\par El proyecto consta de tres componentes conectados entre sí para la comunicación del usuario con las herramientas para la gestión de los proyectos: La Consola de Administración, el servidor de servicios web REST y el API. Está diseñado utilizando el modelo vista-controlador (MVC).
+
+\begin{itemize}
+	\item \textbf{Aplicación web}: Se trata de la capa de la vista encargada de interactuar con el usuario. A través de la interfaz que se ejecuta sobre un navegador web, el usuario administrador gestiona los usuarios y los proyectos de la Forja: crear, editar, modificar, eliminar y buscar), el típico sistema CRUD-F\footnote{\url{http://en.wikipedia.org/wiki/Create,\_read,\_update\_and\_delete}} (\emph{CRUD: Create, Read, Update and Delete also Find}). Está diseñada con el framework Javascript \emph{jQuery} por lo que no requiere ninguna librería externa para su uso, únicamente el navegador del cliente. Las operaciones que se realizan en la capa UI se trasladan a al servidor REST a través de peticiones asíncronas mediante las interfaces REST definidas.
+
+    \item \textbf{Servicio web REST}: Es el componente encargado de gestionar las peticiones REST de la Consola de Administración y el API de SidelabCode. Define e implementa la lógica a seguir para la construcción de un proyecto a través de la UI mediante las llamadas al API de cada una de las herramientas involucradas en el servicio como componentes de la forja.
+    Ofrece tres interfaces distintas: XML, JSON y HTML para la comunicación la API. Además, hay que desatacar que el servicio web es servido a través del framework \emph{Restlet} a través de Internet de forma continua y remota a cualquier usuario o proceso cliente.
+    Se encarga de la seguridad y validación para las operaciones permitidas o denegadas del usuario de la UI, proporcionando, según su rol, determinados servicios a través de la Consola de Administración, buscar proyectos, crear usuarios, editar proyectos, crear proyectos, etc.
+
+    \item \textbf{API}: La API es el núcleo funcional de SCStack, coordina y realiza las tareas para cada componente de la forja con respecto a los usuarios y proyectos involucrados. Traslada las órdenes ejecutadas en la capa UI a las distintas herramientas para configurar su funcionamiento. Está conectada a todos los servicios que ofrece pivotando a través del directorio LDAP: Control de Versiones, Directorios, Integración Continua, ITS, Revisiones, Gestión de Dependencias, Seguridad y Autenticación que analizaremos extensamente más adelante componente a componente.
+
+\end{itemize}
 
 % section arquitectura (end)
 
@@ -27,6 +45,8 @@ Componentes, ¿ aquí se definirían las herramientas a instalar ?
 
 Efectivamente, qué herramientas instala la forja (Se supone que las has descrito en la parte de procesos de desarrollo de forma genérica, aquí se dan nombres concretos). 
 \end{comment}
+
+\par En este apartado se van a analizar las distintas partes o componentes que integran la Forja SidelabCode Stack y el papel que desempeñan en el funcionamiento del sistema. Partiendo del esquema en donde se refleja a grandes rasgos la arquitectura de la Forja SidelabCode.
 
 \begin{itemize}
 	\item Gesti\'on de Requisitos.
