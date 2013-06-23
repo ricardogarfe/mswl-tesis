@@ -67,8 +67,65 @@
 
 % section arquitectura (end)
 
-\section{Provisionamiento (puppet)}
+\section{Aprovisionamiento (Puppet)}
 \label{sec:puppet}
+
+\par \emph{Aprovisionamiento}: 'Accción o efecto de aprovisionar', \emph{aprovisionar}: abastecer\footnote{Definición del diccionario de la RAE - \url{http://buscon.rae.es/drae/?type=3&val=aprovisionar&val_aux=&origen=REDRAE}}. Aplicado a la Ingeniería del Software el Aprovisionamiento nos provee de los componentes necesarias para construir una solución.
+
+\par El aprovisionamiento trata de la automatización de tareas para construir el entorno deseado, en este caso la instalación de SidelabCode Stack. La evolución en el modelo de instalación para facilitar la ejecución de módulos, configuración y comunicación entre los distintos componentes.
+
+\par La herramienta empleada para el aprovisionamiento es \textbf{Puppet} de la compañía \emph{PuppetLabs}\footnote{\url{https://puppetlabs.com/}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{puppet-labs-logo}
+    \caption{Puppet Labs Logo}
+    \label{fig:puppet-labs}
+\end{figure}
+
+\par \emph{Puppet}: es una herramienta \emph{Software Libre}\footnote{\url{https://puppetlabs.com/puppet/puppet-open-source/}} de aprovisionamiento desarrollada en \emph{Ruby}\footnote{\url{https://github.com/puppetlabs/puppet}}. Gestiona la infraestructura a través de su ciclo de vida, desde el aprovisionamiento y la configuración de parches automatizando la ejecución de órdenes para la instalación y configuración del entorno.
+
+\begin{itemize}
+	\item Automatizar tareas repetitivas.
+	\item Desplegar rápidamente aplicaciones críticas.
+	\item Gestionar proactivamente el cambio.
+	\item Escalar de 10 servidores para 1000.
+	\item Instalaciones locales o en la nube.
+\end{itemize}
+
+\par \emph{Puppet} utiliza un enfoque declarativo, basado en el modelo de automatización:
+\begin{itemize}
+	\item \emph{Definir} el estado deseado de la configuración de la infraestructura mediante lenguaje de configuración declarativa de Puppet.
+	\item \emph{Simular} los cambios de configuración antes de la ejecución.
+	\item \emph{Corroborar} el estado final mediante despliegues automáticos comprobando las posibles desviaciones en la configuración.
+	\item \emph{Informe} sobre las diferencias entre los estados reales y deseados y cualquier cambio que haya hecho cumplir el estado deseado.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{howpuppetworks}
+    \caption{Ciclo de vida de los módulos Puppet}
+    \label{fig:howpuppetworks}
+\end{figure}
+
+\par El diseño del aprovisionamiento a través de Puppet se basa en módulos. Cada uno de estos módulos se encarga de gestionar la instalación y configuración del componente definido.
+
+\par Que aporta Puppet ? Proporciona un control sobre la instalación de cada herramienta y la configuración asociada por defecto que se define. De esta forma el proceso se instalación se automatiza permitiendo la replicación del mismo, completo o por módulos en diferentes entornos, locales o virtuales. La instalación a partir de módulos ha de definir una cadena de dependencias entre cada uno de ellos de manera que se vayan habilitando funcionalidades e interacciones.
+
+\par En SidelabCode Stack Puppet es el encargado de gestionar la instalación y configuración de cada uno de los componentes mediante módulos Puppet independientes para completar el proceso de instalación entre 5 y 10 minutos.
+
+\subsection{Caso de uso}
+\label{sub:puppet-caso-de-uso}
+
+\par El proceso automatiza la instalación y configuración manual de un componente, un servidor web.
+
+\begin{itemize}
+	\item Primero se ha de crear la instalación manual del servidor en un entorno definido (Sistema operativo Ubuntu). Configurar los permisos, definir archivos de configuración, directorios a servir, públicos/privados.
+	\item Recapitular todos los pasos seguidos en la instalación y la información sobre la configuración para reescribirla a un módulo Puppet.
+	\item Crear el esqueleto del módulo Puppet.
+\end{itemize}
+
+% subsection puppet-caso-de-uso (end)
 
 % section puppet (end)
 
