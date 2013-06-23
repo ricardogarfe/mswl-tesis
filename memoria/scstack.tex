@@ -117,13 +117,68 @@
 \subsection{Caso de uso}
 \label{sub:puppet-caso-de-uso}
 
+\par Instalación de Puppet siguiendo la documentación ofrecida en su página web\footnote{Puppet Documentation - \url{http://docs.puppetlabs.com/guides/installation.html\#debian-and-ubuntu}}.
+
 \par El proceso automatiza la instalación y configuración manual de un componente, un servidor web.
 
 \begin{itemize}
 	\item Primero se ha de crear la instalación manual del servidor en un entorno definido (Sistema operativo Ubuntu). Configurar los permisos, definir archivos de configuración, directorios a servir, públicos/privados.
 	\item Recapitular todos los pasos seguidos en la instalación y la información sobre la configuración para reescribirla a un módulo Puppet.
 	\item Crear el esqueleto del módulo Puppet.
+	\item Definir las órdenes a ejecutar organizando el módulo en distintas clases y apartados cada una responsable de una funcionalidad.
+	\begin{itemize}
+	    \item Descargar servidor web.
+	    \item Instalar servidor web.
+	    \item Configurar servidor web a través de una plantilla Ruby basada en los ficheros de configuración base del servidor web. Directorios, usuarios, urls, dominios, web de bienvenida, etc.
+	    \item Poner en marcha el servidor.
+    \end{itemize}
 \end{itemize}
+
+\par Puppet da la opción de publicar los módulos desarrollados en un repositorio central de módulos para que estén accesibles para los usuarios de Puppet con un sistema de búsqueda para ayudar a los usuarios.
+
+\par Con este módulo Puppet podemos replicar la instalación en cualquier entorno con tan solo ejecutar el módulo a través de Puppet para la ejecución. Descargar el módulo y ejecutar el commando Puppet.
+
+\par Código Puppet de ejemplo para la instalación del servidor web Apache a través del módulo Puppet publicado en PuppetForge\footnote{Pupept Apache Module - \url{https://forge.puppetlabs.com/puppetlabs/apache}}:
+
+\par Instalar Apache importando la clase del módulo:
+
+\lstset{style=rubybasico}
+\begin{lstlisting}[frame=trbl]
+class {'apache':  }
+\end{lstlisting}
+
+\par Módulo PHP de Apahce:
+
+\lstset{style=rubybasico}
+\begin{lstlisting}[frame=trbl]
+class {'apache::mod::php': }
+\end{lstlisting}
+
+\par Configurar Host Virtual mediante los distintos parámetros de configuración, partiendo del mínimo un ejemplo sería este:
+
+\lstset{style=rubybasico}
+\begin{lstlisting}[frame=trbl]
+apache::vhost { 'www.example.com':
+    priority        => '10',
+    vhost_name      => '192.0.2.1',
+    port            => '80',
+}
+\end{lstlisting}
+
+\par Se pueden definir más parámetros de configuración:
+
+\lstset{style=rubybasico}
+\begin{lstlisting}[frame=trbl]
+apache::vhost { 'www.example.com':
+    priority        => '10',
+    vhost_name      => '192.0.2.1',
+    port            => '80',
+    docroot         => '/home/www.example.com/docroot/',
+    logroot         => '/srv/www.example.com/logroot/',
+    serveradmin     => 'webmaster@example.com',
+    serveraliases   => ['example.com',],
+}
+\end{lstlisting}
 
 % subsection puppet-caso-de-uso (end)
 

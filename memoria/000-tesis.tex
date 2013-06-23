@@ -17,6 +17,23 @@
 \usepackage{latexsym}  %% Logo LaTeX
 \usepackage{lscape}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paquete escribir código fuente
+\usepackage{listings}
+\lstloadlanguages{Ruby, XML}
+
+% Se definen los estilo a utilizar para el código fuente
+\lstdefinestyle{xmlbasico}{language=XML,commentstyle=\textit,basicstyle=\scriptsize,breaklines=true}
+\lstdefinestyle{rubybasico}{language=Ruby,commentstyle=\textit,basicstyle=\scriptsize,breaklines=true}
+
+%\lstdefinestyle{(style name)}{(key=value list)}
+% Para usarlos
+%\begin{lstlisting}{style=xmlbasico}
+%\end{lstlisting}
+
+%Se modifican parámetros con \lstset{(key=value list)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \graphicspath{{img/}}
 
 \renewcommand{\baselinestretch}{1.5}  %% Interlineado\underline{}
