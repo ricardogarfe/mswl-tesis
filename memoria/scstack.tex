@@ -147,7 +147,7 @@
     \centering
     \includegraphics[width=0.7\textwidth]{arquitectura-base}
     \caption{Arquitectura SidelabCode Stack}
-    \label{fir:arquitectura-scstack}
+    \label{fig:arquitectura-scstack}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -210,7 +210,7 @@
 
 \par Por otra parte Redmine proporciona una API Rest para facilitar la interoperabilidad entre los distintos componentes. Esta API se maneja a través de la capa de negocio de la Consola de Administración de SCStack para así a través del API se registren en Redmine los usuarios, proyectos y grupos con sus respectivos permisos partiendo de los valores introducidos a través de la Consola de Administración. De esta forma, Redmine pasa a gestionar a través de su BBDD MySQL los usuarios y proyectos después que se hayan autenticado a través de OpenLDAP para así cargar la configuración obtenida de su BBDD.
 
-\par Las operaciones de gestión administrativa en Redmine permanecen desactivadas, de modo que ningún administrador de proyectos puede añadir ni borrar miembros de sus proyectos, tampoco pueden crearse ni borrarse usuarios o proyectos, etc. \emph{Obligando} así que todas las operaciones de gestión de la Forja se lleven a cabo desde el Software diseñado específicamente para ello, la Consola de Administración, logrando así garantizar la consistencia.
+\par Las operaciones de gestión administrativa en Redmine permanecen desactivadas, de modo que ningún administrador de proyectos puede añadir ni borrar miembros de sus proyectos, tampoco pueden crearse ni borrarse usuarios o proyectos, etc. \emph{Obligando} así que todas las operaciones de gestión de la Forja se lleven a cabo desde el Software diseñado específicamente para ello, la Consola de Administración, garantizando así la consistencia.
 
 \subsection{Plugins}
 \label{sub:redmine-plugins}
@@ -223,14 +223,12 @@
     \centering
     \includegraphics[width=0.7\textwidth]{backlogs-plugin}
     \caption{Redmine Backlogs plugin: tareas Redmine agrupadas por estados dentro de una historia de usuario.}
-    \label{fig:backlogs}
+    \label{fig:backlogs-plugin}
 \end{figure}
 
-\par Otro apartado importante en el desarrollo Iterativo e Incremental es la gestión de la documentación, en este caso Redmine nos proporciona una Wiki por cada proyecto. Una herramienta Wiki colaborativa que mantiene su histórico de cambios (asociados a usuario y tiempo) y que mediante el lenguaje de marcado wiki desde el cual se exportan a distintos formatos como: \emph{html, pdf, etc}, a un coste de recursos bajo.
+\par Otro apartado importante en el desarrollo Iterativo e Incremental es la gestión de la documentación, en este caso Redmine nos proporciona una Wiki por cada proyecto. Una Wiki es una herramienta para la documentación colaborativa que mantiene su histórico de cambios (asociados a usuario y tiempo) y que mediante el lenguaje de marcado wiki desde el cual se exportan a distintos formatos como: \emph{html, pdf, etc}, a un coste de recursos bajo ya que se trata de texto plano. El caso más famoso del uso de Wikis como documentación colaborativa es la \emph{Wikipedia}\footnote{Wikipedia - \url{http://www.wikipedia.org}}.
 
 % subsection redmine-plugins (end)
-
-
 
 % subsection its (end)
 
