@@ -1,3 +1,7 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SCStack
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{SCStack}
 \label{chap:scstack}
 
@@ -19,12 +23,20 @@
 
 \par El proyecto consta de tres componentes conectados entre sí para la comunicación del usuario con las herramientas para la gestión de los proyectos: La Consola de Administración, el servidor de servicios web REST y el API.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Consola de Administración
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Consola de Administración}
 \label{sub:consola-admin}
 
 \par \textbf{Consola de Administración}: Se trata de la capa de la vista encargada de interactuar con el usuario. A través de la interfaz que se ejecuta sobre un navegador web, el usuario administrador gestiona los usuarios y los proyectos de la Forja: crear, editar, modificar, eliminar y buscar), el típico sistema CRUD-F\footnote{\url{http://en.wikipedia.org/wiki/Create,\_read,\_update\_and\_delete}} (\emph{CRUD: Create, Read, Update and Delete also Find}). Está diseñada con el framework Javascript \emph{jQuery} por lo que no requiere ninguna librería externa para su uso, únicamente el navegador del cliente. Las operaciones que se realizan en la capa UI se trasladan al servidor REST a través de peticiones \emph{http} asíncronas mediante las interfaces REST definidas.
 
 % subsection consola-admin (end)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Servicio web REST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Servicio web REST}
 \label{sub:rest-ws}
@@ -58,6 +70,10 @@
 
 % subsection rest-ws (end)
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% API
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{API}
 \label{sub:api}
 
@@ -66,6 +82,10 @@
 % subsection api (end)
 
 % section arquitectura (end)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Aprovisionamiento (Puppet)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Aprovisionamiento (Puppet)}
 \label{sec:puppet}
@@ -114,98 +134,96 @@
 
 \par En SidelabCode Stack Puppet es el encargado de gestionar la instalación y configuración de cada uno de los componentes mediante módulos Puppet independientes para completar el proceso de instalación entre 5 y 10 minutos.
 
-\subsection{Caso de uso}
-\label{sub:puppet-caso-de-uso}
-
-\par Instalación de Puppet siguiendo la documentación ofrecida en su página web\footnote{Puppet Documentation - \url{http://docs.puppetlabs.com/guides/installation.html\#debian-and-ubuntu}}.
-
-\par El proceso automatiza la instalación y configuración manual de un componente, un servidor web.
-
-\begin{itemize}
-	\item Primero se ha de crear la instalación manual del servidor en un entorno definido (Sistema operativo Ubuntu). Configurar los permisos, definir archivos de configuración, directorios a servir, públicos/privados.
-	\item Recapitular todos los pasos seguidos en la instalación y la información sobre la configuración para reescribirla a un módulo Puppet.
-	\item Crear el esqueleto del módulo Puppet.
-	\item Definir las órdenes a ejecutar organizando el módulo en distintas clases y apartados cada una responsable de una funcionalidad.
-	\begin{itemize}
-	    \item Descargar servidor web.
-	    \item Instalar servidor web.
-	    \item Configurar servidor web a través de una plantilla Ruby basada en los ficheros de configuración base del servidor web. Directorios, usuarios, urls, dominios, web de bienvenida, etc.
-	    \item Poner en marcha el servidor.
-    \end{itemize}
-\end{itemize}
-
-\par Puppet da la opción de publicar los módulos desarrollados en un repositorio central de módulos para que estén accesibles para los usuarios de Puppet con un sistema de búsqueda para ayudar a los usuarios.
-
-\par Con este módulo Puppet podemos replicar la instalación en cualquier entorno con tan solo ejecutar el módulo a través de Puppet para la ejecución. Descargar el módulo y ejecutar el commando Puppet.
-
-\par Código Puppet de ejemplo para la instalación del servidor web Apache a través del módulo Puppet publicado en PuppetForge\footnote{Pupept Apache Module - \url{https://forge.puppetlabs.com/puppetlabs/apache}}:
-
-\par Instalar Apache importando la clase del módulo:
-
-\lstset{style=rubybasico}
-\begin{lstlisting}[frame=trbl]
-class {'apache':  }
-\end{lstlisting}
-
-\par Módulo PHP de Apahce:
-
-\lstset{style=rubybasico}
-\begin{lstlisting}[frame=trbl]
-class {'apache::mod::php': }
-\end{lstlisting}
-
-\par Configurar Host Virtual mediante los distintos parámetros de configuración, partiendo del mínimo un ejemplo sería este:
-
-\lstset{style=rubybasico}
-\begin{lstlisting}[frame=trbl]
-apache::vhost { 'www.example.com':
-    priority        => '10',
-    vhost_name      => '192.0.2.1',
-    port            => '80',
-}
-\end{lstlisting}
-
-\par Se pueden definir más parámetros de configuración:
-
-\lstset{style=rubybasico}
-\begin{lstlisting}[frame=trbl]
-apache::vhost { 'www.example.com':
-    priority        => '10',
-    vhost_name      => '192.0.2.1',
-    port            => '80',
-    docroot         => '/home/www.example.com/docroot/',
-    logroot         => '/srv/www.example.com/logroot/',
-    serveradmin     => 'webmaster@example.com',
-    serveraliases   => ['example.com',],
-}
-\end{lstlisting}
-
-% subsection puppet-caso-de-uso (end)
-
-% section puppet (end)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Componentes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Componentes}
 \label{sec:componentes}
 
-\begin{comment}
-Componentes, ¿ aquí se definirían las herramientas a instalar ?
+\par En este apartado se van a analizar las distintas partes o componentes que integran la Forja SidelabCode Stack y el papel que desempeñan en el funcionamiento del sistema. Partiendo del esquema en donde se refleja a grandes la arquitectura de la Forja SidelabCode ~\ref{fig:arquitectura-scstack} y los componentes descritos en el capítulo \nameref{chap:procesos-desarrollo} a la hora de gestionar el proceso \emph{Iterativo e Incremental}.
 
-Efectivamente, qué herramientas instala la forja (Se supone que las has descrito en la parte de procesos de desarrollo de forma genérica, aquí se dan nombres concretos). 
-\end{comment}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{arquitectura-base}
+    \caption{Arquitectura SidelabCode Stack}
+    \label{fir:arquitectura-scstack}
+\end{figure}
 
-\par En este apartado se van a analizar las distintas partes o componentes que integran la Forja SidelabCode Stack y el papel que desempeñan en el funcionamiento del sistema. Partiendo del esquema en donde se refleja a grandes rasgos la arquitectura de la Forja SidelabCode.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OpenLDAP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{itemize}
-	\item Gesti\'on de Requisitos.
-	\item Arquitectura.
-	\item Desarrollo.
-	\item Test.
-	\item Issue tracking system.
-	\item Continuous Integration.
-	\item Release Management.
-\end{itemize}
+\subsection{Usuarios, roles y grupos}
+\label{sub:usuarios-roles-grupos}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{OpenLDAP-logo}
+    \caption{OpenLDAP logo}
+    \label{fig:openldap-logo}
+\end{figure}
+
+\par Gestión de usuarios, roles, grupos y proyectos a través de \emph{OpenLDAP}\footnote{OpenLDAP - \url{http://www.openldap.org/}}. SCTack utiliza la tecnología de directorios \emph{LDAP} como sistema de autenticación y de información centralizado de la Forja Software. En dicho servidor de directorios se almacena información relativa a todos los usuarios, proyectos software y repositorios de la Forja. Esta tecnología, además, cuenta con la ventaja de que la mayoría de aplicaciones web con sistemas de autenticación ofrecen interfaces que garantizan una completa integración con directorios LDAP, este es el caso de Redmine, Drupal, Wordpress y el propio servidor web Apache. La implementación de este protocolo en la Forja Sidelab se lleva a cabo mediante un servidor de directorios muy estable y de libre distribución que es OpenLDAP.
+
+\subsection{API OpenLDAP}
+\label{sub:api-openldap}
+
+\par Debido a que el directorio LDAP es la estructura de información centralizada de la Forja, cualquier tipo de acción que se quiera realizar sobre el sistema requerirá el acceso por parte de la API a este servicio de directorios, bien para la recuperación de datos en las consultas o para la manipulación de registros a la hora de crear, editar o borrar usuarios o proyectos.
+
+\par Todas las acciones de la Consola de Administración pasan a través de la API que comunica con OpenLDAP dando acceso y generando las distintas autenticaciones en cada una de las herramientas interconectadas basándose en los registros de OpenLDAP como generador y autenticador de credenciales.
+
+% subsection api-openldap (end)
+
+% subsection usuarios-roles-grupos (end)
+
+\subsection{Gesti\'on de Requisitos ITS}
+\label{sub:its}
+
+\par Gestión de requisitos a través del Issue Tracking System \emph{Redmine}, Backlog plugin para el desarrollo Iterativo e Incremental, documentación a partir de la Wiki y WYSIWYG.
+
+% subsection its (end)
+
+\subsection{Repositorios de Código}
+\label{sub:repositorios}
+
+\par Reposiotorios centralizados y distribuidos: SVN y Git.
+
+% subsection repositorios (end)
+
+\subsection{Desarrollo (Maven y TDD)}
+\label{sub:mv-tdd}
+
+\par Maven, TDD y desarrollo por ramas con Git.
+
+% subsection mv-tdd (end)
+
+\subsection{Revisión de Código}
+\label{sub:gerrit}
+
+\par Gerrit.
+
+% subsection gerrit (end)
+
+\subsection{Integración Continua}
+\label{sub:ci-jenkins}
+
+\par Jenkins CI.
+
+% subsection ci-jenkins (end)
+
+\subsection{Gestión de distribuciones y dependencias.}
+\label{sub:distribuciones-dependencias}
+
+\par Directorios compartidos, OpenSSH y Archiva para la gestión de dependencias.
+
+% subsection distribuciones-dependencias (end)
 
 % subsection componentes (end)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Interoperabilidad
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Interoperabilidad}
 \label{sec:interoperabilidad}
@@ -213,6 +231,10 @@ Efectivamente, qué herramientas instala la forja (Se supone que las has descrit
 \par Interoperabilidad entre las herramientas que componen la forja. API Rest.
 
 % section interoperabilidad (end)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pruebas y Validación
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Pruebas y Validación}
 \label{sec:pruebas-validacion}

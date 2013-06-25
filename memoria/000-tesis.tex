@@ -16,6 +16,8 @@
 \usepackage[nottoc, notlot, notlof, notindex]{tocbibind} %% Opciones de \'indice
 \usepackage{latexsym}  %% Logo LaTeX
 \usepackage{lscape}
+\usepackage{nameref}
+\usepackage{appendix}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Paquete escribir código fuente
@@ -47,7 +49,9 @@
 \begin{document}
 
 \renewcommand{\refname}{Bibliograf\'ia}  %% Renombrando
-\renewcommand{\appendixname}{Ap\'endice}
+\renewcommand{\appendixname}{Apéndices}
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices}
 
 %%%%%%%%%%%%% PORTADA %%%%%%%%%%%%%%%%
 
@@ -105,8 +109,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
-\chapter{Apéndice 1}
-\label{app:primer}
+\clearpage % o \cleardoublepage
+\addappheadtotoc
+\appendixpage
+% Instalación SidelabCode Stack
+\include{./apendice-puppet}
 
 %%%%%%%%%%%%%%%%
 % BIBLIOGRAFIA %
