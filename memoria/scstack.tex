@@ -157,14 +157,16 @@
 \subsection{Usuarios, roles y grupos}
 \label{sub:usuarios-roles-grupos}
 
+\par Gestión de usuarios, roles, grupos y proyectos a través de \emph{OpenLDAP}\footnote{OpenLDAP - \url{http://www.openldap.org/}}.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{OpenLDAP-logo}
+    \includegraphics[width=0.3\textwidth]{OpenLDAP-logo}
     \caption{OpenLDAP logo}
     \label{fig:openldap-logo}
 \end{figure}
 
-\par Gestión de usuarios, roles, grupos y proyectos a través de \emph{OpenLDAP}\footnote{OpenLDAP - \url{http://www.openldap.org/}}. SCTack utiliza la tecnología de directorios \emph{LDAP} como sistema de autenticación y de información centralizado de la Forja Software. En dicho servidor de directorios se almacena información relativa a todos los usuarios, proyectos software y repositorios de la Forja. Esta tecnología, además, cuenta con la ventaja de que la mayoría de aplicaciones web con sistemas de autenticación ofrecen interfaces que garantizan una completa integración con directorios LDAP, este es el caso de Redmine, Drupal, Wordpress y el propio servidor web Apache. La implementación de este protocolo en la Forja Sidelab se lleva a cabo mediante un servidor de directorios muy estable y de libre distribución que es OpenLDAP.
+\par SCStack utiliza la tecnología de directorios \emph{LDAP} como sistema de autenticación y de información centralizado de la Forja Software. En dicho servidor de directorios se almacena información relativa a todos los usuarios, proyectos software y repositorios de la Forja. Esta tecnología, además, cuenta con la ventaja de que la mayoría de aplicaciones web con sistemas de autenticación ofrecen interfaces que garantizan una completa integración con directorios LDAP, este es el caso de Redmine, Drupal, Wordpress y el propio servidor web Apache. La implementación de este protocolo en la Forja Sidelab se lleva a cabo mediante un servidor de directorios muy estable y de libre distribución que es OpenLDAP.
 
 \subsection{API OpenLDAP}
 \label{sub:api-openldap}
@@ -177,10 +179,58 @@
 
 % subsection usuarios-roles-grupos (end)
 
-\subsection{Gesti\'on de Requisitos ITS}
+\subsection{Gestión de Requisitos ITS}
 \label{sub:its}
 
-\par Gestión de requisitos a través del Issue Tracking System \emph{Redmine}, Backlog plugin para el desarrollo Iterativo e Incremental, documentación a partir de la Wiki y WYSIWYG.
+\par La gestión de requisitos en SidelabCode Stack se lleva a cabo a través del Issue Tracking System \emph{Redmine}\footnote{Redmine - \url{http://www.redmine.org/}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{redmine}
+    \caption{Redmine logo}
+    \label{fig:redmine-logo}
+\end{figure}
+
+\par Este apartado es el más cuidado e importante en el conjunto de SCStack ya que se trata de la herramienta encargada de centralizar la gestión de \emph{Lista de Control del Proyecto} por cada Iteración. El ITS Redmine es una aplicación web de gestión de proyectos Software multiplataforma desarrollada en \emph{Ruby} a través de \emph{Ruby on Rails}. Por supuesto se trata de una herramienta FLOSS.
+
+\par Redmine proporciona la gestión de tareas (de cualquier tipo; \emph{features, bugs, parches\ldots}) para cada uno de los proyectos creados. Dentro de SCStack se encuentra enlazado a la configuración de usuarios a través de OpenLDAP para la validación y cuenta con una base de datos propia \emph{MySQL}. Un apartado importante ya que esto permite gestionar las migraciones de Redmine de manera rápida, eficiente y fluida de una versión a otra o incluir la información de otro Redmine\footnote{Upgrading Redmine - \url{http://www.redmine.org/projects/redmine/wiki/RedmineUpgrade}} en una nueva instalación de la Forja, únicamente haciendo un backup de la base de datos y algunos directorios clave. Incluso la migración a Redmine desde otros gestores de tareas\footnote{Migrate to Redmine - \url{http://www.redmine.org/projects/redmine/wiki/RedmineMigrate}}.
+
+\par Proporciona una interfaz adaptada para cada proyecto de la forja asociado a un repositorio de código fuente con un visor integrado. Se visualizan los cambios entre distintas versiones del código y comparaciones entre distintas ramas de desarrollo para seguir la evolución del proyecto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{redmine-demo-landing-page}
+    \caption{Redmine página de bienvenida}
+    \label{fig:redmine-demo-landing-page}
+\end{figure}
+
+\par Dentro del proceso Iterativo e Incremental como herramientas nos proporciona informes de seguimiento de actividad dinámicos (\emph{día, persona, proyecto\ldots}), un \emph{Wiki} para la documentación y una página de noticias.
+
+\par Es la interfaz web de entrada al proyecto para los desarrolladores, por ello es la parte más importante y en donde se centran gran parte de los esfuerzos para la fluidez y la importancia que tiene la misma.
+
+\par Por otra parte Redmine proporciona una API Rest para facilitar la interoperabilidad entre los distintos componentes. Esta API se maneja a través de la capa de negocio de la Consola de Administración de SCStack para así a través del API se registren en Redmine los usuarios, proyectos y grupos con sus respectivos permisos partiendo de los valores introducidos a través de la Consola de Administración. De esta forma, Redmine pasa a gestionar a través de su BBDD MySQL los usuarios y proyectos después que se hayan autenticado a través de OpenLDAP para así cargar la configuración obtenida de su BBDD.
+
+\par Las operaciones de gestión administrativa en Redmine permanecen desactivadas, de modo que ningún administrador de proyectos puede añadir ni borrar miembros de sus proyectos, tampoco pueden crearse ni borrarse usuarios o proyectos, etc. \emph{Obligando} así que todas las operaciones de gestión de la Forja se lleven a cabo desde el Software diseñado específicamente para ello, la Consola de Administración, logrando así garantizar la consistencia.
+
+\subsection{Plugins}
+\label{sub:redmine-plugins}
+
+\par A la hora de aplicar el desarrollo Iterativo e Incremental se intenta incrementar la eficacia, la visibilidad, la rapidez y la comprensión del proceso de desarrollo. Por eso se han utilizado distintos plugins para Redmine que ayudan a la comprensión y agilizan el proceso Iterativo e Incremental para los usuarios (desarrolladores, gestores, etc\ldots) a través del plugin FLOSS \emph{Backlogs}\footnote{Redmine Backlogs - \url{http://www.redminebacklogs.net/}}.
+
+\par \emph{Backlogs} aporta una gestión visual en modo tablón de las Iteraciones activas en el proceso. Gestiona 'manualmente' a través de \emph{Drag and Drop} la organización de las tareas del proyecto y agiliza la comprensión del estado de la iteración, proyecto, desarrollo en sí, en un sólo vistazo ~\ref{fig:backlogs-plugin}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{backlogs-plugin}
+    \caption{Redmine Backlogs plugin: tareas Redmine agrupadas por estados dentro de una historia de usuario.}
+    \label{fig:backlogs}
+\end{figure}
+
+\par Otro apartado importante en el desarrollo Iterativo e Incremental es la gestión de la documentación, en este caso Redmine nos proporciona una Wiki por cada proyecto. Una herramienta Wiki colaborativa que mantiene su histórico de cambios (asociados a usuario y tiempo) y que mediante el lenguaje de marcado wiki desde el cual se exportan a distintos formatos como: \emph{html, pdf, etc}, a un coste de recursos bajo.
+
+% subsection redmine-plugins (end)
+
+
 
 % subsection its (end)
 
