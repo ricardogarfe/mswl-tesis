@@ -280,7 +280,24 @@
 \subsection{Revisión de Código}
 \label{sub:gerrit}
 
-\par Gerrit.
+\par La gestión del repositorio Git está orientada a través de la herramienta \emph{Gerrit}\footnote{\url{http://code.google.com/p/gerrit/}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gerrit-diffy}
+    \caption{Gerrit Kunfu Review Cuckoo}
+    \label{fig:gerrit-logo}
+\end{figure}
+
+\par Gerrit es una herramienta de revisión de código basada en web. Facilita el control online de las revisiones de código para los proyectos a través de la herramienta Git.
+
+\par Gestiona la autenticación y la gestión de permisos, roles y grupos para cada uno de los repositorios existentes a través de una interfaz ligera. Una de las cosas a destacar es la orientación hacia un repositorio centralizado de Git, es decir el control de código que se ha de añadir a la rama principal del proyecto.
+
+\par Centralizar la rama principal del proyecto en el repositorio descentralizado casa perfectamente con el proceso Iterativo e Incremental ya que a cada iteración cerrada añadimos los cambios a la rama estable del proyecto desarrollado centralizando el código a empaquetar para convertir en la solución final, incremento a incremento.
+
+\par La configuración viene a través del API de SCStack y una consola interactiva SSH\footnote{Gerrit Command Line Tools - \url{http://gerrit.googlecode.com/svn/documentation/2.0.34/cmd-index.html}} que proporciona Gerrit. En SCStack esta función recae sobre los valores obtenidos del servidor \emph{OpenLDAP} a partir de los datos introducidos en la Consola de Administración a la hora de gestionar la creación de un proyecto y el grupo de usuarios asociados al proyecto siguiendo el flujo de datos centralizado a través de la API Rest central. La creación del proyecto, la gestión de usuarios y permisos sobre el repositorio Git creado.
+
+\par Este procedimiento se encapsula a través del envío de órdenes a la consola a través del API habiendo configurado la autenticación a través de un conjunto de clave SSH en la instalación de SCStack.
 
 % subsection gerrit (end)
 
@@ -295,10 +312,16 @@
 
 % subsection ci-jenkins (end)
 
-\subsection{Gestión de distribuciones y dependencias.}
+\subsection{Gestión de distribuciones y dependencias}
 \label{sub:distribuciones-dependencias}
 
 \par Directorios compartidos, OpenSSH y Archiva para la gestión de dependencias.
+
+Archiva
+
+Programa de código abierto para la gestión de repositorios de artefactos de construcción, desarrollado por Apache Software Foundation. Este el compañero perfecto para herramientas de construcción como Maven.
+
+Entre las funcionalidades que podemos destacar de esta herramienta están, el proxy para repositorio remoto (reduce el tráfico de red en equipos de trabajo), la gestión del control de acceso a los repositorios definidos, la construcción de artefactos de almacenamiento y, la gestión y mantenimiento de repositorios maven 1.x y 2.x (indexación, búsquedas, informes, etc).
 
 % subsection distribuciones-dependencias (end)
 
@@ -335,7 +358,15 @@
 
 \par Esta herramienta se integra en el ciclo de vida del Software para automatizar los procesos tediosos manuales, proveer una estructura básica inicial a los proyectos (iteración 0) para ir incrementando iteración tras iteración a través de los arquetipos.
 
-\par A través de Maven y Eclipse se definen las líneas del desarrollo de cada iteración facilitando el diseño TDD~\ref{sub:tdd} a través de una sencilla configuración. El esqueleto de los proyectos Maven proporciona unas sencillas guías estándar para el desarrollo de proyectos de Software. Esta agrupación de funcionalidades se reutiliza en Jenkins-CI a través de los jobs de Maven para así poder replicar cualquier entorno durante la integración continua partiendo de una base robusta.
+\par Incorpora componentes en la instalación por defecto para facilitar el trabajo del desarrollador con la forja SCSTack:
+
+\begin{itemize}
+	\item \emph{Egit} - Plugin de Eclipse para trabajar con repositorios Git - \url{http://www.eclipse.org/egit/}.
+	\item \emph{Mylyn} - Plugin para gestionar las tareas del ITS, en este caso Redmine, a través de la interfaz de Eclipse - \url{http://www.eclipse.org/mylyn/}.
+	\item \emph{Maven} - Plugin m2eclipse para la gestión de proyectos Maven a través de su ciclo de vida. Ayuda a facilitar la configuración de los builds a través de los pom de Maven. Genera esqueletos de proyectos a través de los arquetipos de una forma intuitiva - \url{http://www.sonatype.org/m2eclipse}
+\end{itemize}
+
+\par A través de Maven y Eclipse se definen las líneas del desarrollo de cada iteración facilitando el diseño TDD~\ref{sub:tdd} a través de una sencilla configuración. El esqueleto de los proyectos Maven proporciona unas sencillas guías estándar para el desarrollo de proyectos de Software. Esta agrupación de funcionalidades se reutiliza en Jenkins-CI a través de los \emph{jobs} de Maven para así poder replicar cualquier entorno durante la integración continua partiendo de una base robusta.
 
 % subsection mv-tdd (end)
 
