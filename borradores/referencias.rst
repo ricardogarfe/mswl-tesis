@@ -109,9 +109,11 @@ Literature
 Repositorios
 =============
 
-Martin Fowler
+Martin Fowler 
 http://martinfowler.com/bliki/FeatureToggle.html
 http://martinfowler.com/bliki/FeatureBranch.html
+
+\bibitem{featurebranch} Fowler, Martin. \textit{Feature Branch}. http://martinfowler.com/bliki/FeatureBranch.html, September 2009.
 
 @SaveInfOS - Salvemos a los informáticos http://mastersfwlurjc.blogspot.com/2013/06/saveinformaticos-salvemos-los.html como mejorar, aprender y divertirse como desarrollador de software
 

@@ -130,9 +130,9 @@
 
 \par El diseño del aprovisionamiento a través de Puppet se basa en módulos. Cada uno de estos módulos se encarga de gestionar la instalación y configuración del componente definido.
 
-\par Que aporta Puppet ? Proporciona un control sobre la instalación de cada herramienta y la configuración asociada por defecto que se define. De esta forma el proceso se instalación se automatiza permitiendo la replicación del mismo, completo o por módulos en diferentes entornos, locales o virtuales. La instalación a partir de módulos ha de definir una cadena de dependencias entre cada uno de ellos de manera que se vayan habilitando funcionalidades e interacciones.
+\par Que aporta Puppet ? Proporciona un control sobre la instalación de cada herramienta y la configuración asociada por defecto que se define. De esta forma el proceso se instalación se automatiza permitiendo la replicación del mismo, completo o por módulos en diferentes entornos, locales o virtuales. La instalación a partir de módulos ha de definir una cadena de dependencias entre cada uno de ellos de manera que se vayan habilitando funcionalidades e interacciones (Apéndice ~\ref{app:apendice-puppet}).
 
-\par En SidelabCode Stack Puppet es el encargado de gestionar la instalación y configuración de cada uno de los componentes mediante módulos Puppet independientes para completar el proceso de instalación entre 5 y 10 minutos.
+\par En SidelabCode Stack Puppet es el encargado de gestionar la \emph{instalación y configuración} de cada uno de los componentes mediante módulos Puppet independientes para completar el proceso de instalación (Apéndice ~\ref{app:instalacion-sidelab}) entre 5 y 10 minutos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Componentes
@@ -178,6 +178,10 @@
 % subsection api-openldap (end)
 
 % subsection usuarios-roles-grupos (end)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Gestión de Requisitos - Redmine
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Gestión de Requisitos ITS}
 \label{sub:its}
@@ -232,19 +236,46 @@
 
 % subsection its (end)
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Repositorios de Código
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Repositorios de Código}
 \label{sub:repositorios}
 
-\par Reposiotorios centralizados y distribuidos: SVN y Git.
+\par Los repositorios de código (VCS) son los encargados de gestionar el ciclo de vida del código fuente como hemos visto en el apartado de Código versionado~\ref{sec:codigo-versionado} y existen dos tipos: centralizados y distribuidos. Para el proceso de desarrollo Iterativo e Incremental hemos seleccionado el repositorio distribuido \emph{Git}\footnote{Git - \url{http://git-scm.com/}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{git-logo}
+    \caption{Git SCM Logo}
+    \label{fig:git-scm-logo}
+\end{figure}
+
+\par Atendiendo a los requerimientos del proceso:
+
+\begin{quote}
+    \emph{El desarrollo de la solución se adapta al uso del Repositorio distribuido, ya que éste aporta una flexibilidad para la gestión de bifurcaciones del código que en un repositorio centralizado no tenemos fácilmente}
+\end{quote}
+
+\par En el proceso Iterativo e Incremental abundan las ramificaciones del código en el repositorio debido a ello se opta por la elección del repositorio distribuido Git en pro del repositorio centralizado SVN, que también se incluye en la Forja SCStack. Las ramificaciones, la cantidad de fusiones entre ramas~\cite{featurebranch}, entornos de desarrollo sumando la facilidad, agilidad y el bajo coste en Git nos proporcionan la herramienta adecuada para la gestión del código fuente en SCStack.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{svn-git-comparison}
+    \caption{Comparación de incrementos entre SVN (completo) y Git (incrementos en archivos)}
+    \label{fig:svn-git-comparison}
+\end{figure}
+
+\begin{quotation}
+    \emph{For example the Mozilla repository is reported to be almost 12 Gb when stored in SVN using the fsfs backend. Previously, the fsfs backend also required over 240,000 files in one directory to record all 240,000 commits made over the 10 year project history. This was fixed in SVN 1.5, where every 1000 revisions are placed in a separate directory. The exact same history is stored in Git by only two files totaling just over 420 Mb. This means that SVN requires 30x the disk space to store the same history}\footnote{Git Svn Comparison Smaller Space Requirements - \url{https://git.wiki.kernel.org/index.php/GitSvnComparison\#Smaller\_Space\_Requirements}}
+\end{quotation}
+
+\par Asociada a cada Iteración se ha de gestionar la viabilidad de una rama del repositorio. En esta rama se trabaja con respecto a las tareas a desarrollar para la iteración. Se hacen las pruebas necesarias para cada desarrollo para después integrar la solución en la rama principal y así crear una nueva versión del proyecto. 
+
+\par La ramificación del desarrollo permite gestionar por iteraciones incrementales aisladas en una nueva rama, de esta forma, el contenido de la rama principal es fiable, ya que para añadir contenido a la rama ha tenido que pasar una iteración nueva y el proceso de desarrollo que conlleva; planificación, test, implementación e integración. El resultado está altamente controlado y distribuido en base a módulos para poder acotar posibles errores posteriores o revertir cambios a través de un proceso minuciosamente controlado.
 
 % subsection repositorios (end)
-
-\subsection{Desarrollo (Maven y TDD)}
-\label{sub:mv-tdd}
-
-\par Maven, TDD y desarrollo por ramas con Git.
-
-% subsection mv-tdd (end)
 
 \subsection{Revisión de Código}
 \label{sub:gerrit}
@@ -252,6 +283,10 @@
 \par Gerrit.
 
 % subsection gerrit (end)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Integración Continua
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Integración Continua}
 \label{sub:ci-jenkins}
@@ -268,6 +303,41 @@
 % subsection distribuciones-dependencias (end)
 
 % subsection componentes (end)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Desarrollo Eclipse y Maven
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Desarrollador: Eclipse y Maven}
+\label{sub:eclipse-mvn-tdd}
+
+\par El entorno de desarrollo para el desarrollador en el que se integra el proceso Iterativo e Incremental consta de dos herramientas y un concepto.
+
+\par El IDE \emph{Integrated Development Environment} a utilizar es Eclipse, concretamente la distribución del framework Spring \emph{Eclipse STS}\footnote{Eclipse STS - \url{http://www.springsource.org/sts}}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{STS}
+    \caption{Spring Tool Suite logo}
+    \label{fig:sts}
+\end{figure}
+
+\par STS otorga y proporciona un conjunto de herramientas preparadas para trabajar con los componentes de STStack: Redmine, Git, Gerrit, Jenkins, Apache, OpenLDAP, Maven. Se basa en unan distribución de Eclipse orientada al desarrollo para trabajar con diferentes componentes externos facilitando la puesta a punto para empezar a desarrollar.
+
+\par Esta distribución incluye la gestión de un proyecto a través \emph{Maven}\footnote{Apache Maven - \url{http://maven.apache.org/}}. Maven es un Software de gestión de proyectos basado en la definición del proyecto POM (Project Object Model). Es el encargado de compilar, ejecutar test, desplegar, gestionar las dependencias (locales y remotas) y generar distribuciones a partir de una configuración definida.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{maven}
+    \caption{Maven logo}
+    \label{fig:maven-logo}
+\end{figure}
+
+\par Esta herramienta se integra en el ciclo de vida del Software para automatizar los procesos tediosos manuales, proveer una estructura básica inicial a los proyectos (iteración 0) para ir incrementando iteración tras iteración a través de los arquetipos.
+
+\par A través de Maven y Eclipse se definen las líneas del desarrollo de cada iteración facilitando el diseño TDD~\ref{sub:tdd} a través de una sencilla configuración. El esqueleto de los proyectos Maven proporciona unas sencillas guías estándar para el desarrollo de proyectos de Software. Esta agrupación de funcionalidades se reutiliza en Jenkins-CI a través de los jobs de Maven para así poder replicar cualquier entorno durante la integración continua partiendo de una base robusta.
+
+% subsection mv-tdd (end)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Interoperabilidad
