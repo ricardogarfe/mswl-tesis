@@ -315,7 +315,99 @@
 \subsection{Integración Continua}
 \label{sub:ci-jenkins}
 
-\par Jenkins CI.
+\par  La integración continua dentro del proceso de desarrollo Iterativo e Incremental es la encargada de agilizar la comunicación entre los distintos actores involucrados. Evalúa la evolución de la solución y provee una respuesta firme y profesional para afianzar los resultados de cada incremento.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{jenkins}
+    \caption{Jenkins CI Logo}
+    \label{fig:jenkins-logo}
+\end{figure}
+
+
+\par En este aspecto, la herramienta que SCStack necesita es un gestor de integración continua como \emph{Jenkins-CI}\footnote{Jenkins-CI - \url{http://jenkins-ci.org}}:
+
+\begin{quote}
+    \emph{In a nutshell Jenkins CI is the leading open-source continuous integration server. Built with Java, it provides over 400 plugins to support building and testing virtually any project.}
+\end{quote}
+
+\par Jenkins-CI\footnote{Meet Jenkins-CI - \url{https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins}} proporciona la integración de la integración continua (valga la redundancia) en el proceso de desarrollo de software de una forma modular e interoperable. No se trata de un servidor intrusivo ni para el proceso de desarrollo ni para el desarrollador en si.
+
+\par En este aspecto SCStack incluye el módulo de Jenkins-CI en la instalación para facilitar el trabajo de las pruebas, integración y generación de versiones mediante la virtualización de escenarios más cercanos al sistema de producción. Des esta forma se perfila mejor el rendimiento, la replicación de errores y el control de la evolución del código fuente. Dentro del desarrollo, el código fuente es el centro de la calidad y debido a esta afirmación, se necesita un servidor de CI adaptado al proceso de desarrollo.
+
+\begin{itemize}
+	\item Tags.
+	\item Construir las versiones vivas.
+	\item Branches de releases.
+	\item Desplegar una versión específica con un clic.
+\end{itemize}
+
+\par Jenkins-CI se instala integrado en el marco de trabajo SCStack interoperando entre el repositorio de código fuente Git, la herramienta de gestión Gerrit y el despliegue de los tests en servidores como Apache o Tomcat dependiendo del producto final (esto no tiene nada que ver con el desarrollo, sería un requisito del proyecto). Jenkins-CI mantiene diferentes versiones vivas a la vez en el repositorio del proyecto para cumplir con los objetivos:
+
+\begin{itemize}
+	\item Asegurar la calidad.
+	\item Hacer el despliegue ágil.
+	\item Minimizar el riesgo.
+\end{itemize}
+
+\par Jenkins-CI trabaja en base a \emph{Jobs}. Un Job en Jenkins-CI describe el proceso de integración, pruebas o despliegue que va a ejecutarse cuando se cumpla un requisito definido o manualmente. La integración de las distintas ramas de desarrollo en cada iteración en el ciclo de vida~\ref{fig:simple-lifecycle} las gestiona Jenkins-CI a través de los Jobs definidos:
+
+\begin{itemize}
+	\item Jobs de \emph{integración}.
+	    \begin{itemize}
+        	\item Descargan el código del repositorio Git.
+        	\item Construyen.
+        	\item Pasan tests.
+        	\item Despliegan la versión construida en "local".
+        \end{itemize}
+	\item Jobs de \emph{release}.
+	    \begin{itemize}
+        	\item Realizan los pasos anteriores y además.
+        	\item Tag si los tests pasaron.
+        	\item Push del tag al repositorio remoto.
+        \end{itemize}
+	\item Jobs de \emph{despliegue}.
+	    \begin{itemize}
+        	\item Descargan el binario del repositorio de binarios
+        	\item Desplegar en un servidor de aplicaciones.
+        \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{simple-lifecycle}
+    \caption{Ciclo de vida Jenkins CI}
+    \label{fig:simple-lifecycle}
+\end{figure}
+
+\par Dentro de la forja SCStack se configura el uso de Jenkins-CI a partir de usuarios dedicados a la gestión de jobs. Se utiliza un usuario por proyecto, después de haber evaluado las distintas opciones:
+
+\begin{itemize}
+	\item \textbf{Opción I}: Un usuario \emph{jenkinsci} con acceso de \emph{lectura/escritura} a \emph{todos} los repositorios.
+        \begin{itemize}
+
+        	\item \emph{Pros}; Simplicidad: sólo hay que gestionar un usuario. Una \emph{única} clave ssh \emph{/home/tomcat/.ssh/id\_rsa.pub}.
+        	\item \emph{Contras}; Un usuario para dominarlos a todos. Cualquier error en un job para el proyecto \emph{X} puede afectar a los repositorios del proyecto \emph{Y}.
+        \end{itemize}
+
+	\item \textbf{Opción II}: Un usuario @jenkinsci@ con acceso de \emph{lectura/escritura} a todos los repositorios y  otro \emph{jenkinsci\_read} con acceso sólo de lectura	
+        \begin{itemize}
+        	\item \emph{Pros}; Sólo hay que gestionar \emph{dos usuarios}: basta con asociarlos a \emph{todos} los proyectos.
+        	\item \emph{Contras}; Seguimos teniendo un usuario para dominarlos a todo: jenkinsci. Cualquier error en un job para el proyecto \emph{X} puede afectar a los repositorios del proyecto \emph{Y}. Hay que gestionar dos claves ssh. No es trivial.
+        \end{itemize}
+
+	\item \textbf{Opción III}: Un \emph{usuario por proyecto} para integración continua.
+        \begin{itemize}
+        	\item \emph{Pros}; El usuario de ci de un proyecto no tiene acceso a los repositorios de otro proyecto.
+        	\item \emph{Contras}; Hay que gestionar múltiples \emph{claves ssh}.
+        \end{itemize}
+
+\end{itemize}
+
+
+\par Estos usuarios se han de crear a través de la consola de administración
+
+
 
 % subsection ci-jenkins (end)
 
