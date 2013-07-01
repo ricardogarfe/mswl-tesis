@@ -57,9 +57,9 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{restlet}
+    \includegraphics[width=1\textwidth]{rest-scope}
     \caption{Diseño de un API RESTful}
-    \label{fig:restful-api}
+    \label{fig:rest-scope}
 \end{figure}
 
 \par \textbf{Servicio web REST}: Es el componente encargado de gestionar las peticiones http a los servicios REST de la Consola de Administración y el API de SidelabCode. Define e implementa la lógica a seguir para la construcción de un proyecto a través de la UI mediante las llamadas ordenadas al API de cada una de las herramientas involucradas en el servicio como componentes de la forja.
@@ -98,7 +98,7 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{puppet-labs-logo}
+    \includegraphics[width=0.3\textwidth]{puppet-labs-logo}
     \caption{Puppet Labs Logo}
     \label{fig:puppet-labs}
 \end{figure}
@@ -326,38 +326,59 @@
 \subsection{Gestión de distribuciones y dependencias}
 \label{sub:distribuciones-dependencias}
 
-\par Gestión de directorios compartidos, comunicación segura a través de OpenSSH y gestión de dependencias y distribuciones a través de Archiva como repositorio Maven.
-
-\subsubsection{Directorios compartidos}
-\label{ssub:dir-compartidos}
-
-% subsubsection dir-compartidos (end)
+\par Gestión de recursos compartidos, comunicación segura a través de \emph{OpenSSH} y gestión de dependencias y distribuciones a través de \emph{Archiva} como repositorio \emph{Maven}.
 
 \subsubsection{OpenSSH}
 \label{ssub:openssh}
 
-OpenSSH es un conjunto de aplicaciones de libre distribución que permiten realizar comunicaciones
-cifradas a través de la red usando el protocolo SSH.
-La función fundamental que brinda este protocolo a la Forja Software consiste en garantizar que los
-usuarios de los distintos proyectos puedan acceder, por ejemplo a través de SFTP o SSH, a las carpetas
-privadas y públicas de los proyectos en los cuales participan, a través de una conexión cifrada, y
-gestionar sus ficheros de una forma sencilla, ágil y segura.
+\par \emph{OpenSSH}\footnote{\url{http://www.openssh.org/}} es un conjunto de aplicaciones de libre distribución que permiten realizar comunicaciones cifradas a través de la red usando el protocolo SSH.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{openssh_logo}
+    \caption{OpenSSH logo}
+    \label{fig:openssh_logo}
+\end{figure}
+
+\par La función fundamental que brinda este protocolo a la Forja Software consiste en garantizar que los usuarios de los distintos proyectos puedan acceder, por ejemplo a través de SFTP\footnote{\url{}} o SSH, a las carpetas privadas y públicas de los proyectos en los cuales participan, a través de una conexión cifrada, y gestionar sus ficheros de una forma sencilla, ágil y segura.
 
 % subsubsection openssh (end)
 
 \subsubsection{Archiva}
 \label{ssub:archiva}
 
-\par \emph{Archiva} es programa FLOSS para la gestión de repositorios de artefactos de construcción, desarrollado por \emph{Apache Software Foundation}. Este el compañero perfecto para herramientas de construcción como Maven.
+\par \emph{Archiva}\footnote{\url{http://archiva.apache.org/index.cgi}} es una aplicación FLOSS para la gestión de repositorios de artefactos de construcción, desarrollado por \emph{Apache Software Foundation}. Este el compañero perfecto para herramientas de construcción como Maven.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{apache-archiva-logo}
+    \includegraphics[width=0.3\textwidth]{apache-archiva-logo}
     \caption{Apache Archiva logo}
     \label{fi:apache-archiva}
 \end{figure}
 
 \par Entre las funcionalidades que podemos destacar de esta herramienta están, el proxy para repositorio remoto (reduce el tráfico de red en equipos de trabajo), la gestión del control de acceso a los repositorios definidos, la construcción de artefactos de almacenamiento y, la gestión y mantenimiento de repositorios Maven facilitando la indexación, búsquedas, informes, estadísticas.
+
+\par Posee una interfaz web sencilla de configurar en la que publica el contenido del repositorio Maven accesible a los usuarios autenticados. Además de el acceso al repositorio Maven habiendo configurado en los proyectos de desarrollo la url en la que está publicado:
+
+\lstset{style=xmlbasico}
+\begin{lstlisting}[frame=trbl]
+<project>
+  <!-- omitted xml -->
+  <distributionManagement>
+    <repository>
+      <id>archiva.internal</id>
+      <name>Internal Release Repository</name>
+      <url>http://reposerver.mycompany.com:8080/archiva/repository/internal/</url>
+    </repository>
+    <snapshotRepository>
+      <id>archiva.snapshots</id>
+      <name>Internal Snapshot Repository</name>
+      <url>http://reposerver.mycompany.com:8080/archiva/repository/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+  <!-- omitted xml -->
+</project>
+\end{lstlisting}
 
 \par El uso de Archiva como gestor de dependencias Maven puede ser público y/o privado dependiendo del repositorio que se cree. De esta forma los equipos de desarrolladores automatizan y centralizan las descargas de las dependencias (librerías) a través de Archiva dentro de la red local, disminuyendo el tráfico de red y agilizando la puesta en marcha de proyectos y los jobs de CI, reduciendo el consumo.
 
