@@ -542,7 +542,7 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{sidelabcodestack-api-lib}
+    \includegraphics[width=0.5\textwidth]{sidelabcodestack-api-lib}
     \caption{SidelabCode Stack Librería API}
     \label{fig:sidelabcodestack-api-lib}
 \end{figure}
@@ -573,6 +573,13 @@
 \par Las pruebas más importantes en el proceso de desarrollo de la forja SidelabCodeStack han sido las de instalación y configuración de la forja que es donde se encuentra el valor del proyecto. 
 
 \par Previamente a la versión de la forja 0.2 la instalación se ejecutaba a partir de un instalador Java y en consecuencia las pruebas y la replicación de los errores en diferentes entornos acarreaban un trabajo que no podía asumirse con sencillez. A partir de la citada versión (0.2) se introdujo Puppet como herramienta de aprovisionamiento y configuración de los distintos módulos que componen la forja. Este framework ofrece un nuevo camino dentro de las pruebas en el proceso de desarrollo, \emph{la virtualización de las instalaciones}. Puppet nos proporciona un seguimiento completo de la instalación paso a paso a partir de la configuración definida en el proceso. Facilita la ejecución de la instalación de forja en entornos virtuales y seguros para poder asegurar el correcto funcionamiento y descubrir los posibles errores.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{sctack-puppet}
+    \caption{Estructura de módulo Puppet de SCStack}
+    \label{sctack-puppet}
+\end{figure}
 
 \par Pero no, no es suficiente ya que este manera el desarrollador ha de estar preocupado de invertir el tiempo en la gestión de las distintas máquinas virtuales, asignando espacio, potencia, configuración inicial, sobrecarga de la máquina de desarrollo y cumplir con una serie de tareas repetitivas que le alejan del camino marcado, el proyecto SidelabCode Stack.
 
