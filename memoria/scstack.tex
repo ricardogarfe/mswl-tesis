@@ -413,10 +413,7 @@
 
 \end{itemize}
 
-
-\par Estos usuarios se han de crear a través de la consola de administración
-
-
+\par La gestión de los usuarios se gestiona a través de la consola de administración de SCStack. De esta manera la herramienta nos aporta una vía única de entrada dotando de la funcionalidad específica para distintos estados del proceso de desarrollo nada intrusivos en el desarrollo del proyecto. Separando a través del API de SCStack la gestión y partiendo de los roles/usuarios/grupos definidos como base en OpenLDAP.
 
 % subsection ci-jenkins (end)
 
@@ -441,7 +438,7 @@
     \label{fig:openssh_logo}
 \end{figure}
 
-\par La función fundamental que brinda este protocolo a la Forja Software consiste en garantizar que los usuarios de los distintos proyectos puedan acceder, por ejemplo a través de SFTP\footnote{\url{}} o SSH, a las carpetas privadas y públicas de los proyectos en los cuales participan, a través de una conexión cifrada, y gestionar sus ficheros de una forma sencilla, ágil y segura.
+\par La función fundamental que brinda este protocolo a la Forja Software consiste en garantizar que los usuarios de los distintos proyectos puedan acceder, por ejemplo a través de SFTP\footnote{\url{http://en.wikipedia.org/wiki/SFTP}} o Secure Shell \emph{SSH}\footnote{\url{http://en.wikipedia.org/wiki/Secure\_Shell}}, a las carpetas privadas y públicas de los proyectos en los cuales participan, a través de una conexión cifrada, y gestionar sus ficheros de una forma sencilla, ágil y segura.
 
 % subsubsection openssh (end)
 
@@ -524,24 +521,13 @@
 
 \begin{itemize}
 	\item \emph{Egit} - Plugin de Eclipse para trabajar con repositorios Git - \url{http://www.eclipse.org/egit/}.
-	\item \emph{Mylyn} - Plugin para gestionar las tareas del ITS, en este caso Redmine, a través de la interfaz de Eclipse - \url{http://www.eclipse.org/mylyn/}.
-	\item \emph{Maven} - Plugin m2eclipse para la gestión de proyectos Maven a través de su ciclo de vida. Ayuda a facilitar la configuración de los builds a través de los pom de Maven. Genera esqueletos de proyectos a través de los arquetipos de una forma intuitiva - \url{http://www.sonatype.org/m2eclipse}
+	\item \emph{Mylyn} - Plugin para gestionar las tareas del ITS, en este caso Redmine, a través de la interfaz de Eclipse. Automatizando las pruebas, grabando sesiones de trabajo e incluso compartirlas para poder reproducir un procedimiento en otro sistema - \url{http://www.eclipse.org/mylyn/}
+	\item \emph{Maven} - Plugin \emph{2eclipse} para la gestión de proyectos Maven a través de su ciclo de vida. Ayuda a facilitar la configuración de los builds a través de los pom de Maven. Genera esqueletos de proyectos a través de los arquetipos de una forma intuitiva - \url{http://www.sonatype.org/m2eclipse}
 \end{itemize}
 
 \par A través de Maven y Eclipse se definen las líneas del desarrollo de cada iteración facilitando el diseño TDD~\ref{sub:tdd} a través de una sencilla configuración. El esqueleto de los proyectos Maven proporciona unas sencillas guías estándar para el desarrollo de proyectos de Software. Esta agrupación de funcionalidades se reutiliza en Jenkins-CI a través de los \emph{jobs} de Maven para así poder replicar cualquier entorno durante la integración continua partiendo de una base robusta.
 
-% subsection mv-tdd (end)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Interoperabilidad
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Interoperabilidad}
-\label{sec:interoperabilidad}
-
-\par Interoperabilidad entre las herramientas que componen la forja. API Rest.
-
-% section interoperabilidad (end)
+% subsection eclipse-mvn-tdd (end)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Pruebas y Validación
@@ -550,6 +536,83 @@
 \section{Pruebas y Validación}
 \label{sec:pruebas-validacion}
 
-\par Pruebas a trav\'es de virtualizaci\'on de sistemas operativos mediante herramientas libres; Vagrant, kvm, puppet.
+\par Todo proyecto de software necesita ser probado para comprobar que funcione correctamente si existen fallos para así poder atajarlos sin que las sorpresas aparezcan.
+
+\par El lenguaje utilizado para el desarrollo del API del proyecto ha sido \emph{Java}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{sidelabcodestack-api-lib}
+    \caption{SidelabCode Stack Librería API}
+    \label{fig:sidelabcodestack-api-lib}
+\end{figure}
+
+\par Para las pruebas del proyecto de la generación del API se ha utilizado en framework \emph{JUnit}\footnote{JUnit - \url{http://junit.org/}}. La cobertura de tests del proyecto en JUnit no es muy halagüeña ya que es del 3,5\%~\ref{fig:sidelabcodestack-sonar} pero en su defensa se puede justificar debido a que se trata de una librería que accede a APIs de terceros. Las APIs o librerías de terceros no han de desarrollar test unitarios sino test test de aprendizaje por lo que no son tan útiles~\cite{clean-code}.
+
+\par Por parte de la publicación del API como servicio Web REST se ha utilizado framework Restlet pero en este caso vemos que la cobertura de test es del 0\%~\ref{fig:sidelabcodestack-sonar-rest-service}. A partir de un proyecto nuevo y dependiente que utiliza la libraría API para publicarla como Servicio Web REST ofreciendo las funcionalidades a la Consola de Administración de la Forja.
+
+\par He utilizado la herramienta \emph{SonarQube}\footnote{SonarQube - \url{http://www.sonarqube.org/}} para obtener una visión más empírica del estado de la cobertura del proyecto. Utilizando las reglas básicas para poder fijarnos en la cantidad de pruebas definidas para SidelabCode Stack \emph{API Lib}~\ref{fig:sidelabcodestack-sonar} y \emph{REST Services}~\ref{fig:sidelabcodestack-sonar-rest-service} ya que para obtener este dato no hace falta un gran refinamiento en la configuración.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{sidelabcodestack-sonar}
+    \caption{SidelabCode Stack API lib Análisis de cobertura con Sonar}
+    \label{fig:sidelabcodestack-sonar}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{sidelabcodestack-sonar-rest-service}
+    \caption{SidelabCode Stack REST Service Análisis de cobertura con Sonar}
+    \label{fig:sidelabcodestack-sonar-rest-service}
+\end{figure}
+
+\subsection{Pruebas instalación}
+\label{sub:pruebas-instalacion}
+
+\par Las pruebas más importantes en el proceso de desarrollo de la forja SidelabCodeStack han sido las de instalación y configuración de la forja que es donde se encuentra el valor del proyecto. 
+
+\par Previamente a la versión de la forja 0.2 la instalación se ejecutaba a partir de un instalador Java y en consecuencia las pruebas y la replicación de los errores en diferentes entornos acarreaban un trabajo que no podía asumirse con sencillez. A partir de la citada versión (0.2) se introdujo Puppet como herramienta de aprovisionamiento y configuración de los distintos módulos que componen la forja. Este framework ofrece un nuevo camino dentro de las pruebas en el proceso de desarrollo, \emph{la virtualización de las instalaciones}. Puppet nos proporciona un seguimiento completo de la instalación paso a paso a partir de la configuración definida en el proceso. Facilita la ejecución de la instalación de forja en entornos virtuales y seguros para poder asegurar el correcto funcionamiento y descubrir los posibles errores.
+
+\par Pero no, no es suficiente ya que este manera el desarrollador ha de estar preocupado de invertir el tiempo en la gestión de las distintas máquinas virtuales, asignando espacio, potencia, configuración inicial, sobrecarga de la máquina de desarrollo y cumplir con una serie de tareas repetitivas que le alejan del camino marcado, el proyecto SidelabCode Stack.
+
+\par En este punto aparece \emph{Vagrant}\footnote{Vagrant - \url{http://www.vagrantup.com/}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{vagrant}
+    \caption{Vagrant Logo}
+    \label{fir:vagrant}
+\end{figure}
+
+\begin{quote}
+    \emph{Create a single file for your project to describe the type of machine you want, the software that needs to be installed, and the way you want to access the machine. Store this file with your project code.}
+\end{quote}
+
+\par Vagrant proporciona la gestión de los entornos de desarrollo sobre máquinas virtuales, ligeras, sencillas y replicables. Existe un repositorio de imágenes de virtuales\footnote{VagrantBox.es - \url{http://www.vagrantbox.es/}} preparadas para Vagrant que se han de instalar la máquina del desarrollador con un simple comando:
+
+\lstset{style=rubybasico}
+\begin{lstlisting}[frame=trbl]
+config.vm.box = "precise64"
+config.vm.network :hostonly, "192.168.33.10" # Si se desea se puede utilizar el modo bridge y asignar una ip por dhcp a la maquina dentro de la red en la que se encuentra el host
+config.vm.provision :puppet, :module_path => "modules"
+\end{lstlisting}
+
+\par Se puede afirmar que Vagrant es la navaja suiza para las pruebas en este proyecto. A través de Vagrant se define el sistema operativo a instalar, la capacidad de la máquina y lo más importante: el \textbf{provisionador}, en nuestro caso Puppet y el módulo SidelabCode Stack.
+
+\par A través de dos comandos se inicia el proceso completo de la instalación de SCStack en una nueva máquina virtual a partir de la configuración de una plantilla con las propiedades necesarias (Apéndice ~\ref{app:instalacion-sidelab}).
+
+\lstset{style=rubybasico}
+\begin{lstlisting}[frame=trbl]
+$ vagrant box add base http://files.vagrantup.com/precise64.box
+$ vagrant init
+$ vagrant up
+\end{lstlisting}
+
+\par Permite la ejecución de pruebas para la instalación de SCStack de una manera eficiente y controlada aunque también es pesada debido a las características del proyecto.
+
+\par De esta forma se completa el proceso de desarrollo con respecto a las herramientas y módulos utilizados para el desarrollo de la forja SidelabCode Stack ofreciendo las soluciones y herramientas necesarias para poder facilitar el uso del proceso desarrollo Iterativo e Incremental dentro de un marco seguro y fiable.
+
+% subsection pruebas-instalacion (end)
 
 % section pruebas-validacion (end)
