@@ -267,6 +267,8 @@
 
 \par En el proceso Iterativo e Incremental abundan las ramificaciones del código en el repositorio debido a ello se opta por la elección del repositorio distribuido Git en pro del repositorio centralizado SVN, que también se incluye en la Forja SCStack. Las ramificaciones, la cantidad de fusiones entre ramas~\cite{featurebranch}, entornos de desarrollo sumando la facilidad, agilidad y el bajo coste en Git nos proporcionan la herramienta adecuada para la gestión del código fuente en SCStack.
 
+\par En el repositorio Git no se guardan diferencias se guardan snapshots en comparación con Subversion.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{svn-git-comparison}
@@ -281,6 +283,81 @@
 \par Asociada a cada Iteración se ha de gestionar la viabilidad de una rama del repositorio. En esta rama se trabaja con respecto a las tareas a desarrollar para la iteración. Se hacen las pruebas necesarias para cada desarrollo para después integrar la solución en la rama principal y así crear una nueva versión del proyecto. 
 
 \par La ramificación del desarrollo permite gestionar por iteraciones incrementales aisladas en una nueva rama, de esta forma, el contenido de la rama principal es fiable, ya que para añadir contenido a la rama ha tenido que pasar una iteración nueva y el proceso de desarrollo que conlleva; planificación, test, implementación e integración. El resultado está altamente controlado y distribuido en base a módulos para poder acotar posibles errores posteriores o revertir cambios a través de un proceso minuciosamente controlado.
+
+\subsubsection{Integridad}
+\label{subs:git-integridad}
+
+\par Los commits se identifican por un \texttt{hash sha1}
+
+\begin{itemize}
+    \item \texttt{Svn}: \emph{rev 33}
+    \item \texttt{Git}: \emph{d025a7b3217f05110ebbf48065b8d02a0ad22ae3}
+\end{itemize}
+
+\par O más amigablemente: \emph{d025a7b}
+
+\par Los ficheros también se identifican por su sha1 de esta forma si un fichero se corrompe durante la transmisión por la red se detecta inmediatamente
+
+\subsubsection{Los 3 estados}
+\label{subs:git-3-estados}
+
+\par Los ficheros en Git pueden estar en tres estados:
+
+\begin{itemize}
+    \item \texttt{Modificado}: el fichero ha cambiado desde el último checkout
+    \item \texttt{Staged}: un fichero modificado ha sido marcado para ser añadido en el próximo commit
+    \item \texttt{Committed}: el fichero se encuentra en la base de datos de git
+\end{itemize}
+
+\par Hay un 4º estado: \textbf{untracked}.
+
+\subsubsection{Las 3 áreas de un proyecto git}
+\label{subs:git-3-areas}
+
+\begin{enumerate}
+    \item El directorio git (git directory):
+        \begin{itemize}
+            \item Contiene los metadatos y la base de datos de git
+            \item Es lo que se copia cuando se clona un repositorio
+            \item Normalmente es una carpeta .git en algún directorio
+        \end{itemize}
+    \item La carpeta de trabajo (working directory):
+        \begin{itemize}
+            \item Es un checkout de una versión específica del proyecto
+            \item Se extrae del directorio git
+            \item Es el espacio donde modificamos los ficheros
+        \end{itemize}
+    \item Staging area:
+        \begin{itemize}
+            \item Fichero en el directorio git que indica qué cambios van en el próximo commit
+        \end{itemize}
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{git-3-areas}
+    \caption{Tres áreas en Git}
+    \label{fig:git-3-areas}
+\end{figure}
+
+\subsubsection{La identidad}
+\label{subs:git-identidad}
+
+\par Git necesita conocer algunos datos del desarrollador (aparecen en los commits para identificar al autor)
+
+\begin{itemize}
+    \item Nombre
+    \item Email
+\end{itemize}
+
+\par Si no están correctamente configurados pueden aparecer varios problemas:
+
+\begin{itemize}
+    \item Los commits \textbf{fallan} porque el usuario no está autorizado
+    \item Commits del mismo usuario \emph{'físico'} \textbf{no son considerados como del mismo usuario} porque el nombre \emph{'lógico'} cambia.
+\end{itemize}
+
+\par Por lo que se ha de tener muy en cuenta este apartado y configurar correctamente en el archivo.
 
 % subsection repositorios (end)
 
