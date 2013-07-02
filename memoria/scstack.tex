@@ -464,7 +464,7 @@
     \label{fig:simple-lifecycle}
 \end{figure}
 
-\par Dentro de la forja SCStack se configura el uso de Jenkins-CI a partir de usuarios dedicados a la gestión de jobs. Se utiliza un usuario por proyecto, después de haber evaluado las distintas opciones:
+\par Dentro de la forja SCStack se configura el uso de Jenkins-CI a partir de usuarios dedicados a la gestión de jobs. Se plantean tres opciones:
 
 \begin{itemize}
 	\item \textbf{Opción I}: Un usuario \emph{jenkinsci} con acceso de \emph{lectura/escritura} a \emph{todos} los repositorios.
@@ -488,7 +488,46 @@
 
 \end{itemize}
 
+\par Se decide utilizar un usuario por proyecto definida en la \textbf{tercera opción}, después de haber evaluado las distintas opciones.
+ 
 \par La gestión de los usuarios se gestiona a través de la consola de administración de SCStack. De esta manera la herramienta nos aporta una vía única de entrada dotando de la funcionalidad específica para distintos estados del proceso de desarrollo nada intrusivos en el desarrollo del proyecto. Separando a través del API de SCStack la gestión y partiendo de los roles/usuarios/grupos definidos como base en OpenLDAP.
+
+\par El repositorio remoto debería contener versiones más o menos estables y distinguidas para el desarrollo por ramas establecido el proceso:
+
+\begin{itemize}
+	\item \textbf{Develop}: Pueden fallar algunos tests, no es problema.
+
+	\item \textbf{Release-X}: Los tests deberían pasar, eventualmente se podrían desactivar.
+	
+	\item \textbf{Nightly builds}: Construcciones que comprueban la \emph{'salud'} del proyecto. Se hacen sobre los branches \emph{development} y \emph{release-X} (siendo X la versión más reciente).
+
+    \begin{itemize}
+	    \item Se ejecutan los tests.
+	    \item Se despliegan dos versiones por cada rama: \texttt{Limpia}: una bbdd nueva y \texttt{Migración}: con actualización de bbdd ya existente sobre la bbdd que ya hubiera para ese despliegue.
+    \end{itemize}
+
+	\item \textbf{Preproducción}: Las versiones que van a preproducción son aquellas de las que se ha hecho \texttt{tag}: 
+	\begin{itemize}
+	    \item Pasan los tests.
+	    \item El entorno de pre puede estar en \emph{local} o en \emph{Remoto}.
+	    \item Se despliegan dos versiones: \texttt{Limpia} y \texttt{Migración}.
+    \end{itemize}
+
+	\item \textbf{Producción}: Las versiones que van a producción son aquellas de las que se ha hecho \texttt{tag}.
+	\begin{itemize}
+	    \item Pasan los tests.
+	    \item El despliegue se realiza en \emph{Remoto}.
+	    \item Se despliegan dos versiones: \texttt{Limpia} y \texttt{Migración}.
+    \end{itemize}
+
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{diagrama-integracion-continua}
+    \caption{Integración Continua de versiones a partir de distintas ramas}
+    \label{fig:diagrama-integracion-continua}
+\end{figure}
 
 % subsection ci-jenkins (end)
 
