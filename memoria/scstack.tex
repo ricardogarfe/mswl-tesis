@@ -28,7 +28,12 @@
 
 \par La arquitectura del Sistema de Gestión de la Forja se ve reflejada en el siguiente esquema:
 
-% TODO Imagen UI -> REST Server -> API
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{scstack-diagram}
+    \caption{Diagrama de arquitectura SCStack}
+    \label{fig:scstack-diagram}
+\end{figure}
 
 \par El proyecto consta de tres componentes conectados entre sí para la comunicación del usuario con las herramientas para la gestión de los proyectos: La Consola de Administración, el servidor de servicios web REST y el API.
 
@@ -150,14 +155,7 @@
 \section{Componentes}
 \label{sec:componentes}
 
-\par En este apartado se van a analizar las distintas partes o componentes que integran la Forja SidelabCode Stack y el papel que desempeñan en el funcionamiento del sistema. Partiendo del esquema en donde se refleja a grandes la arquitectura de la Forja SidelabCode ~\ref{fig:arquitectura-scstack} y los componentes descritos en el capítulo \nameref{chap:procesos-desarrollo} a la hora de gestionar el proceso \emph{Iterativo e Incremental}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{arquitectura-base}
-    \caption{Arquitectura SidelabCode Stack}
-    \label{fig:arquitectura-scstack}
-\end{figure}
+\par En este apartado se van a analizar los distintos componentes que integran la Forja SidelabCode Stack y el papel que desempeñan en el funcionamiento del sistema partiendo del esquema en donde se refleja la arquitectura de la Forja SidelabCode ~\ref{fig:scstack-diagram} y la relación que mantienen con las necesidades descritas en el capítulo \nameref{chap:procesos-desarrollo} a la hora de gestionar el proceso \emph{Iterativo e Incremental}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % OpenLDAP
@@ -598,7 +596,7 @@
 
 \par Vagrant proporciona la gestión de los entornos de desarrollo sobre máquinas virtuales, ligeras, sencillas y replicables. Existe un repositorio de imágenes de virtuales\footnote{VagrantBox.es - \url{http://www.vagrantbox.es/}} preparadas para Vagrant que se han de instalar la máquina del desarrollador con un simple comando:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
 config.vm.box = "precise64"
 config.vm.network :hostonly, "192.168.33.10" # Si se desea se puede utilizar el modo bridge y asignar una ip por dhcp a la maquina dentro de la red en la que se encuentra el host
@@ -609,7 +607,7 @@ config.vm.provision :puppet, :module_path => "modules"
 
 \par A través de dos comandos se inicia el proceso completo de la instalación de SCStack en una nueva máquina virtual a partir de la configuración de una plantilla con las propiedades necesarias (Apéndice ~\ref{app:instalacion-sidelab}).
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
 $ vagrant box add base http://files.vagrantup.com/precise64.box
 $ vagrant init

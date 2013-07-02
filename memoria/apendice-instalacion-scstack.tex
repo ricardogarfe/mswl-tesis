@@ -32,7 +32,7 @@
 	\item \url{http://code.sidelab.es/public/sidelabcodestack/artifacts/0.3/puppet-installer-0.3-bin.tar.gz}
 \end{itemize}
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
     cd $HOME
     mkdir tmp
@@ -42,7 +42,7 @@
 
 \par Descomprimir y copiar a la carpeta modules:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
     cd $HOME/tmp
     tar xvzf puppet-installer-0.3-bin.tar.gz
@@ -77,7 +77,7 @@
 
 \par Dependiendo de la conexión de red, el proceso de instalación puede tardar más o menos. En general es buena idea configurar un proxy para los paquetes debian. Esta opción es recomendable en el proceso de instalación a través de Vagrant. Para ello, simplemente hay que instalar \textbf{apt-cacher} en el host:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
     sudo apt-get install apt-cacher
 \end{lstlisting}
@@ -93,9 +93,9 @@
 
 \par Reiniciar el servicio:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
-    sudo /etc/init.d/apt-cacher restart
+    $ sudo /etc/init.d/apt-cacher restart
 \end{lstlisting}
 
 \par Modificar el fichero \texttt{/etc/hosts} con la ip del host y el dominio asociado que se define en el fichero de configuración \texttt{default.pp} y la ip y el dominio del cliente para la comunicación con \texttt{apt-cacher} definido en el parámetro \texttt{daemon\_addr} del fichero \texttt{/etc/apt-cacher/apt-cacher.conf}:
@@ -133,7 +133,7 @@
     \item Añadir Vagrant al path
 \end{itemize}
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
     $ gedit $HOME/.bashrc
     $ PATH=$PATH:/opt/vagrant/bin
@@ -144,32 +144,32 @@
 
 \par Utilizaremos Vagrant para provisionar una VM con Java donde poder instalar SidelabCode Stack. Preparamos la carpeta para el proyecto Vagrant.
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
-    mkdir vagrant
-    mkdir vagrant/manifests
-    mkdir vagrant/modules
+    $ mkdir vagrant
+    $ mkdir vagrant/manifests
+    $ mkdir vagrant/modules
 \end{lstlisting}
 
 \par Descargar una imagen vagrant (precise64 es la que elegimos en esta documentación, por ser LTS).
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
-    vagrant box add precise64 http://files.vagrantup.com/precise64.box
+    $ vagrant box add precise64 http://files.vagrantup.com/precise64.box
 \end{lstlisting}
 
 \par Si quiere utilizar una versión distinta de una distribución, puede seleccionarla en la lista de \textbf{boxes} que proporciona \href{http://www.vagrantbox.es/}{vagrant para virtualbox}.
 
 \par Crear un proyecto Vagrant:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
-    vagrant init
+    $ vagrant init
 \end{lstlisting}
 
 \par Modificar el Vagrantfile que describe el proyecto (VM, provisioner, etc) para que arranque la vm ``precise64'' y utilice Puppet:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
 config.vm.box = "precise64"
 config.vm.network :hostonly, "192.168.33.10" # Si se desea se puede utilizar el modo bridge y asignar una ip por dhcp dentro de la red en la que se encuentra el host
@@ -179,24 +179,24 @@ config.vm.provision :puppet, :module_path => "modules"
 
 \par Copiar el instalador de la forja en la carpeta modules del proyecto Vagrant:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
-    cp -R puppet-installer-0.3/* $HOME/vagrant/modules
+    $ cp -R puppet-installer-0.3/* $HOME/vagrant/modules
 \end{lstlisting}
 
 \par Copiar el fichero \texttt{default.pp} en la carpeta \texttt{manifests} del proyecto Vagrant:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
-    cp /tmp/default.pp $HOME/vagrant/manifests
+    $ cp /tmp/default.pp $HOME/vagrant/manifests
 \end{lstlisting}
 
 \par Arrancar la vm.
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
-    cd $HOME/vagrant
-    vagrant up
+    $ cd $HOME/vagrant
+    $ vagrant up
 \end{lstlisting}
 
 \section{Puppet}
@@ -209,7 +209,7 @@ config.vm.provision :puppet, :module_path => "modules"
 
 \par Puppet se ha de instalar mediante el gestor de paquetes de la distribución, en este caso \texttt{apt} para Ubuntu:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
     $ [sudo] apt-get install puppet
 \end{lstlisting}
@@ -221,7 +221,7 @@ config.vm.provision :puppet, :module_path => "modules"
 
 \par Copiar los módulos puppet al directorio de módulos definido:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
     $ mkdir -p $HOME/puppet/modules
     $ cp -R puppet-installer-0.3/* $HOME/puppet/modules
@@ -229,7 +229,7 @@ config.vm.provision :puppet, :module_path => "modules"
 
 \par Ejecutar puppet para el proceso de instalación mediante sudo:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
     $ sudo puppet apply --modulepath=$HOME/puppet/modules default.pp
 \end{lstlisting}
@@ -260,11 +260,11 @@ config.vm.provision :puppet, :module_path => "modules"
 
 \par odificar la fecha de creación de la api key de admin desde mysql:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
-mysql -u root -p
-> use redminedb;
-> update tokens set created_on='2013-01-16 22:16:00' where id='1';
+    $ mysql -u root -p
+    > use redminedb;
+    > update tokens set created_on='2013-01-16 22:16:00' where id='1';
 \end{lstlisting}
 
 \par Modificar los permisos de las carpetas en /opt/redmine/tmp para que sean del usuario de apache:
@@ -339,13 +339,13 @@ Acceder a la URL de Redmine, con el usuario \texttt{admin} y el password
 
 \par Para ello accedemos a la administración de Archiva \texttt{Administration -\textgreater{} Repositories} y añadimos uno nuevo con los siguientes parámetros:
 
-\lstset{style=rubybasico}
+\lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
-Identifier*: *releases*
-Name*:       *Archiva Managed Releases Repository*
-Directory*:  */opt/tomcat/data/repositories/releases*
-...
-Repository Purge By Days Older Than: *30*
+    Identifier*: *releases*
+    Name*:       *Archiva Managed Releases Repository*
+    Directory*:  */opt/tomcat/data/repositories/releases*
+    ...
+    Repository Purge By Days Older Than: *30*
 \end{lstlisting}
 
 \par Se crea el repositorio. Si Tomcat nos muestra un error por pantalla al acceder a la URL \texttt{https://test.scstack.org/archiva/admin/addRepository!commit.action} relacionado con \textbf{NullPointerException} no nos debemos preocupar ya que el repositorio está creado correctamente siendo accesible y funcional. Se puede comprobar volviendo a visualizar la lista de repositorios de \emph{Archiva}.
@@ -363,24 +363,24 @@ Repository Purge By Days Older Than: *30*
 
 \begin{itemize}
     \item Error al crear un repositorio Git: Reininciar el servicio scstack-service:
-    \lstset{style=rubybasico}
+    \lstset{style=bashbasico}
     \begin{lstlisting}[frame=trbl]
-        $sudo service scstack-service stop
-        $sudo service scstack-service start
+        $ sudo service scstack-service stop
+        $ sudo service scstack-service start
     \end{lstlisting}
 
     \item Error al acceder a \textbf{Archiva} o \textbf{Jenkins} \texttt{404 No encontrado}.
     \begin{itemize}
         \item Configurar el dominio de nombres en el ordenador para que acceda a través de la ip correspondiente.
 
-        \lstset{style=rubybasico}
+        \lstset{style=bashbasico}
         \begin{lstlisting}[frame=trbl]
             $ sudo vi /etc/hosts
         \end{lstlisting}
 
         \item Añadir la línea de conversión entre IP y nombre (elegido en la configuración del fichero default.pp).
 
-        \lstset{style=rubybasico}
+        \lstset{style=bashbasico}
         \begin{lstlisting}[frame=trbl]
             138.100.156.246 sidelabcode03.scstack.org
         \end{lstlisting}
