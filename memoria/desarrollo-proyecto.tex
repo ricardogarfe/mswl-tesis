@@ -10,34 +10,84 @@
 \chapter{Desarrollo de un proyecto}
 \label{chap:desarrollo}
 
-\par Cómo llevar a cabo el desarrollo de un proyecto con SCStack. Desarrollo en paralelo de un proyecto mediante github + travis-ci vs gerrit + jenkins.
+\par Cómo llevar a cabo el desarrollo de un proyecto con SCStack. Desde la creación de los usuarios y el proyecto hasta la definición del camino a seguir aplicando el desarrollo Iterativo e Incremental como los raíles del proceso. Generación de las distintas ramas del desarrollo adecuando la integración continua y marcando los objetivos dentro de una iteración a través de un grupo de tareas.
+
+\par \textbf{Nota:}
+
+\begin{quote}
+    \emph{Si se quiere reproducir este proceso primero se ha de instalar la forja SCStack siguiendo los pasos descritos en el Apéndice ~\ref{app:instalacion-sidelab}.}
+\end{quote}
+
+\begin{comment}
+Desarrollo en paralelo de un proyecto mediante github + travis-ci vs gerrit + jenkins.
+\end{comment}
 
 \section{Alta usuarios}
 \label{sec:alta-usuarios}
 
-\par Dar de alta desarrolladores/Project Owners (usuarios de la forja).
+\par El primer paso dar de alta a los usuarios a través de la Consola de Administración de la forja e incluirlos dentro de un grupo.
+
+\par Se ha de aportar el nombre de usuario, correo electrónico y la contraseña. Ya se han creado los usuarios y éstos tienen acceso a todas las herramientas de SCStack.
+
+\par \textbf{Nota:}
+
+\begin{quote}
+    \emph{Los nombres de usuario y proyecto han de cumplir con las reglas de usuarios propias de Redmine, como indica la validación de campos en el formulario.}
+\end{quote}
 
 % section alta-usuarios (end)
 
 \section{Crear un proyecto}
 \label{sec:crear-proyecto}
 
+\par El siguiente paso es crear el proyecto.
+
+\par Elegimos el nombre del proyecto, los usuarios y el grupo al que pertenecen.
+
+\par Por último se elije si el proyecto ha de tener un repositorio, en este caso \textbf{si} y además ha de ser del tipo \textbf{Git}. Si el repositorio es público o privado no es vinculante para el proceso.
+
+\par Ya disponemos de usuarios, grupos y proyecto al que pertenecen además de un repositorio Git asociado al nombre del nuevo proyecto que contiene dos ramas de desarrollo: \emph{master} y \emph{development}.
+
 \subsection{Proyecto en redmine}
 \label{sub:proyeto-redmine}
+
+\par El administrador del nuevo proyecto accede a Redmine utilizando sus credenciales.
+
+\par Se añade la lista de tareas a la Lista de Control.
+
+\par Se define la historia de usuario a través de la interfaz del plugin \emph{Backlogs}.
+
+\par Se crea el Sprint con las tareas seleccionadas a través del plugin \emph{Backlogs}.
+
+\par Ya tenemos la lista de tareas que se van a completar en la primera iteración del proceso.
+
+\par En el siguiente paso se prepara el entorno para los desarrolladores.
 
 % subsection proyeto-redmine (end)
 
 \subsection{Repositorio git}
 \label{sub:repo-git}
 
-\par Configurar usuario Git del desarrollador del proyecto para la forja:
+\par El usuario, en este caso el desarrollador recibe sus credenciales para identificarse como tal en su equipo de trabajo.
+
+\par El entorno de trabajo para el desarrollador en este caso consta de:
+
+\begin{itemize}
+	\item Equipo de trabajo con una distribución Ubuntu 12.04 LTS.
+	\item Java JDK 1.6.
+	\item Maven.
+	\item Git-scm.
+	\item Eclipse STS.
+\end{itemize}
+
+\par Configurar usuario Git del desarrollador de la forja:
 
 \lstset{style=bashbasico}
 \begin{lstlisting}[frame=trbl]
 $ cat .gitconfig 
 [user]
-    name = patxigortazar
-    email = patxi.gortazar@gmail.com
+    name = ricardogarfe
+    email = ricardogarfe@gmail.com
 $ git config --global user.name "ricardogarfe"
 $ git config --global user.email "ricardogarfe@gmail.com"
 $ cd [path-to-gitrepo]
@@ -48,9 +98,10 @@ $ cd [path-to-gitrepo]
 \par Comprobar las credenciales de Git en el ordenador del desarrollador:
 
 \lstset{style=bashbasico}
-\begin{lstlisting}[frame=trbl]$ git config --list
-user.name=patxigortazar
-user.email=patxi.gortazar@gmail.com
+\begin{lstlisting}[frame=trbl]
+$ git config --list
+    user.name=ricardogarfe
+    user.email=ricardogarfe@gmail.com
 \end{lstlisting}
 
 % subsection repo-git (end)
@@ -181,7 +232,7 @@ Host filetransfer.ricardogarfe.sidelab.es
 \subsubsection{Job de integración}
 \label{subs:jenkins-job-integracion}
 
-\par Configurar el job de integración mediante Maven:
+\par Configurar el Job de integración mediante Maven para asegurar la fiabilidad dentro de cada iteración en el desarrollo:
 
 \begin{itemize}
 	\item Crear un \textbf{job} \emph{Maven}.
@@ -248,9 +299,9 @@ Host filetransfer.ricardogarfe.sidelab.es
     \label{fig:jenkins-config-file-management-settings}
 \end{figure}
 
-\par Para los deploys, si el certificado es autofirmado es \textbf{necesario} generar un \textbf{truststore} a partir del certificado generado por el servidor\footnote{\url{http://www.liferay.com/web/neil.griffin/blog/-/blogs/fixing-suncertpathbuilderexception-caused-by-maven-downloading-from-self-signed-repository}}.
+\par Para los despliegues, si el certificado es \emph{autofirmado} es \textbf{necesario} generar un \textbf{truststore} a partir del certificado generado por el servidor\footnote{\url{http://www.liferay.com/web/neil.griffin/blog/-/blogs/fixing-suncertpathbuilderexception-caused-by-maven-downloading-from-self-signed-repository}}.
 
-\par Este truststore debe incluirse en todos los \texttt{jdk} que utilice \emph{Jenkins} en la ruta indicada en el enlace anterior.
+\par Este \textbf{truststore} debe incluirse en todos los \texttt{jdk} que utilice \emph{Jenkins} en la ruta indicada en el enlace anterior.
 
 % subsection jobs-jenkins (end)
 
@@ -259,22 +310,31 @@ Host filetransfer.ricardogarfe.sidelab.es
 \section{Proceso de desarrollo basado en ramas}
 \label{sec:desarrollo-en-ramas}
 
-\par Proceso de desarrollo basado en ramas partiendo de 2 ramas de forma continua:
+\par Después completar la configuración del entorno de desarrollo y la forja SCStack, es el turno aplicar el proceso Iterativo e Incremental al código fuente a través del repositorio Git.
+
+\par El flujo de trabajo a través de las ramas se representa en este \emph{Diagrama de Desarrollo} en el que intervienen e interactúan las distintas ramas durante el proceso de Integración dentro de cada Iteración:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{flujo-desarrollo-git-000}
+    \caption{Flujo de desarrollo Git basado en ramas}
+    \label{fig:flujo-desarrollo-git-000}
+\end{figure}
+
+\par Se ha definido que el proceso de desarrollo basado en ramas parte de 2 ramas de forma continua:
 
 \begin{itemize}
     \item \textbf{master:} Desarrollo limpio. Sólo versiones estables.
     \item \textbf{develop:} El desarrollo inicial de la versión actual tiene lugar aquí.
 \end{itemize}
 
-\par Gestión de las ramas para estabilización de las versiones:
+\par En cada iteración se han de gestionar las ramas para estabilización de las iteraciones, en este caso se utiliza el nombre de \emph{release} acompañado de la etiqueta numérica asociada:
 
 \begin{itemize}
     \item \textbf{release-0.1}, \textbf{release-0.2}; una rama de estabilización cada vez   
 \end{itemize}
 
-\subsection{Proceso de estabilización}
-
-\par El proceso de estabilización se gestiona a través de las \emph{ramas de estabilización}:
+\par El siguiente proceso se conoce como \emph{proceso de estabilización} y se gestiona a través de las \emph{ramas de estabilización}. Es un paso intermedio de integración del as ramas de estabilización (release-0.1, 0.2) y las ramas continuas (master y development):
 
 \begin{itemize}
     \item Estabilización del código (\emph{RC release candidates})
@@ -294,24 +354,13 @@ Host filetransfer.ricardogarfe.sidelab.es
 
 \subsection{Releasing}
 
-\par Para crear una Release se define un proceso de gestión a través las ramas:
+\par Para crear una \emph{Release} se define un proceso de gestión a través las ramas:
 
 \begin{itemize}
     \item Checkout del tag
     \item Build (Jenkins)
     \item Deploy (Jenkins)
 \end{itemize}
-
-\subsection{Diagrama de desarrollo}
-
-\par El flujo de trabajo a través de las ramas se representa en este diagrama:
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{flujo-desarrollo-git-000}
-\caption{Flujo de desarrollo Git.}
-\label{fig:flujo-desarrollo-git-000}
-\end{figure}
 
 % section desarrollo-en-ramas (end)
 
