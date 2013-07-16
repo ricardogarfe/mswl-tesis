@@ -33,3 +33,5 @@ Ruby
 Ubuntu
 LDAP
 Drag and Drop
+copyright holders
+refactorización
