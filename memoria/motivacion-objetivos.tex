@@ -58,27 +58,36 @@
 \section{ITS}
 \label{sec:its}
 
-\par Empezando por el An\'alisis de Requerimientos en un proyecto es necesaria una herramienta que ayude en el proceso de desarrollo, en esta caso un \emph{ITS Issue Tracking System} para la gestión y el mantenimiento de las tareas de cada proyecto. La piedra angular de todo proyecto de software. El ITS otorga un control del flujo de trabajo, de las responsabilidades de los usuarios, una base de documentación y de gestión del tiempo y esfuerzo (consumido y restante) prioritaria en todo proyecto de software.
+\par Empezando por la definición de los requerimientos en un proyecto es necesaria una herramienta que ayude en el proceso de desarrollo, en esta caso un \emph{ITS Issue Tracking System} para la gestión y el mantenimiento de las tareas de cada proyecto \emph{"La piedra angular de todo proyecto de software para un buen seguimiento"}.
 
-\par Utilizar el ITS para gestionar las tareas y los posibles errores dentro de cada proyecto para planificar la corrección o la implementación de éstas, dividiendo las entregas del proyecto en versiones durante el proceso continuo de desarrollo.
+\par El ITS otorga un control del flujo de trabajo realizado, de las responsabilidades de los usuarios, una base de documentación, de gestión del tiempo y esfuerzo (consumido y restante) prioritaria en todo proyecto de software.
 
-\par Que la información sea accesible y clara en cualquier momento del desarrollo de un proyecto.
+\par Utilizar un ITS para gestionar las tareas, sus estados y los posibles errores dentro de cada proyecto para planificar la corrección o la implementación de éstas. Dividiendo las entregas del proyecto en versiones durante el proceso continuo de desarrollo en iteraciones.
+
+\par La información ha de ser accesible y clara en cualquier momento del desarrollo de un proyecto.
 
 % section its (end)
 
 \section{Repositorio de código}
 \label{sec:repositorio-codigo}
 
-\par El Repositorio de c\'odigo asociado a cada proyecto. Sin repositorio de código no hay proyecto. De esta forma la cooperación entre usuarios de un proyecto se agiliza bajo el manto de un sistema de control de versiones de código fuente. Esta herramienta produce la información necesaria para generar un histórico de cambios y poder evaluar la evolución del proyecto.
+\par El Repositorio o repositorios de c\'odigo ha de estar asociado a un proyecto. Sin repositorio de código no hay control del estado del desarrollo:
 
-\par Además se ha de dotar de una herramienta para la Gesti\'on del repositorio. Es decir, la gestión de parches, actualizaciones y desarrollo por ramas dentro de un entorno controlado.
+\begin{itemize}
+	\item Facilita la cooperación entre usuarios de un proyecto,
+	\item Agilizada bajo el manto de un sistema de control de versiones.
+\end{itemize}
+
+\par Esta herramienta produce la información necesaria para generar un histórico de cambios y poder evaluar la evolución del proyecto.
+
+\par Además ha de ofrecer la posibilidad para la conexión con una herramienta para la Gesti\'on del repositorio. Es decir, la gestión de parches, actualizaciones y desarrollo por ramas dentro de un entorno controlado.
 
 % section repositorio-codigo (end)
 
 \section{Gestión de librerías}
 \label{sec:gestion-librerias}
 
-\par La gesti\'on de librer\'ias centralizada para los proyectos dentro de la forja, ofrece la posibilidad de interconectar distintas librerías dentro de todo el entorno. Publicando las librerías clasificadas a través de las distintas versiones en un repositorio de librerías común. La reutilización del código y la posibilidad de mejora entre distintos proyectos que compartan librerías mejora la calidad del mismo.
+\par La gesti\'on de librer\'ias centralizada para los proyectos dentro de la forja, ofrece la posibilidad de interconectar distintas librerías dentro de un entorno. Publicando las librerías, clasificadas a través de las distintas versiones, en un repositorio de librerías común para los usuarios. La reutilización del código y la posibilidad de mejora entre distintos proyectos compartiendo librerías mejora la calidad del mismo.
 
 % section gestion-librerias (end)
 
@@ -89,16 +98,23 @@
 
 \par Otorga datos válidos para el análisis del código y controlar la evolución de la cobertura de Tests para poder evaluar la deuda técnica. Genera los datos suficientes para facilitar la corrección de la misma.
 
+\par Siempre pensando en la calidad y el desarrollo marcados para un proyecto.
+
 % section tdd (end)
 
 \section{CI - Integración Continua}
 \label{sec:integracion-continua}
 
-\par El TDD, el desarrollo por ramas y los despliegues en diferentes entornos completan un proceso de desarrollo que culmina en la integración continua del proyecto. Este es el control al más alto nivel dentro de la parte técnica en donde el control de la calidad del código se toma como estandarte. Prevé los errores previos entre distintas versiones del código al unificar las ramas, fallos en los tests y validación de la calidad del código.
-
-\par Crear despliegues en distintos entornos o replicar entornos similares al entorno final desde esta herramienta para minimizar los errores o poder replicar fácilmente los mismos cuando surjan.
+\par El TDD, el desarrollo por ramas y los despliegues en diferentes entornos completan un proceso de desarrollo que culmina en la integración continua del proyecto. Este es el control al más alto nivel dentro de la parte técnica en donde el control de la calidad del código se toma como estandarte. Prevé los errores entre distintas versiones del código al unificar/integrar las ramas de desarrollo, fallos en los tests y validación de la calidad del código estableciendo unos márgenes adecuados.
 
 % section integracion-continua (end)
+
+\section{CD - Despliegues continuos}
+\label{sec:despliegues-continuos}
+
+\par Facilitar la tareas de despliegues en distintos entornos, replicar entornos similares al entorno de producción desde una herramienta para minimizar los errores, medir el rendimiento o poder replicar los fallos cuando surjan sin invertir mucho coste.
+
+% section despliegues-continuos (end)
 
 \section{Interoperabilidad}
 \label{sec:interoperabilidad}
