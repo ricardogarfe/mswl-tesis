@@ -18,7 +18,7 @@
 
 \par En SidelabCode Stack se optó por implementar el proceso de desarrollo de software \emph{iterativo e incremental} para crear el dise\~no de la forja SidelabCode Stack a través de metodolog\'ias ágiles.
 
-\par El proceso de desarrollo infiere directamente en la calidad del software que se construye. Es la parte más importante en el software ya que un proceso de desarrollo óptimo para una solución otorga las herramientas necesarias para una mejor evolución del mismo. Cada proceso de desarrollo ha de aplicarse a la solución según los requisitos de la misma, no todos los procesos de desarrollo son válidos para todos los proyectos.
+\par El proceso de desarrollo infiere directamente en la calidad del software que se construye. Es la parte más importante en el software ya que un proceso de desarrollo óptimo para una solución y otorga las herramientas necesarias para una mejor evolución del mismo. Cada proceso de desarrollo ha de aplicarse adaptándose a la solución según los requisitos de la misma, no todos los procesos de desarrollo son válidos para todos los proyectos.
 
 \section{Software de Calidad}
 \label{sec:software-calidad}
@@ -192,7 +192,7 @@
     \label{fig:valor-negocio-iterativo-incremental}
 \end{figure}
 
-\par El proceso de desarrollo en una Iteración se reduce a una serie de guías o pasos a seguir en torno a las modificaciones que surgen a la medida que se avanza en el desarrollo. El proceso Iterativo e Incremental se basa en la flexibilidad por lo tanto las modificaciones de la Iteración han de ser otra herramienta más para lograr los objetivos y como tales:
+\par El proceso de desarrollo en una Iteración se reduce a una serie de guías o pasos a seguir en torno a las modificaciones que surgen a la medida que se avanza en el desarrollo. El proceso Iterativo e Incremental se basa en la flexibilidad, por lo tanto, las modificaciones de la Iteración han de ser otra herramienta más para lograr los objetivos y como tales:
 
 \begin{itemize}
 	\item Cualquier dificultad encontrada en el diseño, desarrollo y prueba de una modificación puede alertar de la necesidad de cambiar el diseño o la implementación. Se han de desarrollar las modificaciones con una estructura modular y aislada (en su medida) para poder trabajar en un problema o solución concreta y que no afecte al resto de la implementación.
@@ -201,7 +201,7 @@
 	\item Los parches se contemplan como soluciones temporales en distintas iteraciones para que no sea necesario un cambio en el diseño, pero sólo para casos excepcionales. Si los parches proliferan se ha de replantear el diseño.
 	\item La implementación existente ha de ser analizada constantemente para certificar que sigue el camino marcado por los objetivos a corto y largo plazo del proyecto. De esta forma se controlan las posibles desviaciones de tiempo y el trabajo hecho por el grupo de trabajo.
 	\item Los herramientas de análisis se han de utilizar para validad los análisis y/o funcionalidades de las implementaciones parciales de la solución.
-	\item La participación del usuario/cliente en el proceso ha de ser solicitada y analizada para contemplar posibles deficiencias o errores en la implementación actual. De esta forma es como se ha de crear una canal de comunicación para interactuar con el grupo de trabajo.
+	\item La participación del usuario/cliente en el proceso ha de ser solicitada y analizada para contemplar posibles deficiencias o errores en la implementación actual. Se ha de crear una canal de comunicación para la interactuación entre el cliente y el grupo de trabajo.
 \end{itemize}
 
 % subsection desarrollo-iteracion (end)
@@ -211,7 +211,7 @@
 \section{Gestión de tareas}
 \label{sec:gestion-tareas}
 
-\par¿ Qué hay que hacer ? ¿ Quién tiene que hacerlo ? ¿ Cuando hay que hacerlo ?
+\par¿ Qué hay que hacer ? ¿ Que hay hecho ? ¿ Quién tiene que hacerlo ? ¿ Cuando hay que hacerlo ?
 
 \par \emph{David Allen} propulsor de la metodología \emph{GTD} (Getting Things Done):
 
@@ -249,12 +249,13 @@
 	\item Permite la planificación de la iteración. Desde el nivel más bajo al más alto se puede hacer un seguimiento minucioso del estado del proyecto.
 \end{itemize}
 
-\par La gestión de la tareas depende de todo el grupo de trabajo, desde el cliente (Lista de Control), el encargado de definir las iteraciones (Obteniendo las tareas de la Lista de Control) y el grupo de desarrolladores (Gestionando las tareas conforme avanza su trabajo). En cada uno de los estados se ha de hacer una planificación de cada una de las tareas y a cada iteración de la solución la planificación será mejor con respecto a la anterior, ya que el histórico ayuda a aprender del trabajo hecho hasta la fecha.
+\par La gestión de la tareas depende de todo el grupo de trabajo, desde el cliente (Lista de Control), el encargado de definir las iteraciones (Obteniendo las tareas de la Lista de Control) y el grupo de desarrolladores (Gestionando las tareas conforme avanza su trabajo). En cada uno de los estados se ha de hacer una planificación de cada una de las tareas y a cada iteración de la solución la planificación será mejor con respecto a la anterior, ya que el histórico ayuda a aprender del trabajo hecho hasta la fecha y el que queda por hacer.
 
 \par Como características principales de un Gestor de Tareas podemos definir:
 
 \begin{itemize}
-	\item Gestión de recursos.
+	\item Gestión de equipo.
+	\item Gestión de requisitos.
 	\item Gestión de tiempo.
 	\item Gestión de iteraciones.
 	\item Histórico de información.
@@ -280,7 +281,7 @@
 	\item \emph{Distribuidos}: Cada usuario gestiona una copia completa del repositorio y unifica los cambios con otros desarrolladores estableciendo un repositorio centralizado. Puede trabajar ya que tiene una copia del repositorio en su poder.
 \end{itemize}
 
-\par En este caso, se han integrado ambos tipos de repositorio en la forja de desarrollo, como hemos dicho antes, no es excluyente a otros procesos de desarrollo. En el caso que nos ocupa, se utilizará el repositorio de tipo \emph{Distribuido} ya que otorga mayor libertad al grupo de trabajo.
+\par En este caso, se han integrado ambos tipos de repositorio en la forja de desarrollo, como hemos dicho antes, no es excluyente a otros procesos de desarrollo. En el caso que nos ocupa, se utilizará el repositorio de tipo \emph{Distribuido} ya que otorga mayor libertad al grupo de trabajo basando el desarrollo en iteraciones.
 
 \par El desarrollo de la solución se adapta al uso del Repositorio distribuido, ya que éste aporta una flexibilidad para la gestión de bifurcaciones del código que en un repositorio centralizado no tenemos fácilmente\footnote{Git Svn Comparison - \url{https://git.wiki.kernel.org/index.php/GitSvnComparison}}. 
 
